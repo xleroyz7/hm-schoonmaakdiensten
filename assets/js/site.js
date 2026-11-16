@@ -61,7 +61,7 @@
   /* ---------- Actieve sectie in navigatie ---------- */
 
   var navLinks = $$('.nav a[href^="#"], .mobile-nav a[href^="#"]');
-  var sectionIds = ["offerte", "werkwijze", "branches"];
+  var sectionIds = ["diensten", "sectoren", "werken-bij", "contact"];
   var sections = sectionIds
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
@@ -87,7 +87,13 @@
         sectionIds.forEach(function (id) {
           if (visible[id] && !current) current = id;
         });
-        if (current) markActive(current);
+        if (current) {
+          markActive(current);
+        } else {
+          navLinks.forEach(function (link) {
+            link.removeAttribute("aria-current");
+          });
+        }
       },
       { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
     );
@@ -339,25 +345,25 @@
   var quoteBgTimer = null;
 
   var sectorImages = {
-    Kantoor: "assets/img/branch-placeholder.svg",
-    Retail: "assets/img/branch-placeholder.svg",
-    Zorg: "assets/img/branch-placeholder.svg",
-    Onderwijs: "assets/img/branch-placeholder.svg",
-    Horeca: "assets/img/branch-placeholder.svg",
-    Industrie: "assets/img/branch-placeholder.svg",
-    Vastgoed: "assets/img/branch-placeholder.svg",
-    Anders: "assets/img/branch-placeholder.svg"
+    Kantoor: "assets/img/bg-placeholder.svg",
+    Retail: "assets/img/bg-placeholder.svg",
+    Zorg: "assets/img/bg-placeholder.svg",
+    Onderwijs: "assets/img/bg-placeholder.svg",
+    Horeca: "assets/img/bg-placeholder.svg",
+    Industrie: "assets/img/bg-placeholder.svg",
+    Vastgoed: "assets/img/bg-placeholder.svg",
+    Anders: "assets/img/bg-placeholder.svg"
   };
 
   var serviceImages = {
-    Schoonmaakonderhoud: "assets/img/branch-placeholder.svg",
-    Glasbewassing: "assets/img/branch-placeholder.svg",
-    Vloeronderhoud: "assets/img/branch-placeholder.svg",
-    "Sanitair en hygiëne": "assets/img/branch-placeholder.svg",
-    "Eenmalige schoonmaak": "assets/img/branch-placeholder.svg",
-    Buitenschoonmaak: "assets/img/branch-placeholder.svg",
-    "Meerdere diensten": "assets/img/branch-placeholder.svg",
-    "Weet ik nog niet": "assets/img/branch-placeholder.svg"
+    Schoonmaakonderhoud: "assets/img/bg-placeholder.svg",
+    Glasbewassing: "assets/img/bg-placeholder.svg",
+    Vloeronderhoud: "assets/img/bg-placeholder.svg",
+    "Sanitair en hygiëne": "assets/img/bg-placeholder.svg",
+    "Eenmalige schoonmaak": "assets/img/bg-placeholder.svg",
+    Buitenschoonmaak: "assets/img/bg-placeholder.svg",
+    "Meerdere diensten": "assets/img/bg-placeholder.svg",
+    "Weet ik nog niet": "assets/img/bg-placeholder.svg"
   };
 
   function setQuoteBg(src) {
@@ -652,6 +658,51 @@
       chatCard.addEventListener("focusin", stopChat);
       chatCard.addEventListener("focusout", startChat);
     }
+  }
+
+  /* ---------- Cijfers tellen op ---------- */
+
+  var counters = $$("[data-count]");
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          counterObserver.unobserve(entry.target);
+
+          var el = entry.target;
+          var target = Number(el.getAttribute("data-count"));
+          if (!isFinite(target)) return;
+
+          el.textContent = "0";
+          var duration = 900;
+          var start = null;
+
+          function frame(now) {
+            if (start === null) start = now;
+            var progress = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = String(Math.round(target * eased));
+            if (progress < 1) {
+              window.requestAnimationFrame(frame);
+            } else {
+              el.textContent = String(target);
+            }
+          }
+
+          window.requestAnimationFrame(frame);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    counters.forEach(function (counter) {
+      counterObserver.observe(counter);
+    });
   }
 
   /* ---------- Privacyvenster ---------- */
