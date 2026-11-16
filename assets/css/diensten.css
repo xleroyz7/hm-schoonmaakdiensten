@@ -713,6 +713,25 @@
     position: absolute;
   }
 
+  .page-diensten .header__inner {
+    position: relative;
+    justify-content: center;
+  }
+
+  .page-diensten .brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page-diensten .header__actions {
+    position: absolute;
+    top: 50%;
+    right: max(16px, env(safe-area-inset-right, 0px));
+    margin-left: 0;
+    transform: translateY(-50%);
+  }
+
   .page-hero {
     min-height: 620px;
   }
@@ -723,6 +742,12 @@
 
   .work-card:last-child {
     grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 340px) {
+  .page-diensten .brand__tag {
+    display: none;
   }
 }
 
