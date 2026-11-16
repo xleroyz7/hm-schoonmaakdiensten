@@ -660,6 +660,53 @@
     }
   }
 
+  /* ---------- Diensten-carousel ---------- */
+
+  var serviceTrack = $(".diensten-carousel");
+  if (serviceTrack) {
+    var servicePrev = $("[data-carousel-prev]");
+    var serviceNext = $("[data-carousel-next]");
+
+    function serviceStep() {
+      var card = serviceTrack.querySelector(".service-card");
+      if (!card) return 300;
+      var styles = window.getComputedStyle(serviceTrack);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 20;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function serviceUpdate() {
+      if (!servicePrev || !serviceNext) return;
+      servicePrev.disabled = serviceTrack.scrollLeft <= 2;
+      serviceNext.disabled =
+        serviceTrack.scrollLeft + serviceTrack.clientWidth >=
+        serviceTrack.scrollWidth - 2;
+    }
+
+    if (servicePrev) {
+      servicePrev.addEventListener("click", function () {
+        serviceTrack.scrollBy({ left: -serviceStep(), behavior: "smooth" });
+      });
+    }
+
+    if (serviceNext) {
+      serviceNext.addEventListener("click", function () {
+        serviceTrack.scrollBy({ left: serviceStep(), behavior: "smooth" });
+      });
+    }
+
+    serviceTrack.addEventListener(
+      "scroll",
+      function () {
+        window.requestAnimationFrame(serviceUpdate);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", serviceUpdate);
+    serviceUpdate();
+  }
+
   /* ---------- Cijfers tellen op ---------- */
 
   var counters = $$("[data-count]");

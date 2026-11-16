@@ -280,35 +280,35 @@
 
 .diensten-band {
   position: relative;
-  padding: clamp(56px, 7vw, 84px) 0 clamp(64px, 8vw, 90px);
+  padding-bottom: clamp(56px, 7vw, 84px);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.diensten-band__top {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 84px) 0 80px;
   background: linear-gradient(115deg, #1d283e 0%, #002464 30%, #5b3f86 66%, #7c65ab 100%);
   color: var(--white);
 }
 
-.diensten-band::before {
+.diensten-band__top::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    115deg,
-    transparent 0 54%,
-    rgba(255, 255, 255, 0.055) 54% 55%,
-    transparent 55% 100%
-  );
+  background: linear-gradient(115deg, transparent 0 54%, rgba(255, 255, 255, 0.06) 54% 100%);
   pointer-events: none;
-}
-
-.diensten-band > .shell {
-  position: relative;
-  z-index: 1;
 }
 
 .diensten-band__head {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  margin: 0 auto 36px;
-  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
 }
 
 .diensten-band h2 {
@@ -319,79 +319,105 @@
   color: var(--white);
 }
 
-.diensten-band__head p {
-  margin-top: 12px;
-  font-size: 0.98rem;
-  line-height: 1.6;
-  color: rgba(255, 255, 255, 0.78);
+.diensten-carousel__nav {
+  display: flex;
+  gap: 10px;
 }
 
-.diensten-grid {
+.carousel-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carousel-arrow .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.diensten-carousel {
   position: relative;
   z-index: 1;
   display: flex;
-  gap: 16px;
-  justify-content: center;
-  width: 100%;
-  max-width: 1320px;
-  margin-inline: auto;
+  gap: 20px;
+  overflow-x: auto;
+  margin-top: -45px;
+  padding: 0 20px 10px max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
+  scroll-padding-left: max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.diensten-carousel::-webkit-scrollbar {
+  display: none;
 }
 
 .service-card {
   display: flex;
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 0 0 clamp(250px, 22vw, 300px);
   flex-direction: column;
   overflow: hidden;
   border-radius: 10px;
   background: var(--surface);
   color: var(--ink);
-  box-shadow: 0 20px 45px rgba(5, 8, 18, 0.18);
+  box-shadow: 0 18px 40px rgba(5, 8, 18, 0.18);
+  scroll-snap-align: start;
 }
 
 .service-card__media {
   display: grid;
   place-items: center;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 4 / 3;
   background: #f1edf8;
 }
 
 .service-card__media img {
-  width: 34%;
+  width: 38%;
   height: auto;
 }
 
 .service-card__body {
   display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: 8px;
-  padding: 18px 16px 16px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  padding: 14px 16px;
 }
 
 .service-card h3 {
   font-family: var(--font-display);
-  font-size: 0.94rem;
+  font-size: 0.9rem;
   font-weight: 700;
   line-height: 1.3;
-  letter-spacing: -0.01em;
   color: var(--accent);
   overflow-wrap: break-word;
   hyphens: auto;
 }
 
-.service-card p {
-  font-size: 0.84rem;
-  line-height: 1.55;
-  color: var(--ink-2);
-}
-
 .service-card__link {
   display: grid;
+  flex: 0 0 auto;
   place-items: center;
   width: 34px;
   height: 34px;
-  margin-top: auto;
   border-radius: 50%;
   background: var(--accent);
   color: var(--white);
@@ -406,27 +432,6 @@
 .service-card__link .icon {
   width: 15px;
   height: 15px;
-}
-
-@media (max-width: 1279px) {
-  .diensten-grid {
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding-inline: max(20px, calc((100vw - min(78vw, 300px)) / 2));
-    scroll-snap-type: x mandatory;
-    overscroll-behavior-inline: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .diensten-grid::-webkit-scrollbar {
-    display: none;
-  }
-
-  .service-card {
-    flex: 0 0 min(78vw, 300px);
-    scroll-snap-align: center;
-  }
 }
 
 /* ---------- Klantlogo's ---------- */
@@ -693,7 +698,7 @@
   }
 
   .diensten-band__head {
-    margin-bottom: 28px;
+    gap: 16px;
   }
 
   .diensten-band h2 {
