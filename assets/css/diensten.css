@@ -552,6 +552,7 @@
 .seek__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 24px;
 }
 
@@ -658,6 +659,13 @@
 .work-card__media img {
   width: 56%;
   height: auto;
+}
+
+.work-card__media--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .work-card h3 {
