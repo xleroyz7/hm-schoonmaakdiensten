@@ -154,7 +154,7 @@ Kleuren staan bovenaan `assets/css/style.css` in `:root`:
 
 ## Nog invullen of bevestigen
 
-1. **Partnerlogo's.** De site gebruikt logo's van Nike, adidas, PUMA, Moncler, Gucci en Louis Vuitton. Controleer of deze merken als klant of partner genoemd mogen worden. Zo niet, verwijder ze dan uit de klantlogosectie.
+1. **Partnerlogo's.** De site gebruikt nu tekstlogo's van Jimmy Choo, Rooms Roermond, Valentino en Peutery. Controleer of deze merken als klant of partner genoemd mogen worden en of je officiële logo's van hen mag gebruiken. De huidige tekst-SVG's kunnen worden vervangen door de aangeleverde logo-bestanden.
 2. **KvK, btw en vestigingsadres.** Deze staan nu in de footer, de privacyverklaring en het LocalBusiness-schema: Pastoor Zandersstraat 42, 6071 VC Swalmen; KvK 91847370; btw NL004919702B54. Controleer of het adres openbaar mag zijn; kies bij Google Business Profile eventueel voor een servicegebied zonder zichtbaar adres. Het IBAN staat bewust niet op de website; gebruik dat alleen op facturen.
 3. **Bereikbaarheid.** Er staat nu geen openingstijd. Vul de juiste tijden of bereikbaarheid aan.
 4. **Diensten en doelgroep.** De site richt zich op bedrijven, winkels en organisaties. Verzorgt HM ook particuliere schoonmaak of huishouding? Dan kan daar een extra dienst of pagina bij.
