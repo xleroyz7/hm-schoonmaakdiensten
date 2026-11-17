@@ -271,7 +271,7 @@ function page(sector) {
         serviceType: `Schoonmaak voor ${sector.name.toLowerCase()}`,
         description: sector.metaDescription,
         url,
-        areaServed: ['Roermond', 'Midden-Limburg'],
+        areaServed: ['Roermond', 'Venray', 'Weert', 'Venlo', 'Sittard-Geleen', 'Heerlen', 'Maastricht', 'Eindhoven', "'s-Hertogenbosch", 'Tilburg', 'Breda', 'Limburg', 'Noord-Brabant'],
         provider: {
           '@type': 'LocalBusiness',
           '@id': `${baseUrl}/#localbusiness`,

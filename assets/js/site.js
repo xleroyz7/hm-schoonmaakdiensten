@@ -320,7 +320,7 @@
     }
     if (emailLink) {
       emailLink.href =
-        "mailto:info@hmschoonmaakdiensten.com?subject=" +
+        "mailto:info@hmschoonmaakdiensten.nl?subject=" +
         encodeURIComponent("Offerteaanvraag via hmschoonmaakdiensten.nl") +
         "&body=" +
         encodeURIComponent(currentMessage);

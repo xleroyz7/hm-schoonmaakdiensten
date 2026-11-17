@@ -1990,6 +1990,13 @@ ol {
   color: var(--blue);
 }
 
+.footer__small {
+  margin-top: 13px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
 .footer__wave {
   position: relative;
   z-index: 1;

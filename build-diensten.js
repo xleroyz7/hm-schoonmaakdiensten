@@ -10,7 +10,7 @@ const root = __dirname;
 const baseUrl = 'https://www.hmschoonmaakdiensten.nl';
 const phone = '06 39140047';
 const phoneHref = 'tel:+31639140047';
-const email = 'info@hmschoonmaakdiensten.com';
+const email = 'info@hmschoonmaakdiensten.nl';
 
 const services = [
   {
@@ -395,7 +395,7 @@ function footer() {
               <img class="brand__mark" src="assets/img/hm-mark-purple.png" width="1217" height="718" alt="">
               <span class="brand__text"><span class="brand__tag">SCHOONMAAKDIENSTEN</span></span>
             </a>
-            <p>Schoonmaakdiensten voor bedrijven, winkels en organisaties in Roermond en Midden-Limburg.</p>
+            <p>Schoonmaakdiensten voor bedrijven, winkels en organisaties in Roermond, Limburg en Noord-Brabant.</p>
             <a class="btn btn--primary footer__cta" href="https://wa.me/31639140047?text=Hallo%20HM%20Schoonmaakdiensten%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen." target="_blank" rel="noopener">
               Stuur een WhatsApp-bericht
               <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
@@ -416,8 +416,9 @@ function footer() {
             <ul class="footer__contact">
               <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="${phoneHref}">${phone}</a></li>
               <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:${email}">${email}</a></li>
-              <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Roermond en Midden-Limburg</span></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Pastoor Zandersstraat 42<br>6071 VC Swalmen</span></li>
             </ul>
+            <p class="footer__small">Werkgebied: Limburg en Noord-Brabant<br>KvK 91847370 · BTW NL004919702B54</p>
           </div>
         </div>
       </div>
@@ -463,7 +464,7 @@ function footer() {
     </div>
     <div class="dialog__body">
       <p class="dialog__updated">Laatst bijgewerkt: november 2026</p>
-      <p>HM Schoonmaakdiensten is gevestigd in de regio Roermond en verwerkt persoonsgegevens die u zelf verstrekt via de offerteformulieren op deze website, per e-mail, telefoon of WhatsApp.</p>
+      <p>HM Schoonmaakdiensten is gevestigd aan de Pastoor Zandersstraat 42, 6071 VC Swalmen (KvK 91847370, btw NL004919702B54) en verwerkt persoonsgegevens die u zelf verstrekt via de offerteformulieren op deze website, per e-mail, telefoon of WhatsApp.</p>
       <h3>Welke gegevens verwerken we?</h3>
       <ul>
         <li>Naam, bedrijfsnaam en contactgegevens, zoals telefoonnummer, e-mailadres, plaats en postcode.</li>
@@ -699,7 +700,7 @@ function page(service) {
         serviceType: service.name,
         description: service.metaDescription,
         url,
-        areaServed: ['Roermond', 'Midden-Limburg'],
+        areaServed: ['Roermond', 'Venray', 'Weert', 'Venlo', 'Sittard-Geleen', 'Heerlen', 'Maastricht', 'Eindhoven', "'s-Hertogenbosch", 'Tilburg', 'Breda', 'Limburg', 'Noord-Brabant'],
         provider: {
           '@type': 'LocalBusiness',
           name: 'HM Schoonmaakdiensten',
