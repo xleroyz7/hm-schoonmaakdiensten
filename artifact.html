@@ -2760,6 +2760,24 @@ ol {
   object-fit: cover;
 }
 
+.page-hero__video {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.86;
+  filter: saturate(0.9) brightness(0.86);
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-hero__video {
+    display: none;
+  }
+}
+
 .page-hero::after {
   content: "";
   position: absolute;
@@ -2937,7 +2955,7 @@ ol {
 
 .diensten-band {
   position: relative;
-  padding-bottom: clamp(32px, 4vw, 48px);
+  padding-bottom: 0;
   background: var(--surface);
   color: var(--ink);
 }
@@ -3080,7 +3098,7 @@ ol {
   gap: 20px;
   overflow-x: auto;
   margin-top: -45px;
-  padding: 0 20px 10px max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
+  padding: 0 20px 4px max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
   scroll-padding-left: max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
   scroll-snap-type: x mandatory;
   scrollbar-width: none;
@@ -3179,12 +3197,13 @@ ol {
 /* ---------- Klantlogo's ---------- */
 
 .client-logos {
-  padding: clamp(32px, 4vw, 48px) 0;
+  padding: 20px 0 clamp(32px, 4vw, 48px);
   background: var(--surface);
   text-align: center;
 }
 
 .client-logos h2 {
+  margin-top: 0;
   font-family: var(--font-display);
   font-size: clamp(1.6rem, 2.6vw, 2.2rem);
   font-weight: 700;
@@ -3655,7 +3674,10 @@ ol {
 
     <!-- Hero -->
     <section class="page-hero" id="top" aria-label="HM Schoonmaakdiensten">
-      <img class="page-hero__bg" src="assets/img/bg-placeholder.svg" width="1600" height="900" alt="" fetchpriority="high">
+      <img class="page-hero__bg" src="assets/img/hero-poster.jpg" width="1600" height="900" alt="" fetchpriority="high">
+      <video class="page-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+        <source src="assets/video/hero.mp4" type="video/mp4">
+      </video>
       <svg class="page-hero__lines" viewBox="0 0 1920 1050" preserveAspectRatio="none" aria-hidden="true">
         <path d="M-40 860C380 1000 900 1060 1500 930C1700 890 1840 820 1960 760" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
         <path d="M420 -20C760 280 1250 410 1960 430" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
@@ -3847,11 +3869,11 @@ ol {
             </div>
           </article>
           <article class="work-card">
-            <div class="work-card__media"><img src="assets/img/hm-logo-white.png" width="1456" height="839" alt="" loading="lazy"></div>
+            <div class="work-card__media work-card__media--photo"><img src="assets/img/glas-gevelreiniging-card.jpg" width="960" height="600" alt="Medewerkers van HM Schoonmaakdiensten reinigen glas in een modern kantoor" loading="lazy"></div>
             <h3>Glas- en gevelreiniging</h3>
             <p>Van glasbewassing tot eenmalige gevelreiniging. Helder zicht en een verzorgde buitenkant van uw pand.</p>
             <div class="work-card__actions">
-              <a class="btn-pill btn-pill--small" href="#diensten"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Glasbewassing</a>
+              <a class="btn-pill btn-pill--small" href="glasbewassing.html"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Glasbewassing</a>
             </div>
           </article>
           <article class="work-card">
@@ -4917,6 +4939,56 @@ ol {
 
     counters.forEach(function (counter) {
       counterObserver.observe(counter);
+    });
+  }
+
+  /* ---------- Hero-video ---------- */
+
+  var heroVideo = $(".page-hero__video");
+  if (heroVideo) {
+    var reducedMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    var saveData = navigator.connection && navigator.connection.saveData;
+
+    function syncHeroVideo() {
+      if ((reducedMotion && reducedMotion.matches) || saveData) {
+        heroVideo.pause();
+        heroVideo.classList.add("is-paused");
+        return;
+      }
+      heroVideo.classList.remove("is-paused");
+      var playPromise = heroVideo.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {});
+      }
+    }
+
+    heroVideo.addEventListener("error", function () {
+      heroVideo.classList.add("is-paused");
+    });
+
+    var heroVideoSource = heroVideo.querySelector("source");
+    if (heroVideoSource) {
+      heroVideoSource.addEventListener("error", function () {
+        heroVideo.classList.add("is-paused");
+      });
+    }
+
+    syncHeroVideo();
+
+    if (reducedMotion) {
+      if (typeof reducedMotion.addEventListener === "function") {
+        reducedMotion.addEventListener("change", syncHeroVideo);
+      } else if (typeof reducedMotion.addListener === "function") {
+        reducedMotion.addListener(syncHeroVideo);
+      }
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        heroVideo.pause();
+      } else {
+        syncHeroVideo();
+      }
     });
   }
 

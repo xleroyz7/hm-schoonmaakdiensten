@@ -36,6 +36,7 @@ Een moderne, statische landingspagina voor HM Schoonmaakdiensten in de regio Roe
 | `assets/css/infopagina.css` | Vormgeving van de algemene en lokale pagina's |
 | `assets/js/site.js` | Menu, privacyvenster, scrollgedrag en de offerteformulieren |
 | `assets/img/` | Logo, favicon, partnerlogo's, dienstfoto's en placeholders |
+| `assets/video/hero.mp4` | Achtergrondvideo voor de hero op de homepage |
 | `robots.txt` / `sitemap.xml` | Voor zoekmachines, inclusief de dienst- en sectorpagina's |
 | `artifact.html` | Losse single-file preview van de homepage |
 | `build-artifact.js` | Maakt `artifact.html` opnieuw na wijzigingen op de homepage |
@@ -160,7 +161,7 @@ Kleuren staan bovenaan `assets/css/style.css` in `:root`:
 4. **Diensten en doelgroep.** De site richt zich op bedrijven, winkels en organisaties. Verzorgt HM ook particuliere schoonmaak of huishouding? Dan kan daar een extra dienst of pagina bij.
 5. **Google-reviews.** Lokale reviews zijn het sterkste bewijs voor een klein bedrijf. Zodra er echte reviews zijn, kunnen die een plek krijgen naast de intro of bij de diensten.
 6. **Social media.** Er staan nog geen links naar Facebook, Instagram of LinkedIn op de site.
-7. **Foto's.** Alle zes dienstenkaarten en de werkkaart Werken bij HM hebben nu een eigen foto. Voor de hero en de werkkaart Glas- en gevelreiniging staan nog logo's of placeholders. Vervang die door echte foto's.
+7. **Foto's en video.** Alle zes dienstenkaarten, de werkkaart Werken bij HM en de werkkaart Glas- en gevelreiniging hebben nu een eigen foto. De hero gebruikt `assets/video/hero.mp4` met een poster en een stilstaand fallbackbeeld; bij `prefers-reduced-motion` en op apparaten met databesparing wordt de video niet afgespeeld.
 8. **Algemene voorwaarden.** De footer verwijst nu naar "op aanvraag". Voeg een definitieve versie toe als die er is.
 9. **Privacytekst.** De tekst is praktisch en beschrijft wat de site doet, maar laat hem juridisch controleren voordat je live gaat.
 10. **HTTPS.** Het certificaat en Enforce HTTPS zijn ingericht. Controleer na een wijziging of `https://www.hmschoonmaakdiensten.nl/` zonder waarschuwing laadt.

@@ -784,6 +784,56 @@
     });
   }
 
+  /* ---------- Hero-video ---------- */
+
+  var heroVideo = $(".page-hero__video");
+  if (heroVideo) {
+    var reducedMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : null;
+    var saveData = navigator.connection && navigator.connection.saveData;
+
+    function syncHeroVideo() {
+      if ((reducedMotion && reducedMotion.matches) || saveData) {
+        heroVideo.pause();
+        heroVideo.classList.add("is-paused");
+        return;
+      }
+      heroVideo.classList.remove("is-paused");
+      var playPromise = heroVideo.play();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(function () {});
+      }
+    }
+
+    heroVideo.addEventListener("error", function () {
+      heroVideo.classList.add("is-paused");
+    });
+
+    var heroVideoSource = heroVideo.querySelector("source");
+    if (heroVideoSource) {
+      heroVideoSource.addEventListener("error", function () {
+        heroVideo.classList.add("is-paused");
+      });
+    }
+
+    syncHeroVideo();
+
+    if (reducedMotion) {
+      if (typeof reducedMotion.addEventListener === "function") {
+        reducedMotion.addEventListener("change", syncHeroVideo);
+      } else if (typeof reducedMotion.addListener === "function") {
+        reducedMotion.addListener(syncHeroVideo);
+      }
+    }
+
+    document.addEventListener("visibilitychange", function () {
+      if (document.hidden) {
+        heroVideo.pause();
+      } else {
+        syncHeroVideo();
+      }
+    });
+  }
+
   /* ---------- Privacyvenster ---------- */
 
   var privacyDialog = $("#privacy-dialog");
