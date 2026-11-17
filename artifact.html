@@ -1,4 +1,5 @@
 <title>HM Schoonmaakdiensten</title>
+<meta name="robots" content="noindex, nofollow">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Moderne website voor HM Schoonmaakdiensten in Roermond met diensten, sectoren, werkwijze en een offerteaanvraag in vier stappen.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
@@ -150,6 +151,18 @@ ol {
 
 .skip-link:focus {
   top: 0;
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
 }
 
 /* ---------- Iconen ---------- */
@@ -322,6 +335,22 @@ ol {
   align-items: center;
   gap: 10px;
   flex: 0 0 auto;
+}
+
+.site-header .brand {
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.site-header .brand__text {
+  line-height: 1;
+}
+
+.site-header .brand__tag {
+  margin-top: 3px;
+  font-size: 0.48rem;
+  letter-spacing: 0.14em;
 }
 
 .brand__mark {
@@ -2288,6 +2317,10 @@ ol {
     display: none;
   }
 
+  .header__actions {
+    margin-left: auto;
+  }
+
   .menu-toggle {
     display: inline-flex;
   }
@@ -2625,7 +2658,7 @@ ol {
   box-shadow: none;
 }
 
-.page-diensten .brand__tag {
+.page-diensten .site-header .brand__tag {
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -3129,27 +3162,64 @@ ol {
   color: var(--accent);
 }
 
-.client-logos__grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: center;
-  gap: clamp(24px, 4vw, 56px);
+.client-logos__marquee {
+  position: relative;
   margin-top: 34px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
-.client-logos__grid img {
-  width: 100%;
-  max-width: 150px;
-  max-height: 52px;
-  margin-inline: auto;
+.client-logos__track {
+  display: flex;
+  width: max-content;
+  animation: client-logos-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+.client-logos__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: clamp(36px, 5vw, 72px);
+  padding-right: clamp(36px, 5vw, 72px);
+}
+
+.client-logos__group img {
+  width: clamp(90px, 10vw, 150px);
+  height: 52px;
+  flex: none;
   object-fit: contain;
-  opacity: 1;
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.client-logos__grid img:hover {
-  opacity: 0.8;
-  transform: translateY(-2px);
+.client-logos__marquee:hover .client-logos__track {
+  animation-play-state: paused;
+}
+
+@keyframes client-logos-scroll {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logos__track {
+    width: 100%;
+    animation: none;
+  }
+
+  .client-logos__group {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 22px;
+    padding-right: 0;
+  }
+
+  .client-logos__group[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 /* ---------- Waar zoek je naar ---------- */
@@ -3345,7 +3415,7 @@ ol {
     justify-content: center;
   }
 
-  .page-diensten .brand {
+  .page-diensten .site-header .brand {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -3373,7 +3443,7 @@ ol {
 }
 
 @media (max-width: 340px) {
-  .page-diensten .brand__tag {
+  .page-diensten .site-header .brand__tag {
     display: none;
   }
 }
@@ -3417,9 +3487,9 @@ ol {
     overflow-wrap: break-word;
   }
 
-  .client-logos__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 28px;
+  .client-logos__group {
+    gap: 30px;
+    padding-right: 30px;
   }
 
   .seek__grid,
@@ -3447,15 +3517,29 @@ ol {
   {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
+    "@id": "https://www.hmschoonmaakdiensten.nl/#localbusiness",
     "name": "HM Schoonmaakdiensten",
     "description": "Schoonmaakbedrijf in Roermond en Midden-Limburg voor schoonmaakonderhoud, glasbewassing en eenmalige schoonmaak.",
     "url": "https://www.hmschoonmaakdiensten.nl/",
     "telephone": "+31639140047",
     "email": "info@hmschoonmaakdiensten.com",
-    "image": "https://www.hmschoonmaakdiensten.nl/assets/img/favicon-purple.png",
+    "logo": "https://www.hmschoonmaakdiensten.nl/assets/img/hm-logo-purple.png",
+    "image": "https://www.hmschoonmaakdiensten.nl/assets/img/hm-werken-bij.jpg",
     "priceRange": "Op aanvraag",
     "founder": { "@type": "Person", "name": "Helene Mendelsohn" },
-    "areaServed": ["Roermond", "Venray", "Weert", "Venlo", "Sittard-Geleen", "Heerlen", "Maastricht", "Eindhoven", "'s-Hertogenbosch", "Tilburg", "Breda"]
+    "areaServed": ["Roermond", "Venray", "Weert", "Venlo", "Sittard-Geleen", "Heerlen", "Maastricht", "Eindhoven", "'s-Hertogenbosch", "Tilburg", "Breda"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Schoonmaakdiensten",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Schoonmaakonderhoud", "url": "https://www.hmschoonmaakdiensten.nl/schoonmaakonderhoud.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Glasbewassing", "url": "https://www.hmschoonmaakdiensten.nl/glasbewassing.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Vloeronderhoud", "url": "https://www.hmschoonmaakdiensten.nl/vloeronderhoud.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sanitair en hygiëne", "url": "https://www.hmschoonmaakdiensten.nl/sanitair-hygiene.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Eenmalige schoonmaak", "url": "https://www.hmschoonmaakdiensten.nl/eenmalige-schoonmaak.html" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Buitenschoonmaak", "url": "https://www.hmschoonmaakdiensten.nl/buitenschoonmaak.html" } }
+      ]
+    }
   }
   </script>
 <div lang="nl" class="page-diensten">
@@ -3543,7 +3627,7 @@ ol {
     <!-- Intro -->
     <section class="page-intro" id="intro" aria-labelledby="intro-title">
       <div class="shell page-intro__inner">
-        <h1 id="intro-title">HM Schoonmaakdiensten</h1>
+        <h1 id="intro-title">HM Schoonmaakdiensten in Roermond en Midden-Limburg</h1>
         <p>HM verzorgt schoonmaakonderhoud, glasbewassing en eenmalige projecten voor bedrijven in Roermond en Midden-Limburg. Kleinschalig, met korte lijnen en vaste gezichten.</p>
         <p>We werken voor kantoren, winkels, zorg, onderwijs, horeca en industrie. Elke locatie krijgt een aanpak die past bij het gebruik, de mensen en de planning.</p>
         <a class="btn-pill" href="#contact"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Neem contact op</a>
@@ -3585,42 +3669,42 @@ ol {
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-schoonmaakonderhoud.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten maakt een bureau schoon met een microvezeldoek" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Schoonmaakonderhoud</h3>
-            <a class="service-card__link" href="schoonmaakonderhoud.html" aria-label="Meer over Schoonmaakonderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="schoonmaakonderhoud.html" aria-label="Meer over Schoonmaakonderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Schoonmaakonderhoud</span></a>
           </div>
         </article>
         <article class="service-card">
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-glasbewassing.jpg" width="720" height="540" alt="Medewerkster van HM Schoonmaakdiensten wast een glaswand met een ruitentrekker" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Glasbewassing</h3>
-            <a class="service-card__link" href="glasbewassing.html" aria-label="Meer over Glasbewassing"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="glasbewassing.html" aria-label="Meer over Glasbewassing"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Glasbewassing</span></a>
           </div>
         </article>
         <article class="service-card">
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-vloeronderhoud.jpg" width="720" height="540" alt="Medewerkster van HM Schoonmaakdiensten dweilt een kantoervloer" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Vloeronderhoud</h3>
-            <a class="service-card__link" href="vloeronderhoud.html" aria-label="Meer over Vloeronderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="vloeronderhoud.html" aria-label="Meer over Vloeronderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Vloeronderhoud</span></a>
           </div>
         </article>
         <article class="service-card">
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-sanitair-hygiene.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten maakt een wastafel schoon in een sanitairruimte" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Sanitair en hygiëne</h3>
-            <a class="service-card__link" href="sanitair-hygiene.html" aria-label="Meer over Sanitair en hygiëne"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="sanitair-hygiene.html" aria-label="Meer over Sanitair en hygiëne"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Sanitair en hygiëne</span></a>
           </div>
         </article>
         <article class="service-card">
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-eenmalige-schoonmaak.jpg" width="960" height="720" alt="Medewerkster van HM Schoonmaakdiensten maakt glas schoon bij een eenmalige schoonmaak" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Eenmalige schoonmaak</h3>
-            <a class="service-card__link" href="eenmalige-schoonmaak.html" aria-label="Meer over Eenmalige schoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="eenmalige-schoonmaak.html" aria-label="Meer over Eenmalige schoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Eenmalige schoonmaak</span></a>
           </div>
         </article>
         <article class="service-card">
           <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-buitenschoonmaak.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten veegt bladeren op een bestrate buitenruimte bij een bedrijfspand" loading="lazy"></div>
           <div class="service-card__body">
             <h3>Buitenschoonmaak</h3>
-            <a class="service-card__link" href="buitenschoonmaak.html" aria-label="Meer over Buitenschoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            <a class="service-card__link" href="buitenschoonmaak.html" aria-label="Meer over Buitenschoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg><span class="sr-only">Meer over Buitenschoonmaak</span></a>
           </div>
         </article>
       </div>
@@ -3630,13 +3714,41 @@ ol {
     <section class="client-logos" aria-labelledby="clients-title">
       <div class="shell">
         <h2 id="clients-title">Wij werken onder andere voor...</h2>
-        <div class="client-logos__grid">
-          <img src="assets/img/partner-nike.svg" alt="Nike" loading="lazy">
-          <img src="assets/img/partner-adidas.svg" alt="adidas" loading="lazy">
-          <img src="assets/img/partner-puma.svg" alt="PUMA" loading="lazy">
-          <img src="assets/img/partner-moncler.svg" alt="Moncler" loading="lazy">
-          <img src="assets/img/partner-gucci.svg" alt="Gucci" loading="lazy">
-          <img src="assets/img/partner-lv.svg" alt="Louis Vuitton" loading="lazy">
+        <div class="client-logos__marquee">
+          <div class="client-logos__track">
+            <div class="client-logos__group">
+              <img src="assets/img/partner-nike.svg" alt="Nike">
+              <img src="assets/img/partner-adidas.svg" alt="adidas">
+              <img src="assets/img/partner-puma.svg" alt="PUMA">
+              <img src="assets/img/partner-moncler.svg" alt="Moncler">
+              <img src="assets/img/partner-gucci.svg" alt="Gucci">
+              <img src="assets/img/partner-lv.svg" alt="Louis Vuitton">
+            </div>
+            <div class="client-logos__group" aria-hidden="true">
+              <img src="assets/img/partner-nike.svg" alt="">
+              <img src="assets/img/partner-adidas.svg" alt="">
+              <img src="assets/img/partner-puma.svg" alt="">
+              <img src="assets/img/partner-moncler.svg" alt="">
+              <img src="assets/img/partner-gucci.svg" alt="">
+              <img src="assets/img/partner-lv.svg" alt="">
+            </div>
+            <div class="client-logos__group" aria-hidden="true">
+              <img src="assets/img/partner-nike.svg" alt="">
+              <img src="assets/img/partner-adidas.svg" alt="">
+              <img src="assets/img/partner-puma.svg" alt="">
+              <img src="assets/img/partner-moncler.svg" alt="">
+              <img src="assets/img/partner-gucci.svg" alt="">
+              <img src="assets/img/partner-lv.svg" alt="">
+            </div>
+            <div class="client-logos__group" aria-hidden="true">
+              <img src="assets/img/partner-nike.svg" alt="">
+              <img src="assets/img/partner-adidas.svg" alt="">
+              <img src="assets/img/partner-puma.svg" alt="">
+              <img src="assets/img/partner-moncler.svg" alt="">
+              <img src="assets/img/partner-gucci.svg" alt="">
+              <img src="assets/img/partner-lv.svg" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -3660,12 +3772,12 @@ ol {
           <div class="seek-card">
             <div class="seek-card__head"><span class="seek-tab" aria-hidden="true"></span><h3>Sectoren</h3></div>
             <ul>
-              <li><a href="#contact">Kantoren & bedrijfspanden<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Retail & winkels<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Zorg & welzijn<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Onderwijs & kinderopvang<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Hotels & horeca<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Industrie & logistiek<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="kantoren-bedrijfspanden.html">Kantoren & bedrijfspanden<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="retail-winkels.html">Retail & winkels<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="zorg-welzijn.html">Zorg & welzijn<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="onderwijs-kinderopvang.html">Onderwijs & kinderopvang<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="hotels-horeca.html">Hotels & horeca<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="industrie-logistiek.html">Industrie & logistiek<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
             </ul>
           </div>
           <div class="seek-card">

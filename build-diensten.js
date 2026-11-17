@@ -497,10 +497,17 @@ function formOptions() {
   return values;
 }
 
-function quoteSection(service) {
+function quoteSection(service, options = {}) {
+  const selectedSector = options.selectedSector || '';
+  const serviceHint = options.serviceHint || 'De gekozen dienst staat alvast voor u klaar.';
   const serviceOptions = formOptions().map((value) => {
     const checked = value === service.formValue ? ' checked' : '';
     return `<label class="option"><input type="radio" name="dienst" value="${value}"${checked}><span class="option__dot" aria-hidden="true"></span><span>${value}</span></label>`;
+  }).join('\n                ');
+
+  const sectorOptions = ['Kantoor', 'Retail', 'Zorg', 'Onderwijs', 'Horeca', 'Industrie', 'Vastgoed', 'Anders'].map((value) => {
+    const checked = value === selectedSector ? ' checked' : '';
+    return `<label class="option"><input type="radio" name="sector" value="${value}"${checked}><span class="option__dot" aria-hidden="true"></span><span>${value}</span></label>`;
   }).join('\n                ');
 
   const frequencyOptions = ['Dagelijks', 'Meerdere keren per week', 'Wekelijks', 'Maandelijks', 'Eenmalig'].map((value) => {
@@ -544,21 +551,14 @@ function quoteSection(service) {
               <h3>Waar zoekt u schoonmaak voor?</h3>
               <p class="form-hint">Kies de sector die het beste past.</p>
               <div class="option-grid" role="radiogroup" aria-label="Sector">
-                <label class="option"><input type="radio" name="sector" value="Kantoor"><span class="option__dot" aria-hidden="true"></span><span>Kantoor</span></label>
-                <label class="option"><input type="radio" name="sector" value="Retail"><span class="option__dot" aria-hidden="true"></span><span>Retail</span></label>
-                <label class="option"><input type="radio" name="sector" value="Zorg"><span class="option__dot" aria-hidden="true"></span><span>Zorg</span></label>
-                <label class="option"><input type="radio" name="sector" value="Onderwijs"><span class="option__dot" aria-hidden="true"></span><span>Onderwijs</span></label>
-                <label class="option"><input type="radio" name="sector" value="Horeca"><span class="option__dot" aria-hidden="true"></span><span>Horeca</span></label>
-                <label class="option"><input type="radio" name="sector" value="Industrie"><span class="option__dot" aria-hidden="true"></span><span>Industrie</span></label>
-                <label class="option"><input type="radio" name="sector" value="Vastgoed"><span class="option__dot" aria-hidden="true"></span><span>Vastgoed</span></label>
-                <label class="option"><input type="radio" name="sector" value="Anders"><span class="option__dot" aria-hidden="true"></span><span>Anders</span></label>
+                ${sectorOptions}
               </div>
               <p class="form-error" data-error="1" role="alert"></p>
             </div>
 
             <div class="form-step" data-step="2" tabindex="-1" hidden>
               <h3>Welke dienst heeft u nodig?</h3>
-              <p class="form-hint">De gekozen dienst staat alvast voor u klaar.</p>
+              <p class="form-hint">${serviceHint}</p>
               <div class="option-grid" role="radiogroup" aria-label="Dienst">
                 ${serviceOptions}
               </div>
@@ -879,10 +879,24 @@ ${JSON.stringify(structuredData, null, 2)}
 `;
 }
 
-services.forEach((service) => {
-  const file = path.join(root, `${service.slug}.html`);
-  fs.writeFileSync(file, page(service), 'utf8');
-  console.log(`geschreven: ${service.slug}.html`);
-});
+if (require.main === module) {
+  services.forEach((service) => {
+    const file = path.join(root, `${service.slug}.html`);
+    fs.writeFileSync(file, page(service), 'utf8');
+    console.log(`geschreven: ${service.slug}.html`);
+  });
 
-console.log(`\n${services.length} dienstpagina's bijgewerkt.`);
+  console.log(`\n${services.length} dienstpagina's bijgewerkt.`);
+}
+
+module.exports = {
+  baseUrl,
+  phone,
+  phoneHref,
+  email,
+  services,
+  sprite,
+  header,
+  footer,
+  quoteSection
+};

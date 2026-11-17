@@ -33,7 +33,7 @@
   box-shadow: none;
 }
 
-.page-diensten .brand__tag {
+.page-diensten .site-header .brand__tag {
   color: rgba(255, 255, 255, 0.82);
 }
 
@@ -537,27 +537,64 @@
   color: var(--accent);
 }
 
-.client-logos__grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  align-items: center;
-  gap: clamp(24px, 4vw, 56px);
+.client-logos__marquee {
+  position: relative;
   margin-top: 34px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
-.client-logos__grid img {
-  width: 100%;
-  max-width: 150px;
-  max-height: 52px;
-  margin-inline: auto;
+.client-logos__track {
+  display: flex;
+  width: max-content;
+  animation: client-logos-scroll 55s linear infinite;
+  will-change: transform;
+}
+
+.client-logos__group {
+  display: flex;
+  align-items: center;
+  flex: none;
+  gap: clamp(36px, 5vw, 72px);
+  padding-right: clamp(36px, 5vw, 72px);
+}
+
+.client-logos__group img {
+  width: clamp(90px, 10vw, 150px);
+  height: 52px;
+  flex: none;
   object-fit: contain;
-  opacity: 1;
-  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.client-logos__grid img:hover {
-  opacity: 0.8;
-  transform: translateY(-2px);
+.client-logos__marquee:hover .client-logos__track {
+  animation-play-state: paused;
+}
+
+@keyframes client-logos-scroll {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .client-logos__track {
+    width: 100%;
+    animation: none;
+  }
+
+  .client-logos__group {
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 22px;
+    padding-right: 0;
+  }
+
+  .client-logos__group[aria-hidden="true"] {
+    display: none;
+  }
 }
 
 /* ---------- Waar zoek je naar ---------- */
@@ -753,7 +790,7 @@
     justify-content: center;
   }
 
-  .page-diensten .brand {
+  .page-diensten .site-header .brand {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -781,7 +818,7 @@
 }
 
 @media (max-width: 340px) {
-  .page-diensten .brand__tag {
+  .page-diensten .site-header .brand__tag {
     display: none;
   }
 }
@@ -825,9 +862,9 @@
     overflow-wrap: break-word;
   }
 
-  .client-logos__grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 24px 28px;
+  .client-logos__group {
+    gap: 30px;
+    padding-right: 30px;
   }
 
   .seek__grid,

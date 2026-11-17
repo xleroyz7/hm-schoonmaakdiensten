@@ -13,13 +13,20 @@ Een moderne, statische landingspagina voor HM Schoonmaakdiensten in de regio Roe
 | `sanitair-hygiene.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
 | `eenmalige-schoonmaak.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
 | `buitenschoonmaak.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
+| `kantoren-bedrijfspanden.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `retail-winkels.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `zorg-welzijn.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `onderwijs-kinderopvang.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `hotels-horeca.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `industrie-logistiek.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
 | `build-diensten.js` | Genereert de zes dienstpagina's opnieuw |
+| `build-sectoren.js` | Genereert de zes sectorpagina's opnieuw |
 | `assets/css/style.css` | Gedeelde vormgeving: header, footer, kaart, cijfers, formulier, carrières |
 | `assets/css/diensten.css` | Vormgeving van de landingspagina (hero, dienstenband, zoekkolommen, werk) |
 | `assets/css/dienstpagina.css` | Vormgeving van de dienstpagina's |
 | `assets/js/site.js` | Menu, privacyvenster, scrollgedrag en de offerteformulieren |
 | `assets/img/` | Logo, favicon, partnerlogo's, dienstfoto's en placeholders |
-| `robots.txt` / `sitemap.xml` | Voor zoekmachines, inclusief de dienstpagina's |
+| `robots.txt` / `sitemap.xml` | Voor zoekmachines, inclusief de dienst- en sectorpagina's |
 | `artifact.html` | Losse single-file preview van de homepage |
 | `build-artifact.js` | Maakt `artifact.html` opnieuw na wijzigingen op de homepage |
 | `README.md` | Dit bestand |
@@ -70,6 +77,44 @@ De offerteformulieren gebruiken de bestaande formulierlogica in `assets/js/site.
 
 Na een wijziging in de dienstteksten of het formulier: `node build-diensten.js` opnieuw uitvoeren. De gegenereerde HTML-bestanden niet los aanpassen, tenzij je ze daarna niet opnieuw laat genereren.
 
+## Sectorpagina's
+
+De zes sectoren uit "Waar ben je naar op zoek?" hebben een eigen pagina:
+
+- `kantoren-bedrijfspanden.html`
+- `retail-winkels.html`
+- `zorg-welzijn.html`
+- `onderwijs-kinderopvang.html`
+- `hotels-horeca.html`
+- `industrie-logistiek.html`
+
+Elke pagina heeft dezelfde huisstijl als de dienstpagina's, met een sectorgerichte hero, aandachtspunten, relevante diensten, werkwijze, FAQ en een offerteformulier. In het formulier is de sector alvast geselecteerd; de bezoeker kiest daarna de dienst en planning. De pagina's linken onderling naar de andere sectoren en naar de passende diensten.
+
+Na een wijziging in de sectorteksten: `node build-sectoren.js` opnieuw uitvoeren.
+
+## SEO
+
+De technische basis staat op orde:
+
+- Unieke titels en meta-descriptions per pagina, met dienst of sector en de regio.
+- Canonieke URL's, Open Graph- en Twitter-kaarten met echte foto's.
+- `LocalBusiness`-schema op de homepage met diensten, werkgebied en `@id`; `Service`- en `BreadcrumbList`-schema op dienst- en sectorpagina's.
+- Semantische koppen, beschrijvende linkteksten en alt-teksten bij inhoudsafbeeldingen.
+- `sitemap.xml` met alle dertien pagina's en `robots.txt` met sitemapverwijzing.
+- Mobielvriendelijke, snelle statische pagina's; de artefactpreview staat op `noindex`.
+
+Voor lokale vindbaarheid zijn de stappen buiten de code minstens zo belangrijk:
+
+1. **Google Business Profile** aanmaken en volledig invullen: categorie, werkgebied, openingstijden, diensten, foto's en een link naar de site.
+2. **KvK-nummer, btw-nummer en vestigingsadres** toevoegen aan de footer en het LocalBusiness-schema (zie hierboven). Zorg dat naam, adres en telefoon overal exact hetzelfde zijn.
+3. **Echte Google-reviews** verzamelen na opleveringen en daarop reageren. Geen reviews verzinnen en geen self-serving review-schema toevoegen.
+4. **Google Search Console** verifiëren, `sitemap.xml` indienen en de indexering en zoekopdrachten volgen.
+5. **Lokale content** toevoegen met echte lokale informatie, bijvoorbeeld een sterke pagina per stad of werkgebied. Vermijd dunne duplicate-pagina's.
+6. **Vermeldingen en backlinks** opbouwen via lokale directories, leveranciers, samenwerkingen, sponsoring en vakorganisaties.
+7. **Blijf meten**: kijk maandelijks naar vertoningen, klikken, posities en aanvragen. SEO is geen eenmalige instelling; content en autoriteit groeien door de tijd.
+
+Niemand kan een vaste positie in Google garanderen. Deze basis vergroot de kans om gevonden te worden, maar lokale autoriteit, reviews en concurrentie in de regio bepalen uiteindelijk het resultaat.
+
 ## Stijl
 
 De site gebruikt één lettertype, **Archivo**, voor koppen en tekst. Alle kaarten en knoppen hebben afgeronde hoeken. De header staat op de hero als een witte pill-navigatie; de footer gebruikt dezelfde golfvorm als de referentiepagina.
@@ -115,6 +160,7 @@ Bronnen:
 
 - Teksten: `index.html`.
 - Dienstinhoud: `build-diensten.js`, daarna `node build-diensten.js`.
+- Sectorinhoud: `build-sectoren.js`, daarna `node build-sectoren.js`.
 - Kleuren, spacing en typografie: `assets/css/style.css` en `assets/css/diensten.css`, bovenaan bij `:root`.
 - Opmaak dienstpagina's: `assets/css/dienstpagina.css`.
 - Menu, privacyvenster en offerteformulieren: `assets/js/site.js`.

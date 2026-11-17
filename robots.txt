@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /artifact.html
 
 Sitemap: https://www.hmschoonmaakdiensten.nl/sitemap.xml

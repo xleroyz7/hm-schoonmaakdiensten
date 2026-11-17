@@ -20,6 +20,7 @@ const jsonld = (html.match(/<script type="application\/ld\+json">[\s\S]*?<\/scri
 const fontLink = (html.match(/<link rel="stylesheet" href="https:\/\/fonts\.googleapis\.com[^>]*>/) || [''])[0];
 
 const artifact = `<title>HM Schoonmaakdiensten</title>
+<meta name="robots" content="noindex, nofollow">
 <meta name="claude:viewport-fit-sides" content="cover">
 <meta name="description" content="Moderne website voor HM Schoonmaakdiensten in Roermond met diensten, sectoren, werkwijze en een offerteaanvraag in vier stappen.">
 ${fontLink}
