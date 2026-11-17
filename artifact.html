@@ -1,0 +1,4816 @@
+<title>HM Schoonmaakdiensten</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Moderne website voor HM Schoonmaakdiensten in Roermond met diensten, sectoren, werkwijze en een offerteaanvraag in vier stappen.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
+<style>
+/* ============================================================
+   HM Schoonmaakdiensten — Royal Blue editie
+   Rustig, vol beeld, weinig tekst. Gebaseerd op de opbouw:
+   hero → partners → persoonlijk contact/chat → branches → werkgebied → offerte.
+   ============================================================ */
+
+:root {
+  --paper: #f5f6f8;
+  --surface: #ffffff;
+  --ink: #0a1120;
+  --ink-2: #3d4557;
+  --muted: #707887;
+  --blue: #002464;
+  --blue-2: #0b3d82;
+  --blue-3: #e6eef8;
+  --line: #e0e3ea;
+  --line-2: #cdd2dc;
+  --navy: #0a1120;
+  --navy-2: #111c33;
+  --navy-blue: #1d283e;
+  --accent: #7c65ab;
+  --accent-dark: #6a5398;
+  --whatsapp: #25d366;
+  --white: #ffffff;
+  --danger: #b42318;
+  --focus: #8fb0ff;
+
+  --font-display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+
+  --max: 1840px;
+  --gutter: clamp(20px, 3vw, 48px);
+  --section-pad: clamp(56px, 7vw, 96px);
+  --header-h: 76px;
+
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto 0;
+  height: env(safe-area-inset-top, 0px);
+  background: var(--surface);
+  z-index: 60;
+  pointer-events: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+figure {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--white);
+}
+
+:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.shell {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: var(--blue);
+  color: var(--white);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* ---------- Iconen ---------- */
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.icon--sm {
+  width: 16px;
+  height: 16px;
+}
+
+.icon--lg {
+  width: 24px;
+  height: 24px;
+}
+
+/* ---------- Tekst en knoppen ---------- */
+
+.kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.17em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.kicker::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  flex: 0 0 auto;
+  background: var(--accent);
+}
+
+.kicker--light {
+  color: #d8cdec;
+}
+
+.kicker--light::before {
+  background: #d8cdec;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2.15rem, 4vw, 3.5rem);
+  font-weight: 700;
+  line-height: 0.98;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+
+.section-lead {
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 14px 20px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    color 0.2s ease;
+}
+
+.btn .icon {
+  transition: transform 0.2s ease;
+}
+
+.btn:hover .icon {
+  transform: translateX(3px);
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: var(--white);
+}
+
+.btn--primary:hover {
+  background: var(--accent-dark);
+}
+
+.btn--line {
+  border-color: var(--line-2);
+  background: transparent;
+  color: var(--ink);
+}
+
+.btn--line:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn--light {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+.btn--light:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.btn--text {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.btn--text:hover {
+  color: var(--blue-2);
+}
+
+.btn--sm {
+  padding: 11px 15px;
+  font-size: 0.82rem;
+}
+
+.btn--full {
+  width: 100%;
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 50;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.site-header.is-scrolled {
+  box-shadow: 0 10px 30px rgba(10, 17, 32, 0.07);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  min-height: var(--header-h);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex: 0 0 auto;
+}
+
+.brand__mark {
+  width: auto;
+  height: 34px;
+}
+
+.brand__text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  color: var(--blue);
+}
+
+.brand__tag {
+  margin-top: 0;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: var(--ink-2);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 27px;
+  margin-left: auto;
+}
+
+.nav a {
+  position: relative;
+  padding: 8px 0;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.nav a:hover,
+.nav a[aria-current="location"] {
+  color: var(--accent);
+}
+
+.nav a:hover::after,
+.nav a[aria-current="location"]::after {
+  transform: scaleX(1);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex: 0 0 auto;
+}
+
+.header__phone {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.header__phone:hover {
+  color: var(--accent-dark);
+}
+
+.menu-toggle {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line-2);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.mobile-nav {
+  border-top: 1px solid var(--line);
+  background: var(--surface);
+  padding-block: 8px 18px;
+}
+
+.mobile-nav__link {
+  display: block;
+  padding: 13px 2px;
+  border-bottom: 1px solid var(--line);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.mobile-nav__link:hover {
+  color: var(--accent);
+}
+
+.mobile-nav__actions {
+  display: grid;
+  gap: 10px;
+  padding-top: 16px;
+}
+
+.mobile-nav__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding-top: 14px;
+  font-size: 0.88rem;
+  color: var(--ink-2);
+}
+
+.mobile-nav__contact a {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  min-height: clamp(580px, 76vh, 740px);
+  overflow: hidden;
+  background: var(--navy);
+  color: var(--white);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 32% center;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+      0deg,
+      rgba(10, 17, 32, 0.97) 0%,
+      rgba(10, 17, 32, 0.78) 30%,
+      rgba(10, 17, 32, 0.28) 62%,
+      rgba(10, 17, 32, 0.1) 100%
+    ),
+    linear-gradient(90deg, rgba(10, 17, 32, 0.82), transparent 65%);
+}
+
+.hero__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 470px);
+  gap: clamp(32px, 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(56px, 8vw, 96px);
+}
+
+.hero__copy {
+  max-width: 720px;
+}
+
+.hero h1 {
+  max-width: 900px;
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: clamp(3.1rem, 4.4vw, 4.7rem);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.055em;
+  text-wrap: balance;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero__lead {
+  max-width: 48ch;
+  margin-top: 22px;
+  font-size: clamp(1.02rem, 1.3vw, 1.18rem);
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.hero__form {
+  width: 100%;
+  padding: clamp(22px, 2.4vw, 32px);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+
+.hero-form__head {
+  margin-bottom: 16px;
+}
+
+.hero-form__head .kicker {
+  color: var(--accent);
+}
+
+.hero-form__head h2 {
+  margin-top: 0;
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.hero__form form {
+  display: grid;
+  gap: 12px;
+}
+
+.hero-form__note {
+  margin-top: 2px;
+  font-size: 0.72rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.hero-form__status {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: var(--accent);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+/* ---------- Partners ---------- */
+
+.partners {
+  background: var(--surface);
+}
+
+.marquee {
+  overflow: hidden;
+  pointer-events: none;
+  user-select: none;
+  padding-block: 32px 38px;
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  animation: partner-scroll 60s linear infinite;
+}
+
+.marquee__group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 80px;
+  padding-right: 80px;
+}
+
+.marquee:hover .marquee__track,
+.marquee:focus-within .marquee__track {
+  animation-play-state: paused;
+}
+
+.partner-logo {
+  display: block;
+  flex: 0 0 auto;
+  -webkit-user-drag: none;
+  user-select: none;
+  width: auto;
+  height: 42px;
+  max-width: 160px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: #9aa3b5;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.partner-logo--teds {
+  letter-spacing: 0.14em;
+}
+
+.partner-logo--edzo {
+  font-weight: 500;
+  letter-spacing: 0.3em;
+}
+
+.partner-logo--ventures {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.partner-logo--partner7 {
+  font-family: var(--font-body);
+  font-size: 1.02rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.partner-logo:hover {
+  opacity: 1;
+}
+
+@keyframes partner-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+.partner-logo--nike {
+  font-style: italic;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.partner-logo--adidas {
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  text-transform: lowercase;
+  font-size: 1.3rem;
+}
+
+.partner-logo--puma {
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.partner-logo--moncler {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.partner-logo--gucci {
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.partner-logo--lv {
+  font-family: var(--font-body);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  font-size: 1.05rem;
+}
+
+/* ---------- Chat / persoonlijk contact ---------- */
+
+.community-chat {
+  background: var(--surface);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.community-chat__inner {
+  width: min(1320px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: 84px 40px;
+  display: grid;
+  grid-template-columns: 520px minmax(0, 1fr);
+  gap: 48px;
+  align-items: center;
+}
+
+.chat-card {
+  width: 520px;
+  height: 650px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  border-radius: 44px;
+  background: var(--navy-blue);
+  box-shadow: 0 30px 60px rgba(10, 17, 32, 0.2);
+}
+
+.chat-viewport {
+  width: 100%;
+  height: 311px;
+  overflow: hidden;
+}
+
+.chat-track {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-block: 2px;
+  transition: transform 650ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.chat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.chat-card__message {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  align-items: center;
+  gap: 10px;
+  min-height: 93px;
+  padding: 14px 16px;
+  border-radius: 18px;
+  background: rgba(124, 101, 171, 0.62);
+  color: var(--white);
+}
+
+.chat-card__avatar {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.chat-card__name {
+  margin-bottom: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.chat-card__text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.community-chat__copy {
+  min-width: 0;
+}
+
+.community-chat__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.65;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.community-chat__dot {
+  width: 9px;
+  height: 9px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--whatsapp);
+}
+
+.community-chat__title {
+  margin: 8px 0 18px;
+  font-family: var(--font-display);
+  font-size: 50px;
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.community-chat__desc {
+  max-width: 672px;
+  font-size: 18px;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.community-chat__desc p {
+  margin: 0;
+}
+
+/* ---------- Branches ---------- */
+
+.branches__head {
+  margin-bottom: clamp(26px, 3.5vw, 40px);
+  text-align: center;
+}
+
+.branches__title {
+  display: inline-block;
+  padding-bottom: 4px;
+  font-family: var(--font-display);
+  font-size: clamp(2.6rem, 4.2vw, 3.8rem);
+  font-weight: 800;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #1d283e;
+}
+
+.branches__title::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 14px auto 0;
+  border-radius: 999px;
+  background: var(--accent);
+}
+
+
+.branches {
+  padding-block: var(--section-pad) clamp(72px, 8vw, 112px);
+  background: rgba(124, 101, 171, 0.06);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.branches__wrap {
+  width: 100%;
+  padding-left: max(16px, 1.2vw, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, 1.2vw, env(safe-area-inset-right, 0px));
+}
+
+.branch-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: 16px;
+}
+
+.branch-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  transition: border-color 0.2s ease;
+}
+
+.branch-card:hover {
+  border-color: var(--accent);
+}
+
+.branch-card__media {
+  display: block;
+  aspect-ratio: 6 / 5;
+  overflow: hidden;
+  background: var(--blue-3);
+}
+
+.branch-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.branch-card:hover .branch-card__media img {
+  transform: scale(1.03);
+}
+
+.branch-card__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 6px;
+  min-height: 185px;
+  padding: 18px 18px 16px;
+}
+
+.branch-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: auto;
+  padding-top: 10px;
+}
+
+.branch-card__footer .branch-card__tags {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.branch-card__arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.branch-card:hover .branch-card__arrow {
+  background: var(--accent-dark);
+  transform: translateX(2px);
+}
+
+.branch-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+
+.branch-card p {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.branch-card__tags {
+  margin-top: auto;
+  padding-top: 10px;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+
+.branch-slider-nav {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.branch-slider__arrow {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.branch-slider__arrow:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.branch-slider__arrow .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.branch-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.branch-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: var(--line-2);
+  transition: width 0.2s ease, background-color 0.2s ease;
+}
+
+.branch-dot.is-active {
+  width: 20px;
+  background: var(--accent);
+}
+
+
+/* ---------- Werkgebied ---------- */
+
+.coverage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 520px;
+  gap: clamp(96px, 5cm, 190px);
+  align-items: center;
+  margin-top: 0;
+}
+
+.coverage-section {
+  background: var(--surface);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.coverage-inner {
+  width: min(1320px, calc(100% - 40px));
+  margin-inline: auto;
+  padding: 84px 40px;
+}
+
+.coverage__intro h2 {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 2.6vw, 2.5rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #1d283e;
+}
+
+.coverage__intro p {
+  max-width: 38ch;
+  margin-top: 12px;
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.coverage__list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  column-gap: 24px;
+  margin-top: 22px;
+  list-style: none;
+}
+
+.coverage__list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.coverage__list li::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.coverage__map-wrap {
+  grid-column: auto;
+  width: 100%;
+  max-width: 520px;
+  justify-self: stretch;
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  box-shadow: 0 16px 40px rgba(10, 17, 32, 0.06);
+}
+
+.coverage-map {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.map-province {
+  fill: #eef0f4;
+  stroke: #d3d7e0;
+  stroke-width: 1;
+}
+
+.map-highlight {
+  fill: rgba(124, 101, 171, 0.2);
+  stroke: var(--accent);
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+}
+
+.map-city {
+  fill: var(--accent);
+  stroke: var(--white);
+  stroke-width: 1.6;
+}
+
+.map-label {
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  fill: #1d283e;
+  paint-order: stroke;
+  stroke: var(--white);
+  stroke-width: 3.5;
+  stroke-linejoin: round;
+}
+
+@media (max-width: 1160px) {
+  .coverage {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .coverage__intro,
+  .coverage__map-wrap {
+    grid-column: auto;
+  }
+
+  .coverage-inner {
+    padding: 56px 20px;
+  }
+
+  .coverage__map-wrap {
+    max-width: 640px;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 720px) {
+  .coverage__map-wrap {
+    padding: 12px;
+  }
+
+  .map-label {
+    font-size: 20px;
+  }
+
+  .map-label--secondary {
+    display: none;
+  }
+
+  .coverage__list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Cijfers ---------- */
+
+.stats {
+  padding-block: clamp(64px, 8vw, 104px);
+  background: #f8f6fc;
+}
+
+.stats__head {
+  max-width: 720px;
+  margin: 0 auto 46px;
+  text-align: center;
+}
+
+.stats__head h2 {
+  margin-top: 14px;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.4vw, 3rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: #1d283e;
+}
+
+.stats__head p {
+  max-width: 52ch;
+  margin: 14px auto 0;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.stats__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1000px;
+  margin-inline: auto;
+}
+
+.stats__slash {
+  flex: 0 0 1px;
+  width: 1px;
+  height: 58px;
+  background: var(--line-2);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: clamp(18px, 4vw, 48px);
+  text-align: center;
+}
+
+.stat__number {
+  font-family: var(--font-display);
+  font-size: clamp(3.4rem, 6vw, 5rem);
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--blue);
+}
+
+.stat__label {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.stats__note {
+  margin-top: 34px;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--muted);
+}
+
+.stats__row--claims {
+  max-width: 1100px;
+  gap: clamp(28px, 6vw, 86px);
+}
+
+.stats__row--claims .stat {
+  max-width: 300px;
+  padding-inline: 0;
+}
+
+.stats__row--claims .stat__number {
+  font-size: clamp(3.2rem, 6vw, 5rem);
+}
+
+.stats__row--claims .stat__label {
+  max-width: 18ch;
+  margin-top: 12px;
+  line-height: 1.4;
+}
+
+/* ---------- Werken bij HM ---------- */
+
+.careers {
+  position: relative;
+  overflow: hidden;
+  padding-top: clamp(48px, 6vw, 78px);
+  background:
+    radial-gradient(70% 120% at 82% 18%, rgba(124, 101, 171, 0.55), transparent 62%),
+    linear-gradient(135deg, #141b2b 0%, #1d283e 55%, #27213c 100%);
+  color: var(--white);
+}
+
+.careers__inner {
+  padding-bottom: clamp(72px, 9vw, 112px);
+}
+
+.careers__banner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 7;
+  max-height: 540px;
+  margin: 0 0 clamp(30px, 4vw, 48px);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 28px 70px rgba(5, 8, 18, 0.3);
+}
+
+.careers__banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+}
+
+.careers__content {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  align-items: start;
+  gap: clamp(30px, 6vw, 80px);
+}
+
+.careers__copy h2 {
+  margin: 12px 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.1rem, 3.6vw, 3.3rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.careers__details {
+  padding-top: 34px;
+}
+
+.careers__details p {
+  max-width: 54ch;
+  font-size: 0.98rem;
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.74);
+}
+
+.careers__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 26px;
+}
+
+.careers__wave {
+  height: clamp(54px, 7vw, 96px);
+  line-height: 0;
+}
+
+.careers__wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btn--line-light {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: var(--white);
+}
+
+.btn--line-light:hover {
+  border-color: var(--white);
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--white);
+}
+
+@media (max-width: 980px) {
+  .careers__content {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .careers__details {
+    padding-top: 0;
+  }
+
+  .careers__banner {
+    aspect-ratio: 16 / 9;
+  }
+}
+
+@media (max-width: 720px) {
+  .careers {
+    padding-top: 44px;
+  }
+
+  .careers__banner {
+    aspect-ratio: 4 / 3;
+    border-radius: 14px;
+  }
+
+  .careers__banner img {
+    object-position: center;
+  }
+
+  .careers__copy h2 {
+    font-size: clamp(1.9rem, 7vw, 2.5rem);
+  }
+
+  .careers__details p {
+    font-size: 0.94rem;
+  }
+  .stats__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px 0;
+  }
+
+  .stats__row--claims {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .stats__row--claims .stat {
+    max-width: none;
+    padding-inline: 12px;
+  }
+
+  .stats__slash {
+    display: none;
+  }
+
+  .stat {
+    padding-inline: 12px;
+  }
+}
+
+@media (max-width: 380px) {
+  .stats__row {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* ---------- Offerte ---------- */
+
+.quote {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: var(--section-pad);
+  background: var(--navy);
+  color: var(--white);
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.quote__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.quote::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.quote > .shell {
+  position: relative;
+  z-index: 1;
+}
+
+.quote__inner {
+  display: flex;
+  justify-content: center;
+}
+
+.quote__inner > .quote__panel {
+  width: min(1000px, 100%);
+}
+
+.quote__panel-head {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.quote__panel-head h2 {
+  margin-top: 12px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3vw, 2.6rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.quote__panel-head p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.quote__intro h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.2vw, 3rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  color: #1d283e;
+  text-wrap: balance;
+}
+
+.quote__intro h2 span {
+  color: var(--accent);
+}
+
+.quote__intro p {
+  max-width: 42ch;
+  margin-top: 16px;
+  font-size: clamp(1.02rem, 1.2vw, 1.12rem);
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.quote__panel {
+  width: 100%;
+  min-width: 0;
+  padding: clamp(24px, 3.4vw, 42px);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+
+.stepper {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  scroll-margin-top: calc(var(--header-h) + 24px);
+}
+
+.stepper__step {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 0;
+}
+
+.stepper__bar {
+  height: 3px;
+  overflow: hidden;
+  background: var(--line);
+}
+
+.stepper__bar span {
+  display: block;
+  width: 0;
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.25s ease;
+}
+
+.stepper__label {
+  overflow: hidden;
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.stepper__step.is-done .stepper__bar span,
+.stepper__step.is-active .stepper__bar span {
+  width: 100%;
+}
+
+.stepper__step.is-active .stepper__label {
+  color: var(--accent);
+}
+
+.form-step:focus {
+  outline: none;
+}
+
+.form-step h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2vw, 1.55rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.form-hint {
+  margin-top: 5px;
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.option-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.option {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 500;
+  line-height: 1.3;
+  transition: border-color 0.16s ease, background-color 0.16s ease,
+    box-shadow 0.16s ease;
+}
+
+.option:hover {
+  border-color: var(--line-2);
+}
+
+.option input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option__dot {
+  display: grid;
+  place-items: center;
+  width: 15px;
+  height: 15px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: var(--surface);
+  transition: border-color 0.16s ease, background-color 0.16s ease;
+}
+
+.option__dot::after {
+  content: "";
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--white);
+  opacity: 0;
+  transition: opacity 0.16s ease;
+}
+
+.option:has(input:checked) {
+  border-color: var(--blue-2);
+  background: var(--blue-3);
+  box-shadow: inset 0 0 0 1px var(--blue-2);
+}
+
+.option:has(input:checked) .option__dot {
+  border-color: var(--blue-2);
+  background: var(--blue-2);
+}
+
+.option:has(input:checked) .option__dot::after {
+  opacity: 1;
+}
+
+.option:has(input:focus-visible) {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+.option-group + .option-group {
+  margin-top: 18px;
+}
+
+.option-group__title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.field {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+
+.field--full {
+  grid-column: 1 / -1;
+}
+
+.field label {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 0.9rem;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.field textarea {
+  min-height: 82px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: none;
+  border-color: var(--blue-2);
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.14);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: #9aa3b5;
+}
+
+.form-error {
+  min-height: 1.2em;
+  margin-top: 9px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--danger);
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.form-actions__right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.quote__form-note {
+  margin-top: 13px;
+  font-size: 0.73rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.text-link {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text-link:hover {
+  color: var(--blue-2);
+}
+
+.quote-summary {
+  display: grid;
+  gap: 14px;
+}
+
+.quote-summary h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.quote-summary > p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.summary-list {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 7px 16px;
+  margin: 0;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper);
+  font-size: 0.84rem;
+}
+
+.summary-list dt {
+  font-weight: 600;
+  color: var(--muted);
+}
+
+.summary-list dd {
+  margin: 0;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.summary__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.copy-note {
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.copy-note a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--navy-blue);
+  color: var(--ink-2);
+  font-size: 0.84rem;
+  scroll-margin-top: calc(var(--header-h) + 16px);
+}
+
+.footer__ambient {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.footer__ambient svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.footer__blob {
+  transform-origin: center;
+  will-change: transform;
+  animation: footer-drift 22s ease-in-out infinite alternate;
+}
+
+.footer__blob--b {
+  animation-duration: 28s;
+  animation-direction: alternate-reverse;
+}
+
+.footer__blob--c {
+  animation-duration: 34s;
+}
+
+@keyframes footer-drift {
+  from {
+    transform: translate3d(-14px, 8px, 0) scale(1);
+  }
+  to {
+    transform: translate3d(14px, -10px, 0) scale(1.03);
+  }
+}
+
+.footer__links {
+  position: relative;
+  z-index: 1;
+  padding: 64px 0 24px;
+  background: var(--surface);
+}
+
+.footer__main {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 0.65fr) minmax(0, 0.9fr);
+  gap: clamp(28px, 5vw, 64px);
+  padding-bottom: 44px;
+}
+
+.footer__brand .brand {
+  color: var(--blue);
+}
+
+.footer__brand .brand__tag {
+  color: var(--ink-2);
+}
+
+.footer__brand p {
+  max-width: 34ch;
+  margin-top: 14px;
+  line-height: 1.7;
+}
+
+.footer__cta {
+  margin-top: 20px;
+}
+
+.footer h3 {
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 0.64rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.footer ul {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+}
+
+.footer a {
+  color: var(--ink-2);
+}
+
+.footer a:hover {
+  color: var(--blue);
+}
+
+.footer .footer__cta {
+  color: var(--white);
+}
+
+.footer .footer__cta:hover {
+  color: var(--white);
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.5;
+}
+
+.footer__contact .icon {
+  width: 15px;
+  height: 15px;
+  margin-top: 2px;
+  color: var(--blue);
+}
+
+.footer__wave {
+  position: relative;
+  z-index: 1;
+  height: 240px;
+  margin-top: -1px;
+  line-height: 0;
+  pointer-events: none;
+}
+
+.footer__wave svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.footer__wave-back {
+  fill: rgba(255, 255, 255, 0.42);
+}
+
+.footer__wave-front {
+  fill: var(--surface);
+}
+
+.footer__middle {
+  position: relative;
+  z-index: 1;
+  padding: 8px 0 48px;
+  color: var(--white);
+  text-align: center;
+}
+
+.footer__middle-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer__logo {
+  display: block;
+  width: min(300px, 68vw);
+}
+
+.footer__logo img {
+  width: 100%;
+  height: auto;
+}
+
+.footer__middle p {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.footer__to-top {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.34);
+  border-radius: 999px;
+  color: var(--white);
+  font-size: 0.78rem;
+  font-weight: 600;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.footer__to-top:hover {
+  border-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--white);
+}
+
+.footer__to-top .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.footer__bottom {
+  position: relative;
+  z-index: 1;
+  padding: 16px 0;
+  background: var(--surface);
+  font-size: 0.72rem;
+  color: var(--muted);
+}
+
+.footer__bottom-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.footer__legal button,
+.footer__legal a {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.footer__legal button:hover,
+.footer__legal a:hover {
+  color: var(--blue);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer__blob {
+    animation: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .footer__links {
+    padding-top: 48px;
+  }
+
+  .footer__main {
+    grid-template-columns: 1.3fr 0.8fr;
+  }
+
+  .footer__brand {
+    grid-column: 1 / -1;
+  }
+
+  .footer__wave {
+    height: 180px;
+  }
+}
+
+@media (max-width: 640px) {
+  .footer__links {
+    padding-top: 40px;
+  }
+
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 32px;
+  }
+
+  .footer__brand {
+    grid-column: auto;
+  }
+
+  .footer__wave {
+    height: 110px;
+  }
+
+  .footer__middle {
+    padding-bottom: 36px;
+  }
+
+  .footer__logo {
+    width: min(230px, 72vw);
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ---------- Dialoog ---------- */
+
+.privacy-dialog {
+  width: 100%;
+  max-width: min(720px, calc(100vw - 32px));
+  max-height: min(84vh, 760px);
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 30px 80px rgba(8, 16, 35, 0.35);
+}
+
+.privacy-dialog::backdrop {
+  background: rgba(8, 16, 35, 0.64);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.dialog__head {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  border-bottom: 1px solid var(--line);
+  background: var(--surface);
+}
+
+.dialog__head h2 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.icon-btn {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-2);
+}
+
+.icon-btn:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.dialog__body {
+  max-height: calc(min(84vh, 760px) - 70px);
+  overflow-y: auto;
+  padding: 20px 22px 26px;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+
+.dialog__body h3 {
+  margin: 18px 0 5px;
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.dialog__body p {
+  margin-bottom: 9px;
+}
+
+.dialog__body ul {
+  margin: 0 0 9px;
+  padding-left: 19px;
+}
+
+.dialog__body a {
+  color: var(--blue);
+  font-weight: 600;
+}
+
+.dialog__updated {
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+
+/* ---------- Responsief ---------- */
+
+@media (max-width: 1160px) {
+  .branch-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .nav {
+    gap: 18px;
+  }
+
+  .header__phone {
+    display: none;
+  }
+
+}
+
+@media (max-width: 1080px) {
+  .community-chat__inner {
+    width: calc(100% - 40px);
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 56px 20px;
+  }
+
+  .chat-card {
+    width: 100%;
+    max-width: 520px;
+    height: 440px;
+    justify-self: center;
+  }
+
+  .chat-viewport {
+    height: 320px;
+  }
+
+  .community-chat__title {
+    font-size: 44px;
+  }
+}
+
+@media (max-width: 980px) {
+  .quote__bg {
+    object-position: 55% center;
+  }
+
+  :root {
+    --header-h: 68px;
+  }
+
+  .nav,
+  .header__actions .btn {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  .hero {
+    min-height: 620px;
+    align-items: center;
+  }
+
+  .hero__bg {
+    object-position: 30% center;
+  }
+
+  .hero::after {
+    background: linear-gradient(
+        0deg,
+        rgba(10, 17, 32, 0.98) 0%,
+        rgba(10, 17, 32, 0.82) 45%,
+        rgba(10, 17, 32, 0.38) 78%,
+        rgba(10, 17, 32, 0.2) 100%
+      ),
+      linear-gradient(90deg, rgba(10, 17, 32, 0.7), transparent 80%);
+  }
+
+  .branch-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .footer__main {
+    grid-template-columns: 1.3fr 0.8fr;
+  }
+
+  .footer__main > div:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .header__inner {
+    gap: 14px;
+  }
+
+  .brand__mark {
+    height: 30px;
+  }
+
+  .brand__tag {
+    font-size: 0.5rem;
+    letter-spacing: 0.15em;
+  }
+
+  .hero {
+    min-height: 600px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.65rem, 10.5vw, 3.7rem);
+  }
+
+  .hero__lead {
+    font-size: 0.95rem;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .marquee__group {
+    gap: 48px;
+    padding-right: 48px;
+  }
+
+  .community-chat__inner {
+    padding: 48px 20px;
+  }
+
+  .chat-card {
+    height: 420px;
+    padding: 24px;
+    border-radius: 32px;
+  }
+
+  .chat-viewport {
+    height: 320px;
+  }
+
+  .community-chat__title {
+    font-size: 38px;
+  }
+
+  .community-chat__desc {
+    font-size: 16px;
+  }
+
+  .chat-card__message {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 9px;
+    min-height: 84px;
+    padding: 12px 13px;
+  }
+
+  .chat-card__avatar {
+    width: 34px;
+    height: 34px;
+  }
+
+  .branches__wrap {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .branches__head {
+    padding-inline: 20px;
+  }
+
+  .branch-grid {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    padding-inline: 24px;
+    padding-bottom: 4px;
+    scroll-padding-inline: 24px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .branch-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .branch-card {
+    flex: 0 0 100%;
+    height: auto;
+    scroll-snap-align: start;
+  }
+
+  .branch-slider-nav {
+    display: none;
+  }
+
+  .branch-scrollbar {
+    display: block;
+    height: 6px;
+    margin: 16px 24px 0;
+    overflow: hidden;
+    border-radius: 999px;
+    background: rgba(124, 101, 171, 0.16);
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .branch-scrollbar__thumb {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: var(--accent);
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .option-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 26px;
+  }
+
+  .footer__main > div:last-child {
+    grid-column: auto;
+  }
+
+  .form-actions {
+    align-items: stretch;
+  }
+
+  .form-actions .btn {
+    flex: 1 1 auto;
+  }
+
+  .form-actions__right {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .form-actions__right .btn {
+    flex: 1;
+  }
+
+  .summary-list {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .summary-list dd {
+    margin-bottom: 7px;
+  }
+
+  .summary__actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 520px) {
+  .footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .marquee {
+    overflow: hidden;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .marquee__group[aria-hidden="true"] {
+    display: none;
+  }
+
+  .chat-track {
+    animation: none;
+    transition: none;
+  }
+
+  .chat-viewport {
+    overflow-y: auto;
+  }
+
+  .chat-group[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 48px;
+  }
+
+  .hero__form {
+    max-width: 520px;
+  }
+
+  .quote__inner {
+    display: flex;
+  }
+}
+
+@media (min-width: 1181px) {
+  .hero h1 {
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 1180px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding-block: 48px;
+  }
+
+  .hero__form {
+    max-width: 520px;
+  }
+}
+
+.form-error:empty,
+.hero-form__status:empty {
+  display: none;
+}
+
+@media (max-width: 720px) {
+  .field input,
+  .field textarea,
+  .field select {
+    font-size: 16px;
+  }
+}
+
+/* ============================================================
+   Dienstenpagina — HM Schoonmaakdiensten
+   Opbouw geïnspireerd op een servicepagina: hero, intro,
+   dienstenband, klantlogo's, zoekkolommen, werk en cijfers.
+   ============================================================ */
+
+.page-diensten {
+  background: var(--surface);
+}
+
+.page-diensten::before {
+  background: transparent;
+}
+
+.page-diensten .shell {
+  max-width: 1320px;
+}
+
+/* ---------- Header over de hero ---------- */
+
+.page-diensten .site-header {
+  position: absolute;
+  top: env(safe-area-inset-top, 0px);
+  right: 0;
+  left: 0;
+  background: transparent;
+  border-bottom: 0;
+  box-shadow: none;
+}
+
+.page-diensten .site-header.is-scrolled {
+  background: transparent;
+  box-shadow: none;
+}
+
+.page-diensten .brand__tag {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.page-diensten .header__phone {
+  color: var(--white);
+}
+
+.page-diensten .header__phone:hover {
+  color: var(--white);
+  opacity: 0.78;
+}
+
+.page-diensten .nav {
+  gap: 22px;
+  padding: 9px 24px;
+  border-radius: 999px;
+  background: var(--surface);
+  box-shadow: 0 14px 40px rgba(6, 10, 22, 0.14);
+}
+
+.page-diensten .nav a {
+  color: var(--ink-2);
+  font-size: 0.82rem;
+}
+
+.page-diensten .nav a:hover,
+.page-diensten .nav a[aria-current="page"] {
+  color: var(--accent);
+}
+
+.page-diensten .nav a::after {
+  background: var(--accent);
+}
+
+.page-diensten .nav a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+.page-diensten .btn--primary.btn--sm {
+  border-radius: 999px;
+  padding: 12px 20px;
+}
+
+.page-diensten .menu-toggle {
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.page-diensten .menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ---------- Hero ---------- */
+
+.page-hero {
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  align-items: flex-end;
+  min-height: min(760px, 88vh);
+  overflow: hidden;
+  background: var(--navy-blue);
+  color: var(--white);
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 17, 32, 0.55) 0%,
+    rgba(10, 17, 32, 0.12) 42%,
+    rgba(10, 17, 32, 0.64) 100%
+  );
+}
+
+.page-hero__lines {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.page-hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 44px;
+}
+
+.page-hero__content {
+  max-width: 720px;
+}
+
+.page-hero__eyebrow {
+  margin: 0 0 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.page-hero__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 4.4vw, 3.8rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+
+.page-hero__line {
+  display: block;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.page-hero__line--accent {
+  color: #c9bce3;
+}
+
+.page-hero__scroll {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.page-hero__scroll:hover {
+  background: var(--accent-dark);
+  color: var(--white);
+  transform: translateY(2px);
+}
+
+.page-hero__scroll .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ---------- Intro ---------- */
+
+.page-intro {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: var(--surface);
+}
+
+.page-intro__inner {
+  max-width: 820px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.page-intro h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 4.8vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.page-intro p {
+  max-width: 62ch;
+  margin: 18px auto 0;
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--ink-2);
+}
+
+.page-intro p + p {
+  margin-top: 10px;
+}
+
+.page-intro .btn-pill {
+  margin-top: 28px;
+}
+
+/* ---------- Pilknoppen ---------- */
+
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 22px 8px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--white);
+  font-size: 0.92rem;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: background-color 0.2s ease;
+}
+
+.btn-pill:hover {
+  background: var(--accent-dark);
+  color: var(--white);
+}
+
+.btn-pill__icon {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.btn-pill__icon .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-pill--small {
+  padding: 7px 18px 7px 7px;
+  font-size: 0.82rem;
+}
+
+.btn-pill--small .btn-pill__icon {
+  width: 30px;
+  height: 30px;
+}
+
+/* ---------- Dienstenband ---------- */
+
+.diensten-band {
+  position: relative;
+  padding-bottom: clamp(56px, 7vw, 84px);
+  background: var(--surface);
+  color: var(--ink);
+}
+
+.diensten-band__top {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(56px, 7vw, 84px) 0 80px;
+  background: linear-gradient(115deg, #1d283e 0%, #002464 30%, #5b3f86 66%, #7c65ab 100%);
+  color: var(--white);
+}
+
+.diensten-band__pattern {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.diensten-band__pattern path {
+  transform-box: fill-box;
+  transform-origin: center;
+  will-change: transform;
+}
+
+.diensten-band__wave--a {
+  animation: diensten-drift-a 18s ease-in-out infinite alternate;
+}
+
+.diensten-band__wave--b {
+  animation: diensten-drift-b 24s ease-in-out infinite alternate;
+}
+
+.diensten-band__wave--c {
+  animation: diensten-drift-c 30s ease-in-out infinite alternate;
+}
+
+@keyframes diensten-drift-a {
+  from {
+    transform: translate3d(-1.5%, 1%, 0) scale(1);
+  }
+  to {
+    transform: translate3d(1.5%, -1%, 0) scale(1.04);
+  }
+}
+
+@keyframes diensten-drift-b {
+  from {
+    transform: translate3d(1.5%, -1%, 0) scale(1.03);
+  }
+  to {
+    transform: translate3d(-1.5%, 1%, 0) scale(1);
+  }
+}
+
+@keyframes diensten-drift-c {
+  from {
+    transform: translate3d(-1%, 0, 0);
+  }
+  to {
+    transform: translate3d(1%, 0, 0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diensten-band__pattern path {
+    animation: none;
+  }
+}
+
+.diensten-band__top::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 0 54%, rgba(255, 255, 255, 0.06) 54% 100%);
+  pointer-events: none;
+}
+
+.diensten-band__head {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.diensten-band h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.7rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--white);
+}
+
+.diensten-carousel__nav {
+  display: flex;
+  gap: 10px;
+}
+
+.carousel-arrow {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-arrow:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.carousel-arrow .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.diensten-carousel {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  margin-top: -45px;
+  padding: 0 20px 10px max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
+  scroll-padding-left: max(var(--gutter), calc((100vw - 1320px) / 2 + 48px));
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.diensten-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.service-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 clamp(250px, 22vw, 300px);
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--ink);
+  scroll-snap-align: start;
+}
+
+.service-card__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 4 / 3;
+  background: #f1edf8;
+}
+
+.service-card__media img {
+  width: 38%;
+  height: auto;
+}
+
+.service-card__media--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-card__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 60px;
+  padding: 14px 16px;
+}
+
+.service-card h3 {
+  font-family: var(--font-display);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--accent);
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.service-card__link {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--white);
+  transition: background-color 0.2s ease;
+}
+
+.service-card__link:hover {
+  background: var(--accent-dark);
+  color: var(--white);
+}
+
+.service-card__link .icon {
+  width: 15px;
+  height: 15px;
+}
+
+.service-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.service-card__link:focus-visible::after {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+}
+
+/* ---------- Klantlogo's ---------- */
+
+.client-logos {
+  padding: clamp(56px, 7vw, 88px) 0;
+  background: var(--surface);
+  text-align: center;
+}
+
+.client-logos h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.6vw, 2.2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.client-logos__grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  align-items: center;
+  gap: clamp(24px, 4vw, 56px);
+  margin-top: 34px;
+}
+
+.client-logos__grid img {
+  width: 100%;
+  max-width: 150px;
+  max-height: 52px;
+  margin-inline: auto;
+  object-fit: contain;
+  opacity: 1;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.client-logos__grid img:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+/* ---------- Waar zoek je naar ---------- */
+
+.seek {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: #f7f4fb;
+}
+
+.seek h2 {
+  margin-bottom: 30px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.seek__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
+  gap: 24px;
+}
+
+.seek-card {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.seek-card__head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 18px 14px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.seek-tab {
+  flex: 0 0 auto;
+  width: 58px;
+  height: 48px;
+  background: var(--accent);
+  clip-path: polygon(0 0, 72% 0, 100% 50%, 72% 100%, 0 100%);
+}
+
+.seek-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.seek-card ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seek-card li + li {
+  border-top: 1px solid var(--line);
+}
+
+.seek-card a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 18px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.seek-card a:hover {
+  background: #f7f4fb;
+  color: var(--accent);
+}
+
+.seek-card a .icon {
+  flex: 0 0 auto;
+  width: 15px;
+  height: 15px;
+  color: var(--accent);
+}
+
+/* ---------- Maak kennis met ons werk ---------- */
+
+.work {
+  padding: clamp(56px, 7vw, 96px) 0;
+  background: var(--surface);
+}
+
+.work h2 {
+  margin-bottom: 32px;
+  font-family: var(--font-display);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--accent);
+}
+
+.work__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px;
+}
+
+.work-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.work-card__media {
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #1d283e 0%, #002464 55%, #5b3f86 100%);
+}
+
+.work-card__media img {
+  width: 56%;
+  height: auto;
+}
+
+.work-card__media--photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work-card h3 {
+  margin-top: 20px;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--accent);
+}
+
+.work-card p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  line-height: 1.65;
+  color: var(--ink-2);
+}
+
+.work-card__actions {
+  display: flex;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+.work-card .btn-pill {
+  align-self: flex-start;
+}
+
+/* ---------- Cijfers op deze pagina ---------- */
+
+.stats--page .stat__number {
+  color: var(--blue);
+}
+
+/* ---------- Responsief ---------- */
+
+@media (max-width: 1080px) {
+  .page-diensten .nav {
+    gap: 16px;
+  }
+
+  .seek__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .seek-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 980px) {
+  .page-diensten .site-header {
+    position: absolute;
+  }
+
+  .page-diensten .header__inner {
+    position: relative;
+    justify-content: center;
+  }
+
+  .page-diensten .brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .page-diensten .header__actions {
+    position: absolute;
+    top: 50%;
+    right: max(16px, env(safe-area-inset-right, 0px));
+    margin-left: 0;
+    transform: translateY(-50%);
+  }
+
+  .page-hero {
+    min-height: 620px;
+  }
+
+  .work__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .work-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 340px) {
+  .page-diensten .brand__tag {
+    display: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .page-hero {
+    min-height: 520px;
+  }
+
+  .page-hero__inner {
+    padding-bottom: 30px;
+  }
+
+  .page-hero__title {
+    font-size: clamp(1.1rem, 6.2vw, 2.6rem);
+  }
+
+  .page-hero__eyebrow {
+    font-size: 0.64rem;
+  }
+
+  .page-hero__scroll {
+    display: none;
+  }
+
+  .page-intro h1 {
+    font-size: clamp(1.75rem, 8.5vw, 3rem);
+    overflow-wrap: break-word;
+  }
+
+  .page-intro p {
+    font-size: 0.95rem;
+  }
+
+  .diensten-band__head {
+    gap: 16px;
+  }
+
+  .diensten-band h2 {
+    font-size: clamp(1.65rem, 7.5vw, 2.2rem);
+    overflow-wrap: break-word;
+  }
+
+  .client-logos__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px 28px;
+  }
+
+  .seek__grid,
+  .work__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .seek-card:last-child,
+  .work-card:last-child {
+    grid-column: auto;
+  }
+
+  .seek-card__head {
+    padding-right: 14px;
+  }
+
+  .seek-tab {
+    width: 48px;
+    height: 42px;
+  }
+}
+
+</style>
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "HM Schoonmaakdiensten",
+    "description": "Schoonmaakbedrijf in Roermond en Midden-Limburg voor schoonmaakonderhoud, glasbewassing en eenmalige schoonmaak.",
+    "url": "https://www.hmschoonmaakdiensten.nl/",
+    "telephone": "+31639140047",
+    "email": "info@hmschoonmaakdiensten.com",
+    "image": "https://www.hmschoonmaakdiensten.nl/assets/img/favicon-purple.png",
+    "priceRange": "Op aanvraag",
+    "founder": { "@type": "Person", "name": "Helene Mendelsohn" },
+    "areaServed": ["Roermond", "Venray", "Weert", "Venlo", "Sittard-Geleen", "Heerlen", "Maastricht", "Eindhoven", "'s-Hertogenbosch", "Tilburg", "Breda"]
+  }
+  </script>
+<div lang="nl" class="page-diensten">
+<a class="skip-link" href="#main">Direct naar de inhoud</a>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-checks" viewBox="0 0 24 24"><path d="m2 12 5 5L17 7"/><path d="m12 17 10-10"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.08 4.18 2 2 0 0 1 4.06 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7a8.5 8.5 0 1 1 16.1-3.8Z"/><path d="M8.5 10.5c.4 2.6 1.9 4.1 4.5 4.5"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></symbol>
+  </svg>
+
+  <header class="site-header" id="site-header">
+    <div class="shell header__inner">
+      <a class="brand" href="#top" aria-label="HM Schoonmaakdiensten — naar boven">
+        <img class="brand__mark" src="assets/img/hm-mark-white.png" width="1254" height="734" alt="">
+        <span class="brand__text"><span class="brand__tag">SCHOONMAAKDIENSTEN</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Hoofdnavigatie">
+        <a href="#diensten">Diensten</a>
+        <a href="#sectoren">Sectoren</a>
+        <a href="#werken-bij">Werken bij HM</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <div class="header__actions">
+        <a class="header__phone" href="tel:+31639140047">
+          <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg>
+          06 39140047
+        </a>
+        <a class="btn btn--primary btn--sm" href="#contact">Contact</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen" id="menu-toggle">
+          <svg class="icon icon--lg" aria-hidden="true"><use href="#i-menu"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-nav" id="mobile-nav" hidden>
+      <div class="shell">
+        <nav aria-label="Mobiele navigatie">
+          <a class="mobile-nav__link" href="#diensten">Diensten</a>
+          <a class="mobile-nav__link" href="#sectoren">Sectoren</a>
+          <a class="mobile-nav__link" href="#werken-bij">Werken bij HM</a>
+          <a class="mobile-nav__link" href="#contact">Contact</a>
+        </nav>
+        <div class="mobile-nav__actions">
+          <a class="btn btn--primary btn--full" href="#contact">Contact</a>
+        </div>
+        <div class="mobile-nav__contact">
+          <a href="tel:+31639140047">06 39140047</a>
+          <a href="mailto:info@hmschoonmaakdiensten.com">info@hmschoonmaakdiensten.com</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Hero -->
+    <section class="page-hero" id="top" aria-label="HM Schoonmaakdiensten">
+      <img class="page-hero__bg" src="assets/img/bg-placeholder.svg" width="1600" height="900" alt="" fetchpriority="high">
+      <svg class="page-hero__lines" viewBox="0 0 1920 1050" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M-40 860C380 1000 900 1060 1500 930C1700 890 1840 820 1960 760" fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2"/>
+        <path d="M420 -20C760 280 1250 410 1960 430" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="2"/>
+      </svg>
+      <div class="shell page-hero__inner">
+        <div class="page-hero__content">
+          <p class="page-hero__eyebrow">Schoonmaak voor bedrijven in Midden-Limburg</p>
+          <p class="page-hero__title"><span class="page-hero__line">Een schone omgeving</span><span class="page-hero__line page-hero__line--accent">Een beter resultaat</span></p>
+        </div>
+        <a class="page-hero__scroll" href="#intro" aria-label="Naar de inhoud">
+          <svg class="icon" aria-hidden="true" style="transform:rotate(90deg)"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- Intro -->
+    <section class="page-intro" id="intro" aria-labelledby="intro-title">
+      <div class="shell page-intro__inner">
+        <h1 id="intro-title">HM Schoonmaakdiensten</h1>
+        <p>HM verzorgt schoonmaakonderhoud, glasbewassing en eenmalige projecten voor bedrijven in Roermond en Midden-Limburg. Kleinschalig, met korte lijnen en vaste gezichten.</p>
+        <p>We werken voor kantoren, winkels, zorg, onderwijs, horeca en industrie. Elke locatie krijgt een aanpak die past bij het gebruik, de mensen en de planning.</p>
+        <a class="btn-pill" href="#contact"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Neem contact op</a>
+      </div>
+    </section>
+
+    <!-- Diensten -->
+    <section class="diensten-band" id="diensten" aria-labelledby="diensten-title">
+      <div class="diensten-band__top">
+        <svg class="diensten-band__pattern" viewBox="0 0 1440 420" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true" focusable="false" shape-rendering="geometricPrecision">
+          <defs>
+            <linearGradient id="db-grad-a" x1="0" y1="0" x2="1440" y2="420" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#e9eefc" stop-opacity=".16"/>
+              <stop offset=".55" stop-color="#4169e1" stop-opacity=".1"/>
+              <stop offset="1" stop-color="#7c65ab" stop-opacity="0"/>
+            </linearGradient>
+            <linearGradient id="db-grad-b" x1="0" y1="420" x2="1440" y2="0" gradientUnits="userSpaceOnUse">
+              <stop offset="0" stop-color="#7c65ab" stop-opacity=".34"/>
+              <stop offset=".6" stop-color="#002464" stop-opacity=".16"/>
+              <stop offset="1" stop-color="#e9eefc" stop-opacity=".06"/>
+            </linearGradient>
+          </defs>
+          <path class="diensten-band__wave diensten-band__wave--a" d="M-140 280C160 160 440 340 760 250S1240 110 1580 200V460H-140Z" fill="url(#db-grad-b)"/>
+          <path class="diensten-band__wave diensten-band__wave--b" d="M-140 180C220 80 500 260 820 170S1260 40 1580 140V-60H-140Z" fill="url(#db-grad-a)"/>
+          <path class="diensten-band__wave diensten-band__wave--c" d="M-140 360C200 260 480 400 800 320S1260 210 1580 300" stroke="#e9eefc" stroke-opacity=".16" stroke-width="2"/>
+        </svg>
+        <div class="shell">
+          <div class="diensten-band__head">
+            <h2 id="diensten-title">Onze schoonmaakdiensten</h2>
+            <div class="diensten-carousel__nav">
+              <button class="carousel-arrow" type="button" data-carousel-prev aria-label="Vorige dienst"><svg class="icon" aria-hidden="true" style="transform:rotate(180deg)"><use href="#i-arrow"/></svg></button>
+              <button class="carousel-arrow" type="button" data-carousel-next aria-label="Volgende dienst"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="diensten-carousel" data-carousel tabindex="0" aria-label="Overzicht van schoonmaakdiensten">
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-schoonmaakonderhoud.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten maakt een bureau schoon met een microvezeldoek" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Schoonmaakonderhoud</h3>
+            <a class="service-card__link" href="schoonmaakonderhoud.html" aria-label="Meer over Schoonmaakonderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-glasbewassing.jpg" width="720" height="540" alt="Medewerkster van HM Schoonmaakdiensten wast een glaswand met een ruitentrekker" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Glasbewassing</h3>
+            <a class="service-card__link" href="glasbewassing.html" aria-label="Meer over Glasbewassing"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-vloeronderhoud.jpg" width="720" height="540" alt="Medewerkster van HM Schoonmaakdiensten dweilt een kantoervloer" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Vloeronderhoud</h3>
+            <a class="service-card__link" href="vloeronderhoud.html" aria-label="Meer over Vloeronderhoud"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-sanitair-hygiene.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten maakt een wastafel schoon in een sanitairruimte" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Sanitair en hygiëne</h3>
+            <a class="service-card__link" href="sanitair-hygiene.html" aria-label="Meer over Sanitair en hygiëne"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-eenmalige-schoonmaak.jpg" width="960" height="720" alt="Medewerkster van HM Schoonmaakdiensten maakt glas schoon bij een eenmalige schoonmaak" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Eenmalige schoonmaak</h3>
+            <a class="service-card__link" href="eenmalige-schoonmaak.html" aria-label="Meer over Eenmalige schoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+        <article class="service-card">
+          <div class="service-card__media service-card__media--photo"><img src="assets/img/hm-buitenschoonmaak.jpg" width="960" height="720" alt="Medewerker van HM Schoonmaakdiensten veegt bladeren op een bestrate buitenruimte bij een bedrijfspand" loading="lazy"></div>
+          <div class="service-card__body">
+            <h3>Buitenschoonmaak</h3>
+            <a class="service-card__link" href="buitenschoonmaak.html" aria-label="Meer over Buitenschoonmaak"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Klanten -->
+    <section class="client-logos" aria-labelledby="clients-title">
+      <div class="shell">
+        <h2 id="clients-title">Wij werken onder andere voor...</h2>
+        <div class="client-logos__grid">
+          <img src="assets/img/partner-nike.svg" alt="Nike" loading="lazy">
+          <img src="assets/img/partner-adidas.svg" alt="adidas" loading="lazy">
+          <img src="assets/img/partner-puma.svg" alt="PUMA" loading="lazy">
+          <img src="assets/img/partner-moncler.svg" alt="Moncler" loading="lazy">
+          <img src="assets/img/partner-gucci.svg" alt="Gucci" loading="lazy">
+          <img src="assets/img/partner-lv.svg" alt="Louis Vuitton" loading="lazy">
+        </div>
+      </div>
+    </section>
+
+    <!-- Waar zoek je naar -->
+    <section class="seek" id="sectoren" aria-labelledby="seek-title">
+      <div class="shell">
+        <h2 id="seek-title">Waar ben je naar op zoek?</h2>
+        <div class="seek__grid">
+          <div class="seek-card">
+            <div class="seek-card__head"><span class="seek-tab" aria-hidden="true"></span><h3>Diensten</h3></div>
+            <ul>
+              <li><a href="schoonmaakonderhoud.html">Schoonmaakonderhoud<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="glasbewassing.html">Glasbewassing<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="vloeronderhoud.html">Vloeronderhoud<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="sanitair-hygiene.html">Sanitair en hygiëne<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="eenmalige-schoonmaak.html">Eenmalige schoonmaak<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="buitenschoonmaak.html">Buitenschoonmaak<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+          <div class="seek-card">
+            <div class="seek-card__head"><span class="seek-tab" aria-hidden="true"></span><h3>Sectoren</h3></div>
+            <ul>
+              <li><a href="#contact">Kantoren & bedrijfspanden<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Retail & winkels<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Zorg & welzijn<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Onderwijs & kinderopvang<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Hotels & horeca<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Industrie & logistiek<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+          <div class="seek-card">
+            <div class="seek-card__head"><span class="seek-tab" aria-hidden="true"></span><h3>Over Ons</h3></div>
+            <ul>
+              <li><a href="#intro">Over Ons<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#werkgebied">Werkgebied<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#cijfers">Onze belofte<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#werken-bij">Werken bij HM<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="#contact">Contact<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maak kennis met ons werk -->
+    <section class="work" aria-labelledby="work-title">
+      <div class="shell">
+        <h2 id="work-title">Maak kennis met ons werk</h2>
+        <div class="work__grid">
+          <article class="work-card">
+            <div class="work-card__media work-card__media--photo"><img src="assets/img/hm-team-onderhoud.jpg" width="960" height="600" alt="Twee medewerkers van HM Schoonmaakdiensten in bedrijfskleding in een representatief kantoor" loading="lazy"></div>
+            <h3>Schoonmaakonderhoud</h3>
+            <p>Onze medewerkers zorgen voor een schone, veilige en representatieve locatie. Van dagelijks onderhoud tot sanitair en kantine.</p>
+            <div class="work-card__actions">
+              <a class="btn-pill btn-pill--small" href="#diensten"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Bekijk diensten</a>
+            </div>
+          </article>
+          <article class="work-card">
+            <div class="work-card__media"><img src="assets/img/hm-logo-white.png" width="1456" height="839" alt="" loading="lazy"></div>
+            <h3>Glas- en gevelreiniging</h3>
+            <p>Van glasbewassing tot eenmalige gevelreiniging. Helder zicht en een verzorgde buitenkant van uw pand.</p>
+            <div class="work-card__actions">
+              <a class="btn-pill btn-pill--small" href="#diensten"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Glasbewassing</a>
+            </div>
+          </article>
+          <article class="work-card">
+            <div class="work-card__media"><img src="assets/img/hm-logo-white.png" width="1456" height="839" alt="" loading="lazy"></div>
+            <h3>Werken bij HM</h3>
+            <p>Kleine teams, vaste locaties en korte lijnen. Wil je ons team versterken? Stuur een open sollicitatie.</p>
+            <div class="work-card__actions">
+              <a class="btn-pill btn-pill--small" href="mailto:info@hmschoonmaakdiensten.com?subject=Open%20sollicitatie"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Open sollicitatie</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Werkgebied -->
+    <section class="coverage-section" id="werkgebied" aria-labelledby="coverage-title">
+      <div class="coverage-inner">
+        <div class="coverage">
+          <div class="coverage__intro">
+            <span class="kicker">Werkgebied</span>
+            <h2 id="coverage-title">Waar wij actief zijn.</h2>
+            <p>Van Venlo tot Breda en van Weert tot Maastricht.</p>
+            <ul class="coverage__list">
+              <li>Roermond</li>
+              <li>Venray</li>
+              <li>Weert</li>
+              <li>Venlo</li>
+              <li>Sittard</li>
+              <li>Heerlen</li>
+              <li>Maastricht</li>
+              <li>Eindhoven</li>
+              <li>Den Bosch</li>
+              <li>Tilburg</li>
+              <li>Breda</li>
+            </ul>
+          </div>
+          <div class="coverage__map-wrap">
+            <svg class="coverage-map" viewBox="0 0 620 526" role="img" aria-labelledby="coverage-map-title coverage-map-desc">
+        <title id="coverage-map-title">Werkgebied van HM Schoonmaakdiensten</title>
+        <desc id="coverage-map-desc">Kaart van Limburg en Noord-Brabant met de steden Breda, Tilburg, Den Bosch, Eindhoven, Venlo, Venray, Weert, Roermond, Sittard, Heerlen en Maastricht.</desc>
+        <path class="map-province" d="M-118.9,215.6L-139.3,223.3L-141.5,222.1L-157,229.8L-156,239.5L-153.2,245.2L-159.8,252.9L-155.3,258.2L-157,262.3L-147.4,276.5L-136.5,283L-116.9,281L-120,264.3L-108,260.7L-104.7,263.9L-100.9,257.4L-88.2,263.9L-83.9,263.1L-74.8,268.8L-59,271.6L-48.9,276.9L-50.4,281L-50.1,294L-42.5,296L-32.6,295.2L-25.3,290.3L-25.8,299.6L-7.5,293.1L4.4,282.6L12.3,281L17.6,282.2L45.1,261.9L62.6,239.5L55.5,229L46.8,229.4L38.5,234.3L31.6,234.3L16.4,232.2L7.5,218L-3.4,215.6L-5.2,224.1L-8.5,231.8L-17.9,234.3L-30.8,244.4L-46.1,243.6L-50.7,239.1L-67.4,238.7L-76.3,230.2L-88.2,228.2L-102.4,223.3L-111.8,216.4L-118.9,215.6ZM-36.9,73.9L-38,73.1L-44.3,80.4L-57,79.5L-70.7,84L-76,88.5L-78.6,93.8L-75.8,105.5L-67.4,111.6L-69.7,120.2L-73.8,121.4L-77.6,127.9L-78.1,137.2L-90,141.7L-98.9,139.6L-110.6,141.3L-139.8,160.8L-141,166.4L-134.2,173.8L-125,180.3L-117.2,192.8L-105,202.6L-88.5,201L-83.7,195.3L-75.3,200.6L-67.9,207.9L-64.4,214L-59.3,212.3L-50.4,218.4L-44.6,224.5L-33.1,222.1L-28.6,219.6L-22.2,220.5L-15.9,204.6L-17.1,200.6L-3.2,193.2L-0.4,196.5L11.3,205.4L15.9,206.2L18.7,212.7L30.1,217.6L42.8,220.5L53.2,215.6L61.8,220.5L64.6,228.6L73.5,228.2L71.2,225.3L69.9,211.9L73,208.3L58.5,175.8L62.8,160.4L60.8,151.8L51.7,139.6L51.7,133.6L57.5,125.8L63.3,123.4L54,121.4L45.8,115.3L43,103.9L42.5,103.5L30.6,105.5L26.3,110L14.1,102.7L6.7,101.9L4.7,95.4L-1.4,89.3L-3.7,83.2L-18.9,84L-25.5,78.7L-35.2,81.6L-41.3,80.8L-36.9,73.9ZM-45.8,97.8L-41.5,103.5L-33.1,105.5L-28.3,110L-24.8,123.8L-18.9,125.4L-30.3,138.8L-39,134.8L-48.1,135.2L-54.2,138.4L-69.4,140.5L-77.6,136.8L-76.3,128.3L-69.7,123L-66.9,109.6L-59.3,106.8L-45.8,97.8ZM27.5,110L30.6,107.2L41,105.5L43.5,109.2L41.5,114.9L33.6,115.3L28.6,119.7L28.3,123.8L35.2,131.9L28.8,133.1L22,131.9L9,138.4L0.4,140.1L-1.1,144.9L4.4,147L15.4,156.3L22.5,167.7L44.6,168.5L47.9,177L57.3,181.1L59.5,192.4L59.5,202.6L49.1,200.6L42,205L36.7,205.8L26.5,199.7L17.1,185.1L13.8,176.6L2.9,169.3L-8,165.2L-12.1,167.7L-15.6,159.9L-30.6,161.6L-29.3,155.5L-23.2,153.5L-24.2,148.6L-30.3,138.8L-18.7,125.4L-12.3,123.4L-5.2,131.5L4.7,130.3L15.6,124.6L20.9,124.2L27.5,118.1L27.5,110ZM-71.2,170.9L-77.6,165.6L-80.9,157.5L-87.5,153.5L-91.5,147.4L-88.2,142.1L-84.7,149.8L-76,155.1L-66.9,167.3L-71.2,170.9Z"/>
+        <path class="map-province" d="M82.1,77.5L69.9,74.7L69.7,77.5L81.9,85.2L88.5,85.6L92.8,81.6L82.1,77.5ZM-8.3,64.9L-13.6,60.1L-21.2,67.8L-8.3,64.9ZM204.8,-117.4L187,-111.7L186.7,-119.4L181.9,-120.2L177.3,-117.4L173.3,-119L163.6,-112.9L156,-112.5L144.3,-114.1L147.4,-134.4L152.5,-138.9L158.3,-152.7L147.4,-153.5L146.1,-150.7L128.3,-158.4L116.7,-133.6L98.1,-101.2L87.2,-86.1L69.4,-67L60.3,-55.3L51.7,-46.3L38,-29.3L26.8,-19.1L14.9,-22.8L13.6,-19.5L3.9,-20.8L-1.1,-19.1L-6,-11.8L-6.2,-6.5L-1.1,8.1L2.7,9.3L13.1,5.6L16.4,8.1L10.5,21.1L20.2,36.1L12.1,46.3L2.9,36.1L-10.3,39.8L-19.9,45L-24.2,45.4L-32.6,50.3L-33.6,55.2L-31.1,63.3L-32.6,67.8L-38,73.1L-36.9,73.9L-33.6,73.1L-30.1,63.7L-23.5,62.1L-23.2,58.4L-13.3,56.8L-9.8,54.8L0.1,55.2L8.3,64.5L7.2,73.9L8.8,79.1L17.9,91.7L31.1,93.4L42.3,97.8L42.5,103.5L43,103.9L50.9,103.5L58.8,107.2L62.1,112.4L74.3,115.3L89,110.8L93.6,108.4L96.4,102.7L103.2,99L105.5,97L106,87.7L114.4,90.1L121.7,90.5L137.7,96.2L152.5,91.7L160.1,87.3L164.6,89.7L166.4,88.9L166.7,88.9L174.5,86.9L190,73.9L194.9,63.3L199.4,58.8L205.5,56L217.7,56.4L228.9,48.3L240.6,44.6L257.1,47.5L263.7,48.3L264.9,39.3L256.8,36.5L258.3,32.4L263.7,32L262.9,23.1L256.8,21.9L255.5,14.6L245.9,8.9L241.6,3.6L239.5,-4.1L225.8,0L221.5,-12.2L217.7,-15.1L210.6,-25.2L220.5,-27.7L218,-32.5L207,-30.9L213.6,-45.5L223.6,-50.8L212.9,-55.7L212.6,-68.7L204,-74.8L209.3,-82.1L214.4,-84.1L220.2,-80.8L225.1,-81.7L224.8,-88.6L229.6,-91L217.2,-98.3L209.6,-107.2L204.8,-117.4ZM17.6,40.6L21.7,38.5L26.8,44.2L36.4,47.9L42.8,47.1L49.1,54L56.7,56L61.3,60.9L66.1,69.8L91.8,79.1L105.7,87.3L100.4,95.8L86.7,95.4L78.8,89.7L69.7,85.6L64.6,78.3L50.7,66.1L35.2,60.5L26.8,54.4L14.1,48.3L17.6,40.6Z"/>
+        <path class="map-province" d="M703.9,-73.5L692.7,-73.1L679.3,-78L682.1,-83.3L681.3,-92.6L674.7,-95.9L666.3,-91.4L660.7,-99.1L651.9,-97.1L642.2,-98.7L636.6,-97.1L632.6,-99.5L619.9,-115.8L616.6,-123.5L607.7,-125.1L596.8,-121L596.8,-117.4L566,-117L557.2,-120.2L548.3,-117.8L542.2,-127.1L544,-131.2L539.4,-138.1L536.6,-147.4L532.3,-147.8L528.7,-156L531.8,-176.3L542.2,-179.9L544,-187.2L538.9,-190.9L541.2,-201L537.6,-205.1L536.6,-214.4L529,-220.9L524.7,-228.3L517.8,-232.3L512.7,-229.9L502.1,-218.5L498.5,-221.8L491.9,-217.7L488.1,-227L482.3,-235.2L476.7,-236L470.3,-214.8L464.5,-210.8L463,-202.3L444.7,-186.8L434.5,-179.9L428.9,-179.1L422.9,-173.4L413.2,-172.6L413,-172.2L412.2,-165.7L403.1,-158L399,-151.5L390.9,-132.4L376.6,-132.4L376.1,-132L372.3,-128.4L359.4,-125.5L356.8,-115L360.9,-114.1L368.5,-107.2L368.5,-94.7L376.1,-92.6L383.5,-84.9L382.7,-74.8L379.9,-68.3L380.5,-63.4L373.6,-57.7L379.7,-53.6L389.6,-56.9L397.7,-65.8L399.8,-56.9L398.5,-45.1L405.8,-37.8L406.9,-26.4L412.7,-21.2L416,-14.7L416.3,-5.7L410.7,-2.1L399.5,-6.5L394.2,-11.8L380.5,-18.7L369.3,-19.5L363.2,-15.9L354,-12.6L345.4,-12.2L341.6,-7.8L325.6,-11L319.5,-15.9L315.2,-15.5L309.1,-8.6L302.8,-11.8L290.6,9.3L285.5,20.3L279.4,20.3L277.6,25.1L271,26.4L272,32.4L263.7,32L258.3,32.4L256.8,36.5L264.9,39.3L263.7,48.3L257.1,47.5L260.9,52.7L269.3,56.8L273.8,64.1L281.2,60.9L291.8,67L292.1,75.9L298.4,79.1L315.7,80L321.8,82.4L324.1,80.8L326.9,80.4L333.2,81.6L338.6,77.9L348.2,71.8L350.5,60.1L358.9,47.5L368.5,51.9L377.4,49.9L380.2,44.2L394.2,49.5L398.7,45L406.4,43.8L418.3,48.3L423.9,56.8L433,60.9L435.3,64.9L442.9,67.4L446.2,72.6L454.8,75.5L473.4,72.6L476.4,73.1L477.2,66.1L483.8,64.9L489.4,75.5L499,77.1L508.4,69.8L505.6,56.8L497,46.7L501.3,41L507.4,43.4L519.8,38.5L524.9,34.9L526.9,29.6L538.1,36.5L545.2,36.9L553.1,39.3L553.1,30.8L547.5,27.6L545.7,21.1L538.9,17.4L550.8,13.4L559.4,18.6L557.4,22.7L565.5,28.4L577.5,28.4L581.8,25.9L587.1,30L588.6,36.1L598.5,35.3L603.1,41.8L614.3,44.6L614.3,34.1L609.5,30.8L610.2,26.4L619.6,29.6L625.5,29.6L628.8,33.7L638.2,28.4L651.9,22.7L659.5,17.8L672.7,13.8L682.1,8.9L686.6,9.3L694.3,17L706.4,8.9L712.5,1.2L713.8,-8.6L721.2,-10.6L720.7,-22.4L716.9,-24.4L702.1,-36.6L692.2,-41.5L685.4,-41.5L687.7,-53.6L697.6,-55.7L701.6,-59.7L703.9,-73.5Z"/>
+        <path class="map-province" d="M476.4,73.1L473.4,72.6L454.8,75.5L446.2,72.6L442.9,67.4L435.3,64.9L433,60.9L423.9,56.8L418.3,48.3L406.4,43.8L398.7,45L394.2,49.5L380.2,44.2L377.4,49.9L368.5,51.9L358.9,47.5L350.5,60.1L348.2,71.8L338.6,77.9L333.2,81.6L326.9,80.4L324.1,80.8L321.8,82.4L315.7,80L298.4,79.1L292.1,75.9L291.8,67L281.2,60.9L273.8,64.1L269.3,56.8L260.9,52.7L257.1,47.5L240.6,44.6L228.9,48.3L217.7,56.4L205.5,56L199.4,58.8L194.9,63.3L190,73.9L174.5,86.9L166.7,88.9L166.4,88.9L164.6,89.7L155.8,97.8L136.7,102.7L127.6,103.5L111.3,97.8L105.5,97L103.2,99L101.4,109.2L92,117.7L83.7,118.5L63.3,123.4L57.5,125.8L51.7,133.6L51.7,139.6L60.8,151.8L62.8,160.4L58.5,175.8L73,208.3L69.9,211.9L71.2,225.3L73.5,228.2L88,227.4L89.8,235.9L100.7,237.1L110.1,232.6L112.6,228.6L102.4,215.2L103.7,201.4L100.7,198.5L115.4,190.4L126.6,187.2L139.5,185.1L142.1,188.8L137.5,198.5L139,209.1L148.9,205L162.9,207.9L173,207.9L172.3,200.6L178.9,197.3L188,184.3L194.1,177.8L210.1,179.8L211.4,184.7L216.4,186.8L215.2,193.7L212.1,198.5L213.4,209.1L202.7,205.4L197.7,206.2L198.9,212.3L203.5,214.8L216.2,212.7L227.9,211.9L238.8,220L247.7,209.5L258.1,200.6L259.6,189.2L262.6,185.1L268.5,189.6L276.9,189.6L283.5,205.8L275.1,221.3L286.5,234.3L290.3,239.9L291.1,252.9L298.2,255L307.8,249.7L318.5,257L314.2,272L317.2,274.9L323.8,272.4L332.2,274.9L342.4,274.1L344.9,268.8L362.9,274.5L369,266.3L374.9,265.5L379.9,259L387.8,261.1L398.5,274.5L397.7,281.8L400.8,291.1L414,287.9L415.7,270L427.7,252.9L479,237.5L493.4,224.5L478.2,198.1L475.4,181.1L473.4,176.2L469.8,151L483.3,153.5L487.1,156.7L494.5,155.9L512,149.4L518.8,156.7L520.9,144.5L517.6,138.8L516,128.3L503.8,118.5L501.6,114.1L501.8,106.3L499.5,92.9L493.9,90.1L485.3,88.5L481.8,85.2L480.2,76.3L476.4,73.1Z"/>
+        <path class="map-province" d="M499,77.1L489.4,75.5L483.8,64.9L477.2,66.1L476.4,73.1L480.2,76.3L481.8,85.2L485.3,88.5L493.9,90.1L499.5,92.9L501.8,106.3L501.6,114.1L503.8,118.5L516,128.3L517.6,138.8L520.9,144.5L518.8,156.7L512,149.4L494.5,155.9L487.1,156.7L483.3,153.5L469.8,151L473.4,176.2L475.4,181.1L478.2,198.1L493.4,224.5L479,237.5L427.7,252.9L415.7,270L414,287.9L400.8,291.1L421.1,299.6L424.1,305.7L436.6,306.9L444.9,305.3L451.8,306.1L454.3,319.5L466.3,312.6L469.3,318.3L474.1,322L470.3,327.7L462.5,332.9L468.6,340.6L466.3,343.5L458.9,344.7L461.2,349.6L458.4,357.3L452.8,356.5L449.3,367L454.1,371.9L451.5,381.7L439.9,396.3L449,397.9L441.1,412.9L440.9,417.4L434.3,417.4L430.2,426.3L420.6,433.2L419.3,443.4L423.6,452.3L433,457.6L434,472.2L430.2,477.9L433.5,480.3L439.9,476.3L444.7,479.5L446.7,474.2L454.1,469L462,479.9L471.6,476.3L476.2,477.1L482,474.2L482.8,479.9L490.9,482L493.4,479.5L503.1,478.3L504.4,480.3L516.3,480.7L517.8,472.6L504.4,462.9L507.1,458L511.7,461.7L517,456.4L515,448.3L515.5,443.4L530.5,437.3L533.3,432.8L530,424.3L531.8,412.9L515.5,407.2L515.3,387.8L502.3,389L499.5,385.7L484.8,391L486.8,380L480,373.5L480,365.8L482.3,359.7L488.9,353.6L495.2,366.6L503.1,361.8L503.3,356.5L513.2,343.9L520.1,341.9L526.7,333.3L532.8,329.7L534.1,326L542.9,322L552.3,320.3L555.4,316.7L546,310.6L556.7,305.3L552.8,302.1L539.4,309.8L531.8,311L529.5,306.5L528.2,291.5L532.8,290.3L529.2,282.6L532.5,280.1L542.4,269.2L547.8,259.8L553.9,245.6L558.9,243.2L568.3,234.7L565.3,222.5L563,218.8L567.6,188L564.8,181.5L564.8,172.5L561.5,166.9L555.6,162.4L550.8,151L544,144.9L541.7,140.1L534.1,134.8L540.4,114.5L533.3,112.8L520.1,107.6L517.6,92.9L522.1,89.7L509.4,81.2L499.5,81.2L499,77.1Z"/>
+        <path class="map-highlight" d="M476.4,73.1L473.4,72.6L454.8,75.5L446.2,72.6L442.9,67.4L435.3,64.9L433,60.9L423.9,56.8L418.3,48.3L406.4,43.8L398.7,45L394.2,49.5L380.2,44.2L377.4,49.9L368.5,51.9L358.9,47.5L350.5,60.1L348.2,71.8L338.6,77.9L333.2,81.6L326.9,80.4L324.1,80.8L321.8,82.4L315.7,80L298.4,79.1L292.1,75.9L291.8,67L281.2,60.9L273.8,64.1L269.3,56.8L260.9,52.7L257.1,47.5L240.6,44.6L228.9,48.3L217.7,56.4L205.5,56L199.4,58.8L194.9,63.3L190,73.9L174.5,86.9L166.7,88.9L166.4,88.9L164.6,89.7L155.8,97.8L136.7,102.7L127.6,103.5L111.3,97.8L105.5,97L103.2,99L101.4,109.2L92,117.7L83.7,118.5L63.3,123.4L57.5,125.8L51.7,133.6L51.7,139.6L60.8,151.8L62.8,160.4L58.5,175.8L73,208.3L69.9,211.9L71.2,225.3L73.5,228.2L88,227.4L89.8,235.9L100.7,237.1L110.1,232.6L112.6,228.6L102.4,215.2L103.7,201.4L100.7,198.5L115.4,190.4L126.6,187.2L139.5,185.1L142.1,188.8L137.5,198.5L139,209.1L148.9,205L162.9,207.9L173,207.9L172.3,200.6L178.9,197.3L188,184.3L194.1,177.8L210.1,179.8L211.4,184.7L216.4,186.8L215.2,193.7L212.1,198.5L213.4,209.1L202.7,205.4L197.7,206.2L198.9,212.3L203.5,214.8L216.2,212.7L227.9,211.9L238.8,220L247.7,209.5L258.1,200.6L259.6,189.2L262.6,185.1L268.5,189.6L276.9,189.6L283.5,205.8L275.1,221.3L286.5,234.3L290.3,239.9L291.1,252.9L298.2,255L307.8,249.7L318.5,257L314.2,272L317.2,274.9L323.8,272.4L332.2,274.9L342.4,274.1L344.9,268.8L362.9,274.5L369,266.3L374.9,265.5L379.9,259L387.8,261.1L398.5,274.5L397.7,281.8L400.8,291.1L414,287.9L415.7,270L427.7,252.9L479,237.5L493.4,224.5L478.2,198.1L475.4,181.1L473.4,176.2L469.8,151L483.3,153.5L487.1,156.7L494.5,155.9L512,149.4L518.8,156.7L520.9,144.5L517.6,138.8L516,128.3L503.8,118.5L501.6,114.1L501.8,106.3L499.5,92.9L493.9,90.1L485.3,88.5L481.8,85.2L480.2,76.3L476.4,73.1Z"/>
+        <path class="map-highlight" d="M499,77.1L489.4,75.5L483.8,64.9L477.2,66.1L476.4,73.1L480.2,76.3L481.8,85.2L485.3,88.5L493.9,90.1L499.5,92.9L501.8,106.3L501.6,114.1L503.8,118.5L516,128.3L517.6,138.8L520.9,144.5L518.8,156.7L512,149.4L494.5,155.9L487.1,156.7L483.3,153.5L469.8,151L473.4,176.2L475.4,181.1L478.2,198.1L493.4,224.5L479,237.5L427.7,252.9L415.7,270L414,287.9L400.8,291.1L421.1,299.6L424.1,305.7L436.6,306.9L444.9,305.3L451.8,306.1L454.3,319.5L466.3,312.6L469.3,318.3L474.1,322L470.3,327.7L462.5,332.9L468.6,340.6L466.3,343.5L458.9,344.7L461.2,349.6L458.4,357.3L452.8,356.5L449.3,367L454.1,371.9L451.5,381.7L439.9,396.3L449,397.9L441.1,412.9L440.9,417.4L434.3,417.4L430.2,426.3L420.6,433.2L419.3,443.4L423.6,452.3L433,457.6L434,472.2L430.2,477.9L433.5,480.3L439.9,476.3L444.7,479.5L446.7,474.2L454.1,469L462,479.9L471.6,476.3L476.2,477.1L482,474.2L482.8,479.9L490.9,482L493.4,479.5L503.1,478.3L504.4,480.3L516.3,480.7L517.8,472.6L504.4,462.9L507.1,458L511.7,461.7L517,456.4L515,448.3L515.5,443.4L530.5,437.3L533.3,432.8L530,424.3L531.8,412.9L515.5,407.2L515.3,387.8L502.3,389L499.5,385.7L484.8,391L486.8,380L480,373.5L480,365.8L482.3,359.7L488.9,353.6L495.2,366.6L503.1,361.8L503.3,356.5L513.2,343.9L520.1,341.9L526.7,333.3L532.8,329.7L534.1,326L542.9,322L552.3,320.3L555.4,316.7L546,310.6L556.7,305.3L552.8,302.1L539.4,309.8L531.8,311L529.5,306.5L528.2,291.5L532.8,290.3L529.2,282.6L532.5,280.1L542.4,269.2L547.8,259.8L553.9,245.6L558.9,243.2L568.3,234.7L565.3,222.5L563,218.8L567.6,188L564.8,181.5L564.8,172.5L561.5,166.9L555.6,162.4L550.8,151L544,144.9L541.7,140.1L534.1,134.8L540.4,114.5L533.3,112.8L520.1,107.6L517.6,92.9L522.1,89.7L509.4,81.2L499.5,81.2L499,77.1Z"/>
+        <g>
+          <circle class="map-city" cx="198" cy="149" r="4.2"/>
+          <text class="map-label map-label--secondary" x="198" y="136" text-anchor="middle">Breda</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="280" cy="155.7" r="4.2"/>
+          <text class="map-label map-label--secondary" x="280" y="173.7" text-anchor="middle">Tilburg</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="333.9" cy="97.9" r="4.2"/>
+          <text class="map-label map-label--secondary" x="333.9" y="84.9" text-anchor="middle">Den Bosch</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="376.1" cy="201.9" r="4.2"/>
+          <text class="map-label" x="364.1" y="205.9" text-anchor="end">Eindhoven</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="554.4" cy="230.8" r="4.2"/>
+          <text class="map-label" x="566.4" y="234.8" text-anchor="start">Venlo</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="504.4" cy="168.1" r="4.2"/>
+          <text class="map-label" x="504.4" y="144.1" text-anchor="middle">Venray</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="436.2" cy="279" r="4.2"/>
+          <text class="map-label" x="424.2" y="283" text-anchor="end">Weert</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="507.4" cy="302.4" r="4.2"/>
+          <text class="map-label" x="531.4" y="306.4" text-anchor="start">Roermond</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="477.5" cy="381.9" r="4.2"/>
+          <text class="map-label map-label--secondary" x="465.5" y="385.9" text-anchor="end">Sittard</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="506" cy="426.7" r="4.2"/>
+          <text class="map-label map-label--secondary" x="518" y="430.7" text-anchor="start">Heerlen</text>
+        </g>
+        <g>
+          <circle class="map-city" cx="432.2" cy="441.6" r="4.2"/>
+          <text class="map-label" x="432.2" y="467.6" text-anchor="middle">Maastricht</text>
+        </g>
+      </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Onze belofte -->
+    <section class="stats stats--page stats--claims" id="cijfers" aria-labelledby="stats-title">
+      <div class="shell">
+        <div class="stats__head">
+          <span class="kicker">Onze belofte</span>
+          <h2 id="stats-title">Waar u op kunt rekenen.</h2>
+          <p>Geen verzonnen reviews. Wel drie afspraken die we bij iedere opdracht nakomen.</p>
+        </div>
+        <div class="stats__row stats__row--claims">
+          <div class="stat">
+            <span class="stat__number"><span data-count="100">100</span>%</span>
+            <span class="stat__label">maatwerk per locatie</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number"><span data-count="100">100</span>%</span>
+            <span class="stat__label">vaste gezichten en korte lijnen</span>
+          </div>
+          <div class="stat">
+            <span class="stat__number"><span data-count="100">100</span>%</span>
+            <span class="stat__label">heldere afspraken vooraf</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Werken bij HM -->
+    <section class="careers" id="werken-bij" aria-labelledby="careers-title">
+      <div class="shell careers__inner">
+        <figure class="careers__banner">
+          <img src="assets/img/hm-werken-bij.jpg" width="960" height="720" alt="Lachende medewerkster van HM Schoonmaakdiensten in bedrijfskleding geeft een duim omhoog" loading="lazy">
+        </figure>
+        <div class="careers__content">
+          <div class="careers__copy">
+            <span class="kicker kicker--light">Werken bij HM</span>
+            <h2 id="careers-title">Werken met korte lijnen.</h2>
+          </div>
+          <div class="careers__details">
+            <p>HM is een klein, betrokken schoonmaakbedrijf. Je werkt op vaste locaties, met duidelijke afspraken en een eigen aanspreekpunt. Wil je ons team versterken? Stuur een open sollicitatie; we nemen snel contact op.</p>
+            <div class="careers__actions">
+              <a class="btn btn--primary" href="mailto:info@hmschoonmaakdiensten.com?subject=Open%20sollicitatie">
+                Stuur een open sollicitatie
+                <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+              </a>
+              <a class="btn btn--line btn--line-light" href="https://wa.me/31639140047?text=Hallo%20HM%20Schoonmaakdiensten%2C%20ik%20wil%20graag%20reageren%20op%20een%20vacature." target="_blank" rel="noopener">Via WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="careers__wave" aria-hidden="true">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" focusable="false">
+          <path d="M0 62C240 112 420 18 720 38C1020 58 1200 118 1440 68V120H0Z" fill="#ffffff"/>
+        </svg>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="footer__ambient" aria-hidden="true">
+      <svg viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice" focusable="false">
+        <defs>
+          <linearGradient id="footer-grad-a" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2b2a4d"/>
+            <stop offset=".55" stop-color="#5b4a86"/>
+            <stop offset="1" stop-color="#7c65ab"/>
+          </linearGradient>
+          <linearGradient id="footer-grad-b" x1="1" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#002464" stop-opacity=".7"/>
+            <stop offset="1" stop-color="#7c65ab" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="footer-grad-c" cx=".2" cy=".8" r=".8">
+            <stop offset="0" stop-color="#7c65ab" stop-opacity=".55"/>
+            <stop offset="1" stop-color="#7c65ab" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect width="1440" height="700" fill="#1d283e"/>
+        <path class="footer__blob footer__blob--a" d="M1020 -120C1290 -160 1560 60 1520 380C1480 700 1200 860 900 800C600 740 520 540 620 320C700 140 780 -80 1020 -120Z" fill="url(#footer-grad-a)"/>
+        <path class="footer__blob footer__blob--b" d="M-140 300C140 180 400 340 680 300C960 260 1160 80 1580 160L1580 560C1220 500 980 660 700 700C420 740 160 600 -140 660Z" fill="#7c65ab" opacity=".35"/>
+        <path class="footer__blob footer__blob--c" d="M-120 520C160 420 380 540 620 600C860 660 1080 780 1180 960L-120 960Z" fill="url(#footer-grad-b)" opacity=".55"/>
+        <rect width="1440" height="700" fill="url(#footer-grad-c)"/>
+      </svg>
+    </div>
+
+    <div class="footer__links">
+      <div class="shell">
+        <div class="footer__main">
+          <div class="footer__brand">
+            <a class="brand" href="#top" aria-label="HM Schoonmaakdiensten — naar boven">
+              <img class="brand__mark" src="assets/img/hm-mark-purple.png" width="1217" height="718" alt="">
+              <span class="brand__text"><span class="brand__tag">SCHOONMAAKDIENSTEN</span></span>
+            </a>
+            <p>Schoonmaakdiensten voor bedrijven, winkels en organisaties in Roermond en Midden-Limburg.</p>
+            <a class="btn btn--primary footer__cta" href="https://wa.me/31639140047?text=Hallo%20HM%20Schoonmaakdiensten%2C%20ik%20wil%20graag%20een%20offerte%20aanvragen." target="_blank" rel="noopener">
+              Stuur een WhatsApp-bericht
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </a>
+          </div>
+          <div>
+            <h3>Navigatie</h3>
+            <ul>
+              <li><a href="#diensten">Diensten</a></li>
+              <li><a href="#sectoren">Sectoren</a></li>
+              <li><a href="#werkgebied">Werkgebied</a></li>
+              <li><a href="#werken-bij">Werken bij HM</a></li>
+              <li><a href="#contact">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul class="footer__contact">
+              <li><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><a href="tel:+31639140047">06 39140047</a></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg><a href="mailto:info@hmschoonmaakdiensten.com">info@hmschoonmaakdiensten.com</a></li>
+              <li><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg><span>Roermond en Midden-Limburg</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__wave" aria-hidden="true">
+      <svg viewBox="0 0 1440 360" preserveAspectRatio="none" focusable="false">
+        <path class="footer__wave-back" d="M0 0H1440V250C1270 340 1110 358 930 338C750 318 630 240 450 248C290 255 140 312 0 358Z"/>
+        <path class="footer__wave-front" d="M0 0H1440V220C1270 310 1110 340 930 310C750 280 630 200 450 208C290 215 140 282 0 342Z"/>
+      </svg>
+    </div>
+
+    <div class="footer__middle">
+      <div class="shell footer__middle-inner">
+        <a class="footer__logo" href="#top" aria-label="HM Schoonmaakdiensten — naar boven">
+          <img src="assets/img/hm-logo-white.png" width="1456" height="839" alt="">
+        </a>
+        <p>Een schone omgeving. Een beter resultaat.</p>
+        <a class="footer__to-top" href="#top">
+          Terug naar boven
+          <svg class="icon icon--sm" aria-hidden="true" style="transform:rotate(-90deg)"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="shell footer__bottom-inner">
+        <span>© <span id="year">2026</span> HM Schoonmaakdiensten. Alle rechten voorbehouden.</span>
+        <div class="footer__legal">
+          <button type="button" data-open-privacy>Privacyverklaring</button>
+          <a href="mailto:info@hmschoonmaakdiensten.com?subject=Algemene%20voorwaarden">Algemene voorwaarden op aanvraag</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="privacy-dialog" id="privacy-dialog" aria-labelledby="privacy-title">
+    <div class="dialog__head">
+      <h2 id="privacy-title">Privacyverklaring</h2>
+      <button class="icon-btn" type="button" data-close-dialog aria-label="Sluiten">
+        <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+      </button>
+    </div>
+    <div class="dialog__body">
+      <p class="dialog__updated">Laatst bijgewerkt: november 2026</p>
+      <p>HM Schoonmaakdiensten is gevestigd in de regio Roermond en verwerkt persoonsgegevens die u zelf verstrekt via de offerteformulieren op deze website, per e-mail, telefoon of WhatsApp.</p>
+      <h3>Welke gegevens verwerken we?</h3>
+      <ul>
+        <li>Naam, bedrijfsnaam en contactgegevens, zoals telefoonnummer, e-mailadres, plaats en postcode.</li>
+        <li>De inhoud van uw bericht of aanvraag.</li>
+      </ul>
+      <h3>Waarvoor gebruiken we de gegevens?</h3>
+      <p>Alleen om uw aanvraag te behandelen, contact op te nemen en een voorstel op maat te doen.</p>
+      <h3>Hoe lang bewaren we de gegevens?</h3>
+      <p>Niet langer dan nodig is voor de aanvraag en de daaruit volgende samenwerking.</p>
+      <h3>Delen met anderen</h3>
+      <p>We verkopen uw gegevens niet en delen ze alleen met partijen die nodig zijn voor de uitvoering of wanneer de wet dat verplicht.</p>
+      <h3>Uw rechten</h3>
+      <p>U kunt vragen om inzage, correctie of verwijdering via <a href="mailto:info@hmschoonmaakdiensten.com">info@hmschoonmaakdiensten.com</a> of <a href="tel:+31639140047">06 39140047</a>.</p>
+      <h3>Cookies en formulieren</h3>
+      <p>Deze website gebruikt geen trackingcookies. De offerteformulieren openen WhatsApp of uw e-mailprogramma; u kunt ook bellen of mailen.</p>
+    </div>
+  </dialog>
+</div>
+<script>
+/* HM Schoonmaakdiensten — interactie */
+(function () {
+  "use strict";
+
+  var $ = function (selector, root) {
+    return (root || document).querySelector(selector);
+  };
+  var $$ = function (selector, root) {
+    return Array.prototype.slice.call((root || document).querySelectorAll(selector));
+  };
+
+  /* ---------- Mobiel menu ---------- */
+
+  var menuToggle = $("#menu-toggle");
+  var mobileNav = $("#mobile-nav");
+  var menuIconUse = menuToggle ? menuToggle.querySelector("use") : null;
+
+  function setMenu(open) {
+    if (!menuToggle || !mobileNav) return;
+    mobileNav.hidden = !open;
+    menuToggle.setAttribute("aria-expanded", open ? "true" : "false");
+    menuToggle.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+    if (menuIconUse) {
+      menuIconUse.setAttribute("href", open ? "#i-close" : "#i-menu");
+    }
+  }
+
+  if (menuToggle && mobileNav) {
+    menuToggle.addEventListener("click", function () {
+      setMenu(mobileNav.hidden);
+    });
+
+    $$("a", mobileNav).forEach(function (link) {
+      link.addEventListener("click", function () {
+        setMenu(false);
+      });
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && !mobileNav.hidden) {
+        setMenu(false);
+        menuToggle.focus();
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 980) setMenu(false);
+    });
+  }
+
+  /* ---------- Header bij scrollen ---------- */
+
+  var header = $("#site-header");
+  function onScroll() {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 8);
+  }
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  /* ---------- Actieve sectie in navigatie ---------- */
+
+  var navLinks = $$('.nav a[href^="#"], .mobile-nav a[href^="#"]');
+  var sectionIds = ["diensten", "sectoren", "werken-bij", "contact"];
+  var sections = sectionIds
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+
+  function markActive(id) {
+    navLinks.forEach(function (link) {
+      if (link.getAttribute("href") === "#" + id) {
+        link.setAttribute("aria-current", "location");
+      } else {
+        link.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if ("IntersectionObserver" in window && sections.length) {
+    var visible = {};
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          visible[entry.target.id] = entry.isIntersecting;
+        });
+        var current = null;
+        sectionIds.forEach(function (id) {
+          if (visible[id] && !current) current = id;
+        });
+        if (current) {
+          markActive(current);
+        } else {
+          navLinks.forEach(function (link) {
+            link.removeAttribute("aria-current");
+          });
+        }
+      },
+      { rootMargin: "-35% 0px -55% 0px", threshold: 0 }
+    );
+    sections.forEach(function (section) { observer.observe(section); });
+  }
+
+  /* ---------- Offerteformulier ---------- */
+
+  var form = $("#quote-form");
+  var summary = $("#quote-summary");
+  var summaryList = $("#summary-list");
+  var whatsappLink = $("#send-whatsapp");
+  var emailLink = $("#send-email");
+  var copyButton = $("#copy-request");
+  var copyStatus = $("#copy-status");
+  var editButton = $("#edit-request");
+  var nextButton = $("#quote-next");
+  var backButton = $("#quote-back");
+  var submitButton = $("#quote-submit");
+  var steps = $$(".form-step", form || document);
+  var indicators = $$(".stepper__step");
+  var currentStep = 1;
+  var currentMessage = "";
+  var statusTimer = null;
+
+  var labels = {
+    sector: "Sector",
+    dienst: "Dienst",
+    frequentie: "Frequentie",
+    start: "Gewenste start",
+    naam: "Naam",
+    bedrijf: "Bedrijfsnaam",
+    telefoon: "Telefoon",
+    email: "E-mail",
+    plaats: "Plaats",
+    postcode: "Postcode",
+    toelichting: "Toelichting"
+  };
+
+  function value(name) {
+    if (!form) return "";
+    var el = form.querySelector('[name="' + name + '"]:checked') || form.querySelector('[name="' + name + '"]');
+    return el ? el.value.trim() : "";
+  }
+
+  function fieldValue(name) {
+    if (!form) return "";
+    var el = form.querySelector('[name="' + name + '"]');
+    return el ? el.value.trim() : "";
+  }
+
+  function setError(step, message) {
+    if (!form) return;
+    var el = form.querySelector('[data-error="' + step + '"]');
+    if (el) el.textContent = message || "";
+  }
+
+  function clearErrors() {
+    if (!form) return;
+    $$("[data-error]", form).forEach(function (el) { el.textContent = ""; });
+  }
+
+  function showStep(step) {
+    currentStep = step;
+    steps.forEach(function (el) {
+      el.hidden = Number(el.getAttribute("data-step")) !== step;
+    });
+    indicators.forEach(function (el) {
+      var n = Number(el.getAttribute("data-step-indicator"));
+      el.classList.toggle("is-active", n === step);
+      el.classList.toggle("is-done", n < step);
+      if (n === step) {
+        el.setAttribute("aria-current", "step");
+      } else {
+        el.removeAttribute("aria-current");
+      }
+    });
+    if (backButton) backButton.hidden = step === 1;
+    if (nextButton) nextButton.hidden = step === 4;
+    if (submitButton) submitButton.hidden = step !== 4;
+    clearErrors();
+    var panel = steps[step - 1];
+    if (panel) {
+      window.setTimeout(function () { panel.focus({ preventScroll: true }); }, 30);
+    }
+    scrollToStepper();
+  }
+
+  function scrollToStepper() {
+    var stepper = $("#quote-stepper");
+    if (!stepper) return;
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.setTimeout(function () {
+      stepper.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    }, 40);
+  }
+
+  function selectedRadio(name) {
+    return form ? form.querySelector('[name="' + name + '"]:checked') : null;
+  }
+
+  function focusRadio(name) {
+    var radio = form ? form.querySelector('[name="' + name + '"]') : null;
+    if (radio) radio.focus({ preventScroll: false });
+  }
+
+  function validEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  }
+
+  function validateStep(step) {
+    if (!form) return true;
+
+    if (step === 1 && !selectedRadio("sector")) {
+      setError(1, "Kies een sector om verder te gaan.");
+      focusRadio("sector");
+      return false;
+    }
+
+    if (step === 2 && !selectedRadio("dienst")) {
+      setError(2, "Kies een dienst om verder te gaan.");
+      focusRadio("dienst");
+      return false;
+    }
+
+    if (step === 3) {
+      if (!selectedRadio("frequentie")) {
+        setError(3, "Geef aan hoe vaak de schoonmaak moet plaatsvinden.");
+        focusRadio("frequentie");
+        return false;
+      }
+      if (!selectedRadio("start")) {
+        setError(3, "Geef aan wanneer u wilt starten.");
+        focusRadio("start");
+        return false;
+      }
+    }
+
+    if (step === 4) {
+      var naam = fieldValue("naam");
+      var plaats = fieldValue("plaats");
+      var telefoon = fieldValue("telefoon");
+      var email = fieldValue("email");
+
+      if (!naam) {
+        setError(4, "Vul uw naam in.");
+        var naamField = $("#q-naam");
+        if (naamField) naamField.focus();
+        return false;
+      }
+      if (!plaats) {
+        setError(4, "Vul uw plaats in.");
+        var plaatsField = $("#q-plaats");
+        if (plaatsField) plaatsField.focus();
+        return false;
+      }
+      if (!telefoon && !email) {
+        setError(4, "Vul een telefoonnummer of e-mailadres in, zodat we contact kunnen opnemen.");
+        var telField = $("#q-telefoon");
+        if (telField) telField.focus();
+        return false;
+      }
+      if (email && !validEmail(email)) {
+        setError(4, "Controleer het e-mailadres. Dit lijkt geen geldig adres.");
+        var emailField = $("#q-email");
+        if (emailField) emailField.focus();
+        return false;
+      }
+      if (telefoon && telefoon.replace(/\D/g, "").length < 6) {
+        setError(4, "Controleer het telefoonnummer.");
+        var telField2 = $("#q-telefoon");
+        if (telField2) telField2.focus();
+        return false;
+      }
+    }
+
+    setError(step, "");
+    return true;
+  }
+
+  function summaryRows() {
+    var rows = [
+      ["sector", value("sector")],
+      ["dienst", value("dienst")],
+      ["frequentie", value("frequentie")],
+      ["start", value("start")],
+      ["naam", fieldValue("naam")],
+      ["bedrijf", fieldValue("bedrijf")],
+      ["telefoon", fieldValue("telefoon")],
+      ["email", fieldValue("email")],
+      ["plaats", fieldValue("plaats")],
+      ["postcode", fieldValue("postcode")],
+      ["toelichting", fieldValue("toelichting")]
+    ];
+    return rows.filter(function (row) { return row[1]; });
+  }
+
+  function buildMessage(rows) {
+    var lines = ["Offerteaanvraag via hmschoonmaakdiensten.nl", ""];
+    rows.forEach(function (row) {
+      lines.push(labels[row[0]] + ": " + row[1]);
+    });
+    lines.push("");
+    lines.push("Graag nemen jullie contact met mij op.");
+    return lines.join("\n");
+  }
+
+  function renderSummary() {
+    if (!summaryList) return;
+    summaryList.textContent = "";
+    var rows = summaryRows();
+    rows.forEach(function (row) {
+      var dt = document.createElement("dt");
+      var dd = document.createElement("dd");
+      dt.textContent = labels[row[0]];
+      dd.textContent = row[1];
+      summaryList.appendChild(dt);
+      summaryList.appendChild(dd);
+    });
+    currentMessage = buildMessage(rows);
+    if (whatsappLink) {
+      whatsappLink.href =
+        "https://wa.me/31639140047?text=" + encodeURIComponent(currentMessage);
+    }
+    if (emailLink) {
+      emailLink.href =
+        "mailto:info@hmschoonmaakdiensten.com?subject=" +
+        encodeURIComponent("Offerteaanvraag via hmschoonmaakdiensten.nl") +
+        "&body=" +
+        encodeURIComponent(currentMessage);
+    }
+  }
+
+  function showSummary() {
+    if (!form || !summary) return;
+    renderSummary();
+    form.hidden = true;
+    summary.hidden = false;
+    if (copyStatus) copyStatus.textContent = "";
+    window.setTimeout(function () {
+      summary.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 30);
+  }
+
+  function backToForm() {
+    if (!form || !summary) return;
+    summary.hidden = true;
+    form.hidden = false;
+    showStep(4);
+    var naamField = $("#q-naam");
+    if (naamField) naamField.focus({ preventScroll: true });
+  }
+
+  /* ---------- Dynamische offerteachtergrond ---------- */
+
+  var quoteBg = $(".quote__bg");
+  var quoteBgTimer = null;
+
+  var sectorImages = {
+    Kantoor: "assets/img/bg-placeholder.svg",
+    Retail: "assets/img/bg-placeholder.svg",
+    Zorg: "assets/img/bg-placeholder.svg",
+    Onderwijs: "assets/img/bg-placeholder.svg",
+    Horeca: "assets/img/bg-placeholder.svg",
+    Industrie: "assets/img/bg-placeholder.svg",
+    Vastgoed: "assets/img/bg-placeholder.svg",
+    Anders: "assets/img/bg-placeholder.svg"
+  };
+
+  var serviceImages = {
+    Schoonmaakonderhoud: "assets/img/bg-placeholder.svg",
+    Glasbewassing: "assets/img/bg-placeholder.svg",
+    Vloeronderhoud: "assets/img/bg-placeholder.svg",
+    "Sanitair en hygiëne": "assets/img/bg-placeholder.svg",
+    "Eenmalige schoonmaak": "assets/img/bg-placeholder.svg",
+    Buitenschoonmaak: "assets/img/bg-placeholder.svg",
+    "Meerdere diensten": "assets/img/bg-placeholder.svg",
+    "Weet ik nog niet": "assets/img/bg-placeholder.svg"
+  };
+
+  function setQuoteBg(src) {
+    if (!quoteBg || !src) return;
+    if (quoteBg.getAttribute("src") === src) return;
+    quoteBg.style.opacity = "0";
+    window.clearTimeout(quoteBgTimer);
+    quoteBgTimer = window.setTimeout(function () {
+      quoteBg.onload = function () {
+        quoteBg.style.opacity = "1";
+        quoteBg.onload = null;
+      };
+      quoteBg.src = src;
+    }, 160);
+  }
+
+  if (form) {
+    if (nextButton) {
+      nextButton.addEventListener("click", function () {
+        if (!validateStep(currentStep)) return;
+        if (currentStep < 4) showStep(currentStep + 1);
+      });
+    }
+
+    if (backButton) {
+      backButton.addEventListener("click", function () {
+        if (currentStep > 1) showStep(currentStep - 1);
+      });
+    }
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      if (!validateStep(4)) return;
+      showSummary();
+    });
+
+    form.addEventListener("change", function (event) {
+      var target = event.target;
+      if (!target || !target.name) return;
+      var step = Number(target.closest(".form-step") ? target.closest(".form-step").getAttribute("data-step") : 0);
+      if (step) setError(step, "");
+      if (target.name === "sector" && sectorImages[target.value]) {
+        setQuoteBg(sectorImages[target.value]);
+      }
+      if (target.name === "dienst" && serviceImages[target.value]) {
+        setQuoteBg(serviceImages[target.value]);
+      }
+    });
+  }
+
+  if (copyButton) {
+    copyButton.addEventListener("click", function () {
+      if (!currentMessage) return;
+      var done = function (ok) {
+        if (!copyStatus) return;
+        copyStatus.textContent = ok
+          ? "De aanvraag staat op uw klembord. Plak deze in WhatsApp of een e-mail."
+          : "Kopiëren lukt niet automatisch. Selecteer de tekst hierboven en kopieer handmatig.";
+        window.clearTimeout(statusTimer);
+        statusTimer = window.setTimeout(function () {
+          if (copyStatus) copyStatus.textContent = "";
+        }, 7000);
+      };
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(currentMessage).then(
+          function () { done(true); },
+          function () { done(false); }
+        );
+      } else {
+        done(false);
+      }
+    });
+  }
+
+  if (editButton) {
+    editButton.addEventListener("click", backToForm);
+  }
+
+  // Een branchekaart kiest de bijbehorende sector alvast voor.
+  $$(".branch-card[data-sector]").forEach(function (card) {
+    card.addEventListener("click", function () {
+      if (!form) return;
+      var wanted = card.getAttribute("data-sector");
+      var radios = $$('input[name="sector"]', form);
+      radios.forEach(function (radio) {
+        if (radio.value === wanted) radio.checked = true;
+      });
+      setQuoteBg(sectorImages[wanted]);
+    });
+  });
+
+  /* ---------- Hero-offerteformulier ---------- */
+
+  var heroForm = $("#hero-form");
+  if (heroForm) {
+    heroForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+      var name = $("#hq-naam").value.trim();
+      var contact = $("#hq-contact").value.trim();
+      var message = $("#hq-bericht").value.trim();
+      var error = $("#hero-error");
+      var status = $("#hero-status");
+
+      if (!name || !contact) {
+        if (error) error.textContent = "Vul uw naam en een telefoonnummer of e-mailadres in.";
+        return;
+      }
+      if (error) error.textContent = "";
+
+      var text =
+        "Offerteaanvraag via hmschoonmaakdiensten.nl\n\nNaam: " +
+        name +
+        "\nContact: " +
+        contact +
+        (message ? "\nToelichting: " + message : "");
+      if (status) {
+        status.textContent =
+          "Uw aanvraag is klaar. WhatsApp opent in een nieuw venster; u kunt ook bellen of mailen.";
+      }
+      window.open(
+        "https://wa.me/31639140047?text=" + encodeURIComponent(text),
+        "_blank",
+        "noopener"
+      );
+    });
+  }
+
+  /* ---------- Brancheslider ---------- */
+
+  var branchGrid = $(".branch-grid");
+  var branchCards = branchGrid ? $$(".branch-card", branchGrid) : [];
+  var branchDots = $$(".branch-dot");
+  var branchPrev = $("[data-branch-prev]");
+  var branchNext = $("[data-branch-next]");
+  var branchIndex = 0;
+  var branchScrollTimer = null;
+  var branchReduced =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function setBranchActive(index) {
+    branchIndex = index;
+    branchDots.forEach(function (dot, i) {
+      var active = i === index;
+      dot.classList.toggle("is-active", active);
+      if (active) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  }
+
+  function scrollToBranch(index) {
+    if (!branchGrid || !branchCards.length) return;
+    var target =
+      ((index % branchCards.length) + branchCards.length) % branchCards.length;
+    var card = branchCards[target];
+    var left = card.offsetLeft - branchCards[0].offsetLeft;
+    branchGrid.scrollTo({
+      left: left,
+      behavior: branchReduced ? "auto" : "smooth"
+    });
+    setBranchActive(target);
+  }
+
+  if (branchGrid && branchCards.length) {
+    branchDots.forEach(function (dot, i) {
+      dot.addEventListener("click", function () {
+        scrollToBranch(i);
+      });
+    });
+
+    if (branchPrev) {
+      branchPrev.addEventListener("click", function () {
+        scrollToBranch(branchIndex - 1);
+      });
+    }
+
+    if (branchNext) {
+      branchNext.addEventListener("click", function () {
+        scrollToBranch(branchIndex + 1);
+      });
+    }
+
+    branchGrid.addEventListener(
+      "scroll",
+      function () {
+        window.clearTimeout(branchScrollTimer);
+        branchScrollTimer = window.setTimeout(function () {
+          var step =
+            branchCards.length > 1
+              ? branchCards[1].offsetLeft - branchCards[0].offsetLeft
+              : 1;
+          var index = Math.round(branchGrid.scrollLeft / step);
+          setBranchActive(
+            Math.max(0, Math.min(branchCards.length - 1, index))
+          );
+        }, 80);
+      },
+      { passive: true }
+    );
+  }
+
+  /* ---------- Branche-scrollbar (puur visueel) ---------- */
+
+  var branchScrollbar = $(".branch-scrollbar");
+  var branchThumb = $(".branch-scrollbar__thumb");
+
+  function updateBranchScrollbar() {
+    if (!branchGrid || !branchScrollbar || !branchThumb) return;
+
+    var trackWidth = branchScrollbar.clientWidth;
+    var maxScroll = branchGrid.scrollWidth - branchGrid.clientWidth;
+
+    if (!trackWidth || maxScroll <= 1) {
+      branchThumb.style.width = "0px";
+      branchThumb.style.transform = "translateX(0)";
+      return;
+    }
+
+    var thumbWidth = Math.max(
+      (branchGrid.clientWidth / branchGrid.scrollWidth) * trackWidth,
+      28
+    );
+    var maxLeft = Math.max(trackWidth - thumbWidth, 0);
+    var left = (branchGrid.scrollLeft / maxScroll) * maxLeft;
+
+    branchThumb.style.width = thumbWidth + "px";
+    branchThumb.style.transform = "translateX(" + left + "px)";
+  }
+
+  if (branchGrid && branchScrollbar) {
+    branchGrid.addEventListener("scroll", updateBranchScrollbar, { passive: true });
+    window.addEventListener("resize", updateBranchScrollbar);
+    window.addEventListener("load", updateBranchScrollbar);
+    updateBranchScrollbar();
+  }
+
+  /* ---------- Chatfeed ---------- */
+
+  var chatTrack = $(".chat-track");
+  var chatMessages = chatTrack ? $$(".chat-card__message", chatTrack) : [];
+  var chatGroupSize = Math.floor(chatMessages.length / 2);
+  var chatIndex = 0;
+  var chatTimer = null;
+  var chatReduced =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function chatStep() {
+    if (!chatTrack || chatMessages.length < 2) return;
+
+    chatIndex += 1;
+    if (chatIndex >= chatMessages.length) chatIndex = 1;
+
+    var target = chatMessages[chatIndex];
+    var offset = target.offsetTop - chatMessages[0].offsetTop;
+    chatTrack.style.transition =
+      "transform 650ms cubic-bezier(0.22, 1, 0.36, 1)";
+    chatTrack.style.transform = "translateY(-" + offset + "px)";
+
+    if (chatIndex >= chatGroupSize) {
+      window.setTimeout(function () {
+        chatTrack.style.transition = "none";
+        chatTrack.style.transform = "translateY(0)";
+        chatIndex = 0;
+        window.requestAnimationFrame(function () {
+          window.requestAnimationFrame(function () {
+            chatTrack.style.transition = "";
+          });
+        });
+      }, 700);
+    }
+  }
+
+  function startChat() {
+    if (chatReduced || !chatTrack || chatMessages.length < 2 || chatTimer) return;
+    chatTimer = window.setInterval(chatStep, 3600);
+  }
+
+  function stopChat() {
+    if (!chatTimer) return;
+    window.clearInterval(chatTimer);
+    chatTimer = null;
+  }
+
+  if (chatTrack) {
+    startChat();
+    var chatCard = chatTrack.closest(".chat-card");
+    if (chatCard) {
+      chatCard.addEventListener("mouseenter", stopChat);
+      chatCard.addEventListener("mouseleave", startChat);
+      chatCard.addEventListener("focusin", stopChat);
+      chatCard.addEventListener("focusout", startChat);
+    }
+  }
+
+  /* ---------- Diensten-carousel ---------- */
+
+  var serviceTrack = $(".diensten-carousel");
+  if (serviceTrack) {
+    var servicePrev = $("[data-carousel-prev]");
+    var serviceNext = $("[data-carousel-next]");
+
+    function serviceStep() {
+      var card = serviceTrack.querySelector(".service-card");
+      if (!card) return 300;
+      var styles = window.getComputedStyle(serviceTrack);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 20;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function serviceUpdate() {
+      if (!servicePrev || !serviceNext) return;
+      servicePrev.disabled = serviceTrack.scrollLeft <= 2;
+      serviceNext.disabled =
+        serviceTrack.scrollLeft + serviceTrack.clientWidth >=
+        serviceTrack.scrollWidth - 2;
+    }
+
+    if (servicePrev) {
+      servicePrev.addEventListener("click", function () {
+        serviceTrack.scrollBy({ left: -serviceStep(), behavior: "smooth" });
+      });
+    }
+
+    if (serviceNext) {
+      serviceNext.addEventListener("click", function () {
+        serviceTrack.scrollBy({ left: serviceStep(), behavior: "smooth" });
+      });
+    }
+
+    serviceTrack.addEventListener(
+      "scroll",
+      function () {
+        window.requestAnimationFrame(serviceUpdate);
+      },
+      { passive: true }
+    );
+
+    window.addEventListener("resize", serviceUpdate);
+    serviceUpdate();
+  }
+
+  /* ---------- Cijfers tellen op ---------- */
+
+  var counters = $$("[data-count]");
+  var reduceMotion =
+    window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  if (counters.length && !reduceMotion && "IntersectionObserver" in window) {
+    var counterObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          counterObserver.unobserve(entry.target);
+
+          var el = entry.target;
+          var target = Number(el.getAttribute("data-count"));
+          if (!isFinite(target)) return;
+
+          el.textContent = "0";
+          var duration = 900;
+          var start = null;
+
+          function frame(now) {
+            if (start === null) start = now;
+            var progress = Math.min((now - start) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = String(Math.round(target * eased));
+            if (progress < 1) {
+              window.requestAnimationFrame(frame);
+            } else {
+              el.textContent = String(target);
+            }
+          }
+
+          window.requestAnimationFrame(frame);
+        });
+      },
+      { threshold: 0.6 }
+    );
+
+    counters.forEach(function (counter) {
+      counterObserver.observe(counter);
+    });
+  }
+
+  /* ---------- Privacyvenster ---------- */
+
+  var privacyDialog = $("#privacy-dialog");
+
+  function openPrivacy() {
+    if (!privacyDialog) return;
+    if (typeof privacyDialog.showModal === "function") {
+      privacyDialog.showModal();
+    } else {
+      privacyDialog.setAttribute("open", "");
+    }
+    var close = privacyDialog.querySelector("[data-close-dialog]");
+    if (close) close.focus();
+  }
+
+  function closePrivacy() {
+    if (!privacyDialog) return;
+    if (typeof privacyDialog.close === "function") {
+      privacyDialog.close();
+    } else {
+      privacyDialog.removeAttribute("open");
+    }
+  }
+
+  $$("[data-open-privacy]").forEach(function (button) {
+    button.addEventListener("click", function (event) {
+      event.preventDefault();
+      openPrivacy();
+    });
+  });
+
+  if (privacyDialog) {
+    var closeButton = privacyDialog.querySelector("[data-close-dialog]");
+    if (closeButton) closeButton.addEventListener("click", closePrivacy);
+    privacyDialog.addEventListener("click", function (event) {
+      if (event.target === privacyDialog) closePrivacy();
+    });
+  }
+
+  /* ---------- Jaartal ---------- */
+
+  var year = $("#year");
+  if (year) year.textContent = String(new Date().getFullYear());
+})();
+
+</script>

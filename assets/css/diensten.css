@@ -436,6 +436,7 @@
 }
 
 .service-card {
+  position: relative;
   display: flex;
   flex: 0 0 clamp(250px, 22vw, 300px);
   flex-direction: column;
@@ -505,6 +506,19 @@
 .service-card__link .icon {
   width: 15px;
   height: 15px;
+}
+
+.service-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.service-card__link:focus-visible::after {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
 }
 
 /* ---------- Klantlogo's ---------- */

@@ -106,6 +106,7 @@
   var summary = $("#quote-summary");
   var summaryList = $("#summary-list");
   var whatsappLink = $("#send-whatsapp");
+  var emailLink = $("#send-email");
   var copyButton = $("#copy-request");
   var copyStatus = $("#copy-status");
   var editButton = $("#edit-request");
@@ -316,6 +317,13 @@
     if (whatsappLink) {
       whatsappLink.href =
         "https://wa.me/31639140047?text=" + encodeURIComponent(currentMessage);
+    }
+    if (emailLink) {
+      emailLink.href =
+        "mailto:info@hmschoonmaakdiensten.com?subject=" +
+        encodeURIComponent("Offerteaanvraag via hmschoonmaakdiensten.nl") +
+        "&body=" +
+        encodeURIComponent(currentMessage);
     }
   }
 
