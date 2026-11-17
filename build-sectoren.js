@@ -345,7 +345,7 @@ ${JSON.stringify(structuredData, null, 2)}
         <nav class="breadcrumb breadcrumb--light" aria-label="Kruimelpad">
           <a href="index.html">Home</a>
           <span class="breadcrumb__sep" aria-hidden="true">/</span>
-          <a href="index.html#sectoren">Sectoren</a>
+          <a href="sectoren.html">Sectoren</a>
           <span class="breadcrumb__sep" aria-hidden="true">/</span>
           <span aria-current="page">${sector.name}</span>
         </nav>

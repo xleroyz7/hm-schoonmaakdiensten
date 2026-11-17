@@ -736,7 +736,7 @@ const kantoorschoonmaakBody = `
     ${hero({
       crumbs: [
         { label: 'Home', href: 'index.html' },
-        { label: 'Diensten', href: 'index.html#diensten' },
+        { label: 'Diensten', href: 'diensten.html' },
         { label: 'Kantoorschoonmaak Roermond' }
       ],
       kicker: 'Kantoorschoonmaak Roermond',
@@ -812,7 +812,7 @@ const glasbewassingRoermondBody = `
     ${hero({
       crumbs: [
         { label: 'Home', href: 'index.html' },
-        { label: 'Diensten', href: 'index.html#diensten' },
+        { label: 'Diensten', href: 'diensten.html' },
         { label: 'Glasbewassing Roermond' }
       ],
       kicker: 'Glasbewassing Roermond',
@@ -883,7 +883,158 @@ const glasbewassingRoermondBody = `
     })}
 `;
 
+const serviceOverviewText = {
+  schoonmaakonderhoud: 'Structureel onderhoud voor werkplekken, sanitair en gemeenschappelijke ruimtes.',
+  glasbewassing: 'Ramen, glaswanden en kozijnen, binnen en buiten, veilig en streeploos.',
+  vloeronderhoud: 'Dagelijks onderhoud en periodieke machinale reiniging per vloertype.',
+  'sanitair-hygiene': 'Hygiënische sanitaire ruimtes en contactpunten, met vaste routines.',
+  'eenmalige-schoonmaak': 'Een grondige eenmalige beurt of oplevering, afgestemd op uw planning.',
+  buitenschoonmaak: 'Een verzorgde buitenruimte, van entree en terras tot gevel en bestrating.'
+};
+
+const sectorOverviewText = {
+  'kantoren-bedrijfspanden': 'Een representatieve werkplek met vaste routines en flexibele tijden.',
+  'retail-winkels': 'Een verzorgde winkel die klaar is voor iedere klant.',
+  'zorg-welzijn': 'Hygiënische routines met aandacht voor bewoners, cliënten en medewerkers.',
+  'onderwijs-kinderopvang': 'Een schone, veilige omgeving waar kinderen en teams zich thuis voelen.',
+  'hotels-horeca': 'Een verzorgde gastbeleving, van entree en kamers tot horecaruimtes.',
+  'industrie-logistiek': 'Schoonmaak die past bij ploegendiensten, logistiek en bedrijfsprocessen.'
+};
+
+function overviewCard({ href, image, imageWidth, imageHeight, title, text, linkLabel }) {
+  return `<article class="overview-card">
+            <a class="overview-card__media" href="${href}" tabindex="-1" aria-hidden="true">
+              <img src="assets/img/${image}" width="${imageWidth}" height="${imageHeight}" alt="" loading="lazy">
+            </a>
+            <div class="overview-card__body">
+              <h3><a href="${href}">${title}</a></h3>
+              <p>${text}</p>
+              <a class="overview-card__link" href="${href}">${linkLabel} <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+            </div>
+          </article>`;
+}
+
+const dienstenOverviewBody = `
+    ${hero({
+      crumbs: [
+        { label: 'Home', href: 'index.html' },
+        { label: 'Diensten' }
+      ],
+      kicker: 'Diensten',
+      title: 'Schoonmaakdiensten voor een werkplek die klopt.',
+      intro: 'Van dagelijks schoonmaakonderhoud tot glasbewassing en eenmalige projecten. Bekijk welke dienst past bij uw locatie, gebruik en planning.',
+      image: 'hm-team-onderhoud.jpg',
+      imageWidth: 960,
+      imageHeight: 600,
+      imageAlt: 'Twee medewerkers van HM Schoonmaakdiensten in bedrijfskleding in een representatief kantoor',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Offerte aanvragen'
+    })}
+
+    <section class="overview-section" aria-labelledby="diensten-overzicht">
+      <div class="shell">
+        <div class="overview-head">
+          <p class="kicker">Onze diensten</p>
+          <h2 id="diensten-overzicht">Zes diensten, één aanspreekpunt.</h2>
+          <p>Elke locatie vraagt om een eigen aanpak. Kies hieronder een dienst voor uitleg, de werkwijze en een offerte op maat.</p>
+        </div>
+        <div class="overview-grid">
+          ${services.map((service) => overviewCard({
+            href: `${service.slug}.html`,
+            image: service.image,
+            imageWidth: service.imageWidth,
+            imageHeight: service.imageHeight,
+            title: service.name,
+            text: serviceOverviewText[service.slug] || service.metaDescription,
+            linkLabel: 'Bekijk dienst'
+          })).join('\n          ')}
+        </div>
+      </div>
+    </section>
+
+    ${infoCtaSection({
+      title: 'Niet zeker welke dienst u nodig heeft?',
+      text: 'Vertel ons over uw locatie en wat er speelt. We denken mee over taken, frequentie en een passende planning.',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Vraag een offerte aan',
+      secondaryHref: 'sectoren.html',
+      secondaryLabel: 'Bekijk sectoren'
+    })}
+`;
+
+const sectorenOverviewBody = `
+    ${hero({
+      crumbs: [
+        { label: 'Home', href: 'index.html' },
+        { label: 'Sectoren' }
+      ],
+      kicker: 'Sectoren',
+      title: 'Schoonmaak die past bij uw organisatie.',
+      intro: 'Kantoren, winkels, zorg, onderwijs, horeca en industrie hebben elk hun eigen ritme. Bekijk hoe HM schoonmaakt voor uw sector.',
+      image: 'hm-buitenschoonmaak.jpg',
+      imageWidth: 960,
+      imageHeight: 720,
+      imageAlt: 'Medewerker van HM Schoonmaakdiensten veegt bladeren op een bestrate buitenruimte bij een bedrijfspand',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Offerte aanvragen'
+    })}
+
+    <section class="overview-section overview-section--tinted" aria-labelledby="sectoren-overzicht">
+      <div class="shell">
+        <div class="overview-head">
+          <p class="kicker">Sectoren</p>
+          <h2 id="sectoren-overzicht">Schoonmaak met oog voor uw dagelijkse praktijk.</h2>
+          <p>Elke organisatie heeft eigen openingstijden, piekmomenten en aandachtspunten. Kies uw sector voor een aanpak die daarbij past.</p>
+        </div>
+        <div class="overview-grid">
+          ${sectors.map((sector) => overviewCard({
+            href: `${sector.slug}.html`,
+            image: sector.image,
+            imageWidth: sector.imageWidth,
+            imageHeight: sector.imageHeight,
+            title: sector.name,
+            text: sectorOverviewText[sector.slug] || sector.metaDescription,
+            linkLabel: 'Bekijk sector'
+          })).join('\n          ')}
+        </div>
+      </div>
+    </section>
+
+    ${infoCtaSection({
+      title: 'Uw sector staat er niet bij?',
+      text: 'Ook voor andere organisaties kijken we graag naar een passende schoonmaakaanpak. Vertel ons over uw locatie en planning.',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Neem contact op',
+      secondaryHref: 'diensten.html',
+      secondaryLabel: 'Bekijk diensten'
+    })}
+`;
+
 const pages = [
+  {
+    slug: 'diensten',
+    title: 'Schoonmaakdiensten',
+    description: 'Bekijk de schoonmaakdiensten van HM Schoonmaakdiensten: schoonmaakonderhoud, glasbewassing, vloeronderhoud, sanitair, eenmalige schoonmaak en buitenschoonmaak.',
+    image: 'hm-team-onderhoud.jpg',
+    imageWidth: 960,
+    imageHeight: 600,
+    imageAlt: 'Twee medewerkers van HM Schoonmaakdiensten in bedrijfskleding in een representatief kantoor',
+    body: dienstenOverviewBody,
+    structuredType: 'CollectionPage',
+    structuredName: 'Diensten'
+  },
+  {
+    slug: 'sectoren',
+    title: 'Schoonmaak per sector',
+    description: 'Schoonmaak per sector: kantoren, retail, zorg, onderwijs, hotels en horeca, industrie en logistiek. Bekijk de aanpak van HM Schoonmaakdiensten.',
+    image: 'hm-buitenschoonmaak.jpg',
+    imageWidth: 960,
+    imageHeight: 720,
+    imageAlt: 'Medewerker van HM Schoonmaakdiensten veegt bladeren op een bestrate buitenruimte bij een bedrijfspand',
+    body: sectorenOverviewBody,
+    structuredType: 'CollectionPage',
+    structuredName: 'Sectoren'
+  },
   {
     slug: 'over-ons',
     title: 'Over ons',

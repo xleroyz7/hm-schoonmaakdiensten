@@ -7,6 +7,8 @@ Een moderne, statische landingspagina voor HM Schoonmaakdiensten in de regio Roe
 | Bestand | Functie |
 | --- | --- |
 | `index.html` | De landingspagina |
+| `diensten.html` | Overzicht van alle schoonmaakdiensten |
+| `sectoren.html` | Overzicht van alle sectoren |
 | `schoonmaakonderhoud.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
 | `glasbewassing.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
 | `vloeronderhoud.html` | Dienstpagina met uitleg, FAQ en offerteformulier |
@@ -73,7 +75,7 @@ Er is geen database, CMS of servercode nodig. De offerteformulieren op de dienst
 
 ## Dienstenpagina's
 
-Elke dienstenkaart op de homepage opent een eigen pagina:
+De diensten hebben een eigen overzichtspagina (`diensten.html`) en elke dienst heeft daarnaast een detailpagina:
 
 - `schoonmaakonderhoud.html`
 - `glasbewassing.html`
@@ -90,7 +92,7 @@ Na een wijziging in de dienstteksten of het formulier: `node build-diensten.js` 
 
 ## Sectorpagina's
 
-De zes sectoren uit "Waar ben je naar op zoek?" hebben een eigen pagina:
+De zes sectoren hebben een eigen overzichtspagina (`sectoren.html`) en een detailpagina:
 
 - `kantoren-bedrijfspanden.html`
 - `retail-winkels.html`
@@ -124,7 +126,7 @@ De technische basis staat op orde:
 - Canonieke URL's, Open Graph- en Twitter-kaarten met echte foto's.
 - `LocalBusiness`-schema op de homepage met diensten, werkgebied en `@id`; `Service`- en `BreadcrumbList`-schema op dienst- en sectorpagina's.
 - Semantische koppen, beschrijvende linkteksten en alt-teksten bij inhoudsafbeeldingen.
-- `sitemap.xml` met alle 21 pagina's en `robots.txt` met sitemapverwijzing.
+- `sitemap.xml` met alle 23 pagina's en `robots.txt` met sitemapverwijzing.
 - Mobielvriendelijke, snelle statische pagina's; de artefactpreview staat op `noindex`.
 
 Voor lokale vindbaarheid zijn de stappen buiten de code minstens zo belangrijk:
