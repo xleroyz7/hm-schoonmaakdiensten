@@ -50,7 +50,7 @@ Er is geen database, CMS of servercode nodig. De offerteformulieren op de dienst
 6. **Maak kennis met ons werk:** drie kaarten met uitleg en een CTA.
 7. **Werkgebied:** kaart van Zuid-Oost Nederland met de provincies Limburg en Noord-Brabant en de steden Roermond, Venray, Maastricht en Eindhoven.
 8. **Onze belofte:** drie 100%-afspraken (maatwerk, vaste gezichten, heldere afspraken) in de plek van de eerdere reviewtitel. De percentages tellen op zodra de sectie in beeld komt.
-9. **Werken bij HM:** donkere sectie met bovenaan een foto van een medewerkster en daaronder de open sollicitatie-CTA.
+9. **Werken bij HM:** donkere sectie met een open sollicitatie-CTA en het HM-logo.
 10. **Footer:** witte bovenlaag met een golfrand, paarse middenlaag met het grote HM-logo en een witte onderbalk. De golfachtergrond beweegt langzaam mee; bij `prefers-reduced-motion` staat de animatie uit.
 
 ## Dienstenpagina's
@@ -92,7 +92,7 @@ Kleuren staan bovenaan `assets/css/style.css` in `:root`:
 4. **Diensten en doelgroep.** De site richt zich op bedrijven, winkels en organisaties. Verzorgt HM ook particuliere schoonmaak of huishouding? Dan kan daar een extra dienst of pagina bij.
 5. **Google-reviews.** Lokale reviews zijn het sterkste bewijs voor een klein bedrijf. Zodra er echte reviews zijn, kunnen die een plek krijgen naast de intro of bij de diensten.
 6. **Social media.** Er staan nog geen links naar Facebook, Instagram of LinkedIn op de site.
-7. **Foto's.** Alle zes dienstenkaarten en de Werken bij HM-sectie hebben nu een eigen foto. Voor de hero en de werkkaarten glas/gevel en werken bij staan nog logo's of placeholders. Vervang die door echte foto's.
+7. **Foto's.** Alle zes dienstenkaarten en de werkkaart Werken bij HM hebben nu een eigen foto. Voor de hero en de werkkaart Glas- en gevelreiniging staan nog logo's of placeholders. Vervang die door echte foto's.
 8. **Algemene voorwaarden.** De footer verwijst nu naar "op aanvraag". Voeg een definitieve versie toe als die er is.
 9. **Privacytekst.** De tekst is praktisch en beschrijft wat de site doet, maar laat hem juridisch controleren voordat je live gaat.
 10. **HTTPS.** Het certificaat en Enforce HTTPS zijn ingericht. Controleer na een wijziging of `https://www.hmschoonmaakdiensten.nl/` zonder waarschuwing laadt.
@@ -120,4 +120,4 @@ Bronnen:
 - Menu, privacyvenster en offerteformulieren: `assets/js/site.js`.
 - Na een wijziging in `index.html`: `node build-artifact.js` opnieuw uitvoeren als je ook `artifact.html` wilt bijwerken.
 
-De site is bewust rustig gehouden: veel beeld, korte copy, paars als merkkleur en een moderne groteske typografie. De hero en twee werkkaarten bevatten nog tijdelijke placeholders. Geen standaardtemplate, geen verzonnen klantlogo's en geen nep-reviews.
+De site is bewust rustig gehouden: veel beeld, korte copy, paars als merkkleur en een moderne groteske typografie. De hero en de werkkaart Glas- en gevelreiniging bevatten nog tijdelijke placeholders. Geen standaardtemplate, geen verzonnen klantlogo's en geen nep-reviews.
