@@ -324,8 +324,8 @@ function page(sector) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/dienstpagina.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261118m">
+  <link rel="stylesheet" href="assets/css/dienstpagina.css?v=20261118m">
 
   <script type="application/ld+json">
 ${JSON.stringify(structuredData, null, 2)}
@@ -460,7 +460,7 @@ ${JSON.stringify(structuredData, null, 2)}
 
   ${footer()}
 
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js?v=20261118m" defer></script>
 </body>
 </html>
 `;

@@ -336,7 +336,7 @@ function header(options = {}) {
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg>
           ${phone}
         </a>
-        <a class="btn btn--primary btn--sm" href="${ctaHref}" data-open-quote aria-haspopup="dialog">${ctaLabel}</a>
+        <button class="btn btn--primary btn--sm" type="button" data-open-quote aria-haspopup="dialog">${ctaLabel}</button>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen" id="menu-toggle">
           <svg class="icon icon--lg" aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
@@ -353,7 +353,7 @@ function header(options = {}) {
           <a class="mobile-nav__link" href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav__actions">
-          <a class="btn btn--primary btn--full" href="${ctaHref}" data-open-quote aria-haspopup="dialog">${ctaLabel}</a>
+          <button class="btn btn--primary btn--full" type="button" data-open-quote aria-haspopup="dialog">${ctaLabel}</button>
         </div>
         <div class="mobile-nav__contact">
           <a href="${phoneHref}">${phone}</a>
@@ -753,8 +753,8 @@ function page(service) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/dienstpagina.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=20261118m">
+  <link rel="stylesheet" href="assets/css/dienstpagina.css?v=20261118m">
 
   <script type="application/ld+json">
 ${JSON.stringify(structuredData, null, 2)}
@@ -880,7 +880,7 @@ ${JSON.stringify(structuredData, null, 2)}
 
   ${footer()}
 
-  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/site.js?v=20261118m" defer></script>
 </body>
 </html>
 `;
