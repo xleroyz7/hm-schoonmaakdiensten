@@ -3676,7 +3676,7 @@ ol {
     <!-- Hero -->
     <section class="page-hero" id="top" aria-label="HM Schoonmaakdiensten">
       <img class="page-hero__bg" src="assets/img/hero-poster.jpg" width="1600" height="900" alt="" fetchpriority="high">
-      <video class="page-hero__video" autoplay muted loop playsinline preload="metadata" poster="assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">
+      <video class="page-hero__video" autoplay muted loop playsinline preload="auto" poster="assets/img/hero-poster.jpg" aria-hidden="true" tabindex="-1">
         <source src="assets/video/hero.mp4" type="video/mp4">
       </video>
       <svg class="page-hero__lines" viewBox="0 0 1920 1050" preserveAspectRatio="none" aria-hidden="true">
@@ -3700,7 +3700,7 @@ ol {
         <h1 id="intro-title">HM Schoonmaakdiensten in Roermond en Midden-Limburg</h1>
         <p>HM verzorgt schoonmaakonderhoud, glasbewassing en eenmalige projecten voor bedrijven in Roermond en Midden-Limburg. Kleinschalig, met korte lijnen en vaste gezichten.</p>
         <p>We werken voor kantoren, winkels, zorg, onderwijs, horeca en industrie. Elke locatie krijgt een aanpak die past bij het gebruik, de mensen en de planning.</p>
-        <a class="btn-pill" href="#contact"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Neem contact op</a>
+        <a class="btn-pill" href="contact.html#offerte"><span class="btn-pill__icon"><svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg></span> Neem contact op</a>
       </div>
     </section>
 
@@ -4984,14 +4984,6 @@ ol {
         reducedMotion.addListener(syncHeroVideo);
       }
     }
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        heroVideo.pause();
-      } else {
-        syncHeroVideo();
-      }
-    });
   }
 
   /* ---------- Privacyvenster ---------- */

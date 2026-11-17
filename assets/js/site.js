@@ -824,14 +824,6 @@
         reducedMotion.addListener(syncHeroVideo);
       }
     }
-
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) {
-        heroVideo.pause();
-      } else {
-        syncHeroVideo();
-      }
-    });
   }
 
   /* ---------- Privacyvenster ---------- */
