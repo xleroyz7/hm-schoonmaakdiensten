@@ -114,7 +114,7 @@ Naast de dienst- en sectorpagina's zijn er:
 - `glasbewassing-roermond.html` — glasbewassing in Roermond.
 - `over-ons.html`, `werkgebied.html`, `onze-belofte.html`, `werken-bij.html` en `contact.html`.
 
-Deze pagina's gebruiken dezelfde header, footer en huisstijl. De lokale pagina's linken naar de relevante diensten en sectoren en hebben een offerteformulier. De contactpagina bundelt telefoon, e-mail, WhatsApp, het adres en het offerteformulier.
+Deze pagina's gebruiken dezelfde header, footer en huisstijl. De lokale pagina's linken naar de relevante diensten en sectoren en hebben een offerteformulier. De contactpagina bundelt telefoon, e-mail, WhatsApp, het adres en het offerteformulier. De knop **Offerte aanvragen** in de header opent op elke pagina een compact offertevenster zonder paginanavigatie; de volledige formulieren op de dienst-, sector- en contactpagina's blijven daarnaast bestaan.
 
 Na een wijziging in deze pagina's: `node build-paginas.js` opnieuw uitvoeren.
 

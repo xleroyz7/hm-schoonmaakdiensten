@@ -356,7 +356,7 @@ const overOnsBody = `
     ${infoCtaSection({
       title: 'Kennismaken met HM?',
       text: 'Vertel ons kort over uw locatie en wensen. We denken graag vrijblijvend mee.',
-      primaryHref: 'contact.html#offerte',
+      primaryHref: 'contact.html',
       primaryLabel: 'Neem contact op'
     })}
 `;
@@ -1003,7 +1003,7 @@ const sectorenOverviewBody = `
     ${infoCtaSection({
       title: 'Uw sector staat er niet bij?',
       text: 'Ook voor andere organisaties kijken we graag naar een passende schoonmaakaanpak. Vertel ons over uw locatie en planning.',
-      primaryHref: 'contact.html#offerte',
+      primaryHref: 'contact.html',
       primaryLabel: 'Neem contact op',
       secondaryHref: 'diensten.html',
       secondaryLabel: 'Bekijk diensten'

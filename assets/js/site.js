@@ -826,6 +826,232 @@
     }
   }
 
+  /* ---------- Offertevenster ---------- */
+
+  var quoteDialog = null;
+  var quoteDialogPreviousOverflow = "";
+
+  function closeQuoteDialog() {
+    if (!quoteDialog || !quoteDialog.open) return;
+    if (typeof quoteDialog.close === "function") {
+      quoteDialog.close();
+    } else {
+      quoteDialog.removeAttribute("open");
+      document.body.style.overflow = quoteDialogPreviousOverflow;
+    }
+  }
+
+  function createQuoteDialog() {
+    if (quoteDialog) return quoteDialog;
+
+    quoteDialog = document.createElement("dialog");
+    quoteDialog.className = "quote-dialog";
+    quoteDialog.id = "quote-dialog";
+    quoteDialog.setAttribute("aria-labelledby", "quote-dialog-title");
+    quoteDialog.innerHTML = `
+      <div class="quote-dialog__panel">
+        <button class="quote-dialog__close" type="button" data-close-quote aria-label="Venster sluiten">
+          <svg class="icon" aria-hidden="true"><use href="#i-close"/></svg>
+        </button>
+        <p class="kicker">Offerte aanvragen</p>
+        <h2 id="quote-dialog-title">Vertel ons kort over uw locatie.</h2>
+        <p class="quote-dialog__intro">We nemen zo snel mogelijk contact op voor een korte, vrijblijvende intake.</p>
+
+        <form id="quote-dialog-form" novalidate>
+          <div class="quote-dialog__grid">
+            <div class="field">
+              <label for="qd-naam">Naam *</label>
+              <input id="qd-naam" name="naam" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="qd-bedrijf">Bedrijfsnaam</label>
+              <input id="qd-bedrijf" name="bedrijf" type="text" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="qd-telefoon">Telefoon</label>
+              <input id="qd-telefoon" name="telefoon" type="tel" autocomplete="tel">
+            </div>
+            <div class="field">
+              <label for="qd-email">E-mail</label>
+              <input id="qd-email" name="email" type="email" autocomplete="email">
+            </div>
+          </div>
+          <div class="field">
+            <label for="qd-dienst">Dienst</label>
+            <select id="qd-dienst" name="dienst">
+              <option value="">Kies een dienst</option>
+              <option>Schoonmaakonderhoud</option>
+              <option>Glasbewassing</option>
+              <option>Vloeronderhoud</option>
+              <option>Sanitair en hygiëne</option>
+              <option>Eenmalige schoonmaak</option>
+              <option>Buitenschoonmaak</option>
+              <option>Meerdere diensten</option>
+              <option>Weet ik nog niet</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qd-toelichting">Toelichting</label>
+            <textarea id="qd-toelichting" name="toelichting" rows="3" placeholder="Bijvoorbeeld: type locatie, aantal ruimtes of gewenste planning"></textarea>
+          </div>
+          <p class="form-error" id="quote-dialog-error" role="alert"></p>
+          <div class="quote-dialog__actions">
+            <button class="btn btn--primary" type="submit">
+              Bekijk aanvraag
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-arrow"/></svg>
+            </button>
+            <button class="btn btn--text" type="button" data-close-quote>Annuleren</button>
+          </div>
+          <p class="quote-dialog__note">Uw gegevens worden alleen gebruikt om uw aanvraag te behandelen.</p>
+        </form>
+
+        <div class="quote-dialog__summary" id="quote-dialog-summary" hidden>
+          <p class="kicker">Uw aanvraag</p>
+          <h3>Controleer en verstuur</h3>
+          <p>Uw aanvraag is nog niet verzonden. Kies hieronder hoe u deze wilt delen.</p>
+          <dl class="summary-list" id="quote-dialog-summary-list"></dl>
+          <div class="summary__actions">
+            <a class="btn btn--primary" id="quote-dialog-whatsapp" href="https://wa.me/31639140047" target="_blank" rel="noopener">
+              Verstuur via WhatsApp
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-chat"/></svg>
+            </a>
+            <a class="btn btn--line" id="quote-dialog-email" href="mailto:info@hmschoonmaakdiensten.nl">
+              Verstuur via e-mail
+              <svg class="icon icon--sm" aria-hidden="true"><use href="#i-mail"/></svg>
+            </a>
+            <button class="btn btn--text" type="button" id="quote-dialog-edit">Aanpassen</button>
+          </div>
+        </div>
+      </div>`;
+
+    document.body.appendChild(quoteDialog);
+
+    var form = quoteDialog.querySelector("#quote-dialog-form");
+    var summary = quoteDialog.querySelector("#quote-dialog-summary");
+    var summaryList = quoteDialog.querySelector("#quote-dialog-summary-list");
+    var error = quoteDialog.querySelector("#quote-dialog-error");
+    var whatsappLink = quoteDialog.querySelector("#quote-dialog-whatsapp");
+    var emailLink = quoteDialog.querySelector("#quote-dialog-email");
+
+    quoteDialog.querySelectorAll("[data-close-quote]").forEach(function (button) {
+      button.addEventListener("click", closeQuoteDialog);
+    });
+
+    quoteDialog.addEventListener("click", function (event) {
+      if (event.target === quoteDialog) closeQuoteDialog();
+    });
+
+    quoteDialog.addEventListener("close", function () {
+      document.body.style.overflow = quoteDialogPreviousOverflow;
+    });
+
+    quoteDialog.querySelector("#quote-dialog-edit").addEventListener("click", function () {
+      summary.hidden = true;
+      form.hidden = false;
+      var nameInput = quoteDialog.querySelector("#qd-naam");
+      if (nameInput) nameInput.focus();
+    });
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      var naam = quoteDialog.querySelector("#qd-naam").value.trim();
+      var bedrijf = quoteDialog.querySelector("#qd-bedrijf").value.trim();
+      var telefoon = quoteDialog.querySelector("#qd-telefoon").value.trim();
+      var email = quoteDialog.querySelector("#qd-email").value.trim();
+      var dienst = quoteDialog.querySelector("#qd-dienst").value;
+      var toelichting = quoteDialog.querySelector("#qd-toelichting").value.trim();
+
+      error.textContent = "";
+      if (!naam) {
+        error.textContent = "Vul uw naam in.";
+        quoteDialog.querySelector("#qd-naam").focus();
+        return;
+      }
+      if (!telefoon && !email) {
+        error.textContent = "Vul een telefoonnummer of e-mailadres in.";
+        quoteDialog.querySelector("#qd-telefoon").focus();
+        return;
+      }
+      if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        error.textContent = "Vul een geldig e-mailadres in.";
+        quoteDialog.querySelector("#qd-email").focus();
+        return;
+      }
+
+      var rows = [
+        ["Naam", naam],
+        ["Bedrijfsnaam", bedrijf],
+        ["Telefoon", telefoon],
+        ["E-mail", email],
+        ["Dienst", dienst],
+        ["Toelichting", toelichting]
+      ].filter(function (row) { return row[1]; });
+
+      var message = "Offerteaanvraag via de website\n\n" + rows.map(function (row) {
+        return row[0] + ": " + row[1];
+      }).join("\n");
+
+      whatsappLink.href = "https://wa.me/31639140047?text=" + encodeURIComponent(message);
+      emailLink.href = "mailto:info@hmschoonmaakdiensten.nl?subject=" + encodeURIComponent("Offerteaanvraag via de website") + "&body=" + encodeURIComponent(message);
+
+      summaryList.innerHTML = "";
+      rows.forEach(function (row) {
+        var dt = document.createElement("dt");
+        var dd = document.createElement("dd");
+        dt.textContent = row[0];
+        dd.textContent = row[1];
+        summaryList.appendChild(dt);
+        summaryList.appendChild(dd);
+      });
+
+      form.hidden = true;
+      summary.hidden = false;
+      var firstAction = summary.querySelector(".btn");
+      if (firstAction) firstAction.focus();
+    });
+
+    return quoteDialog;
+  }
+
+  function openQuoteDialog(event) {
+    if (event) event.preventDefault();
+    var dialog = createQuoteDialog();
+    var form = dialog.querySelector("#quote-dialog-form");
+    var summary = dialog.querySelector("#quote-dialog-summary");
+    var error = dialog.querySelector("#quote-dialog-error");
+
+    form.hidden = false;
+    summary.hidden = true;
+    error.textContent = "";
+
+    var mobileNav = $("#mobile-nav");
+    var menuToggle = $("#menu-toggle");
+    if (mobileNav && !mobileNav.hidden) {
+      mobileNav.hidden = true;
+      if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+    }
+
+    if (dialog.open) return;
+    quoteDialogPreviousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    if (typeof dialog.showModal === "function") {
+      dialog.showModal();
+    } else {
+      dialog.setAttribute("open", "");
+    }
+
+    window.setTimeout(function () {
+      var nameInput = dialog.querySelector("#qd-naam");
+      if (nameInput) nameInput.focus();
+    }, 50);
+  }
+
+  $$("[data-open-quote]").forEach(function (trigger) {
+    trigger.addEventListener("click", openQuoteDialog);
+  });
+
   /* ---------- Privacyvenster ---------- */
 
   var privacyDialog = $("#privacy-dialog");

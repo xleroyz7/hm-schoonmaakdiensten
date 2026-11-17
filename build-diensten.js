@@ -336,7 +336,7 @@ function header(options = {}) {
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg>
           ${phone}
         </a>
-        <a class="btn btn--primary btn--sm" href="${ctaHref}">${ctaLabel}</a>
+        <a class="btn btn--primary btn--sm" href="${ctaHref}" data-open-quote aria-haspopup="dialog">${ctaLabel}</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen" id="menu-toggle">
           <svg class="icon icon--lg" aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
@@ -353,7 +353,7 @@ function header(options = {}) {
           <a class="mobile-nav__link" href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav__actions">
-          <a class="btn btn--primary btn--full" href="${ctaHref}">${ctaLabel}</a>
+          <a class="btn btn--primary btn--full" href="${ctaHref}" data-open-quote aria-haspopup="dialog">${ctaLabel}</a>
         </div>
         <div class="mobile-nav__contact">
           <a href="${phoneHref}">${phone}</a>

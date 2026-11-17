@@ -2642,3 +2642,151 @@ ol {
     font-size: 16px;
   }
 }
+
+/* ---------- Offertevenster in het menu ---------- */
+
+.quote-dialog {
+  width: 100%;
+  max-width: min(620px, calc(100vw - 32px));
+  max-height: min(88vh, 760px);
+  margin: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: 0 30px 90px rgba(8, 16, 35, 0.38);
+}
+
+.quote-dialog::backdrop {
+  background: rgba(8, 16, 35, 0.64);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+.quote-dialog__panel {
+  position: relative;
+  max-height: min(88vh, 760px);
+  padding: clamp(24px, 4vw, 36px);
+  overflow-y: auto;
+}
+
+.quote-dialog__close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line-2);
+  border-radius: 50%;
+  background: var(--surface);
+  color: var(--ink-2);
+}
+
+.quote-dialog__close:hover {
+  border-color: var(--ink);
+  color: var(--ink);
+}
+
+.quote-dialog__close .icon {
+  width: 17px;
+  height: 17px;
+}
+
+.quote-dialog h2 {
+  margin-top: 9px;
+  padding-right: 34px;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3vw, 2.1rem);
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.quote-dialog__intro {
+  margin-top: 10px;
+  color: var(--ink-2);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.quote-dialog form {
+  display: grid;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.quote-dialog__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 13px;
+}
+
+.quote-dialog .field select {
+  width: 100%;
+  min-width: 0;
+  padding: 10px 11px;
+  border: 1px solid var(--line-2);
+  border-radius: 8px;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.9rem;
+}
+
+.quote-dialog .field select:focus {
+  outline: none;
+  border-color: var(--blue-2);
+  box-shadow: 0 0 0 3px rgba(65, 105, 225, 0.14);
+}
+
+.quote-dialog__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.quote-dialog__note {
+  color: var(--muted);
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
+.quote-dialog__summary {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.quote-dialog__summary h3 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+.quote-dialog__summary > p {
+  color: var(--ink-2);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 560px) {
+  .quote-dialog__panel {
+    padding: 22px;
+  }
+
+  .quote-dialog__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quote-dialog__close {
+    top: 9px;
+    right: 9px;
+  }
+}
