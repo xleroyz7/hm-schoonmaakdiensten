@@ -286,7 +286,7 @@
 
 .diensten-band {
   position: relative;
-  padding-bottom: clamp(40px, 5vw, 64px);
+  padding-bottom: clamp(32px, 4vw, 48px);
   background: var(--surface);
   color: var(--ink);
 }
@@ -528,7 +528,7 @@
 /* ---------- Klantlogo's ---------- */
 
 .client-logos {
-  padding: clamp(40px, 5vw, 64px) 0;
+  padding: clamp(32px, 4vw, 48px) 0;
   background: var(--surface);
   text-align: center;
 }
