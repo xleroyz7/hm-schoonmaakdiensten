@@ -142,7 +142,7 @@
 }
 
 .page-hero__content {
-  max-width: 620px;
+  max-width: 720px;
 }
 
 .page-hero__eyebrow {
@@ -165,7 +165,13 @@
   color: var(--white);
 }
 
-.page-hero__title span {
+.page-hero__line {
+  display: block;
+  color: var(--white);
+  white-space: nowrap;
+}
+
+.page-hero__line--accent {
   color: #c9bce3;
 }
 
@@ -776,7 +782,7 @@
   }
 
   .page-hero__title {
-    font-size: clamp(2rem, 9vw, 2.8rem);
+    font-size: clamp(1.1rem, 6.2vw, 2.6rem);
   }
 
   .page-hero__eyebrow {
@@ -784,8 +790,7 @@
   }
 
   .page-hero__scroll {
-    width: 44px;
-    height: 44px;
+    display: none;
   }
 
   .page-intro h1 {
