@@ -1281,7 +1281,7 @@ ol {
   padding-inline: 0;
 }
 
-.stats__row--claims .stat__number {
+.stats--page .stats__row--claims .stat__number {
   font-size: clamp(3.2rem, 6vw, 5rem);
   color: var(--accent);
 }
