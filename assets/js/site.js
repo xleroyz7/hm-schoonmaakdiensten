@@ -685,21 +685,44 @@
 
     function serviceUpdate() {
       if (!servicePrev || !serviceNext) return;
-      servicePrev.disabled = serviceTrack.scrollLeft <= 2;
-      serviceNext.disabled =
-        serviceTrack.scrollLeft + serviceTrack.clientWidth >=
-        serviceTrack.scrollWidth - 2;
+      var max = Math.max(0, serviceTrack.scrollWidth - serviceTrack.clientWidth);
+      var atStart = serviceTrack.scrollLeft <= 2;
+      var atEnd = serviceTrack.scrollLeft >= max - 2;
+      servicePrev.classList.toggle("is-disabled", atStart);
+      serviceNext.classList.toggle("is-disabled", atEnd);
+      servicePrev.setAttribute("aria-disabled", atStart ? "true" : "false");
+      serviceNext.setAttribute("aria-disabled", atEnd ? "true" : "false");
+    }
+
+    function serviceScroll(direction) {
+      var max = Math.max(0, serviceTrack.scrollWidth - serviceTrack.clientWidth);
+      var target = Math.max(0, Math.min(max, serviceTrack.scrollLeft + direction * serviceStep()));
+      // scrollTo werkt betrouwbaarder dan scrollBy in oudere WebKit-versies.
+      if (typeof serviceTrack.scrollTo === "function") {
+        try {
+          serviceTrack.scrollTo({
+            left: target,
+            behavior: window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth"
+          });
+        } catch (error) {
+          serviceTrack.scrollLeft = target;
+        }
+      } else {
+        serviceTrack.scrollLeft = target;
+      }
     }
 
     if (servicePrev) {
       servicePrev.addEventListener("click", function () {
-        serviceTrack.scrollBy({ left: -serviceStep(), behavior: "smooth" });
+        serviceScroll(-1);
       });
     }
 
     if (serviceNext) {
       serviceNext.addEventListener("click", function () {
-        serviceTrack.scrollBy({ left: serviceStep(), behavior: "smooth" });
+        serviceScroll(1);
       });
     }
 
@@ -712,7 +735,8 @@
     );
 
     window.addEventListener("resize", serviceUpdate);
-    serviceUpdate();
+    window.addEventListener("load", serviceUpdate);
+    window.requestAnimationFrame(serviceUpdate);
   }
 
   /* ---------- Cijfers tellen op ---------- */

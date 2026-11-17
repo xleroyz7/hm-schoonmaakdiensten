@@ -1133,6 +1133,25 @@ ol {
   background: var(--accent);
 }
 
+.coverage__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  margin-top: 20px;
+}
+
+.coverage__links a {
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.coverage__links a:hover {
+  color: var(--accent);
+}
+
 .coverage__map-wrap {
   grid-column: auto;
   width: 100%;

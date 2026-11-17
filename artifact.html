@@ -1139,6 +1139,25 @@ ol {
   background: var(--accent);
 }
 
+.coverage__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  margin-top: 20px;
+}
+
+.coverage__links a {
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.coverage__links a:hover {
+  color: var(--accent);
+}
+
 .coverage__map-wrap {
   grid-column: auto;
   width: 100%;
@@ -2918,7 +2937,7 @@ ol {
 
 .diensten-band {
   position: relative;
-  padding-bottom: clamp(56px, 7vw, 84px);
+  padding-bottom: clamp(40px, 5vw, 64px);
   background: var(--surface);
   color: var(--ink);
 }
@@ -2926,7 +2945,7 @@ ol {
 .diensten-band__top {
   position: relative;
   overflow: hidden;
-  padding: clamp(56px, 7vw, 84px) 0 80px;
+  padding: clamp(44px, 5.5vw, 68px) 0 72px;
   background: linear-gradient(115deg, #1d283e 0%, #002464 30%, #5b3f86 66%, #7c65ab 100%);
   color: var(--white);
 }
@@ -3001,7 +3020,7 @@ ol {
 
 .diensten-band__head {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3033,6 +3052,10 @@ ol {
   background: rgba(255, 255, 255, 0.1);
   color: var(--white);
   transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.carousel-arrow.is-disabled {
+  opacity: 0.5;
 }
 
 .carousel-arrow:hover {
@@ -3156,7 +3179,7 @@ ol {
 /* ---------- Klantlogo's ---------- */
 
 .client-logos {
-  padding: clamp(56px, 7vw, 88px) 0;
+  padding: clamp(40px, 5vw, 64px) 0;
   background: var(--surface);
   text-align: center;
 }
@@ -3357,11 +3380,16 @@ ol {
   height: auto;
 }
 
+.work-card__media--photo {
+  display: block;
+}
+
 .work-card__media--photo img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center 30%;
 }
 
 .work-card h3 {
@@ -3586,8 +3614,9 @@ ol {
       <nav class="nav" aria-label="Hoofdnavigatie">
         <a href="#diensten">Diensten</a>
         <a href="#sectoren">Sectoren</a>
-        <a href="#werken-bij">Werken bij HM</a>
-        <a href="#contact">Contact</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="werken-bij.html">Werken bij HM</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
       <div class="header__actions">
@@ -3595,7 +3624,7 @@ ol {
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg>
           06 39140047
         </a>
-        <a class="btn btn--primary btn--sm" href="#contact">Contact</a>
+        <a class="btn btn--primary btn--sm" href="contact.html#offerte">Offerte aanvragen</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen" id="menu-toggle">
           <svg class="icon icon--lg" aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
@@ -3607,11 +3636,12 @@ ol {
         <nav aria-label="Mobiele navigatie">
           <a class="mobile-nav__link" href="#diensten">Diensten</a>
           <a class="mobile-nav__link" href="#sectoren">Sectoren</a>
-          <a class="mobile-nav__link" href="#werken-bij">Werken bij HM</a>
-          <a class="mobile-nav__link" href="#contact">Contact</a>
+          <a class="mobile-nav__link" href="over-ons.html">Over ons</a>
+          <a class="mobile-nav__link" href="werken-bij.html">Werken bij HM</a>
+          <a class="mobile-nav__link" href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav__actions">
-          <a class="btn btn--primary btn--full" href="#contact">Contact</a>
+          <a class="btn btn--primary btn--full" href="contact.html#offerte">Offerte aanvragen</a>
         </div>
         <div class="mobile-nav__contact">
           <a href="tel:+31639140047">06 39140047</a>
@@ -3800,11 +3830,11 @@ ol {
           <div class="seek-card">
             <div class="seek-card__head"><span class="seek-tab" aria-hidden="true"></span><h3>Over Ons</h3></div>
             <ul>
-              <li><a href="#intro">Over Ons<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#werkgebied">Werkgebied<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#cijfers">Onze belofte<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#werken-bij">Werken bij HM<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
-              <li><a href="#contact">Contact<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="over-ons.html">Over Ons<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="werkgebied.html">Werkgebied<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="onze-belofte.html">Onze belofte<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="werken-bij.html">Werken bij HM<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
+              <li><a href="contact.html">Contact<svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></li>
             </ul>
           </div>
         </div>
@@ -3833,7 +3863,7 @@ ol {
             </div>
           </article>
           <article class="work-card">
-            <div class="work-card__media work-card__media--photo"><img src="assets/img/hm-werken-bij.jpg" width="960" height="720" alt="Lachende medewerkster van HM Schoonmaakdiensten in bedrijfskleding geeft een duim omhoog" loading="lazy"></div>
+            <div class="work-card__media work-card__media--photo"><img src="assets/img/hm-werken-bij-card.jpg" width="960" height="600" alt="Lachende medewerkster van HM Schoonmaakdiensten in bedrijfskleding geeft een duim omhoog" loading="lazy"></div>
             <h3>Werken bij HM</h3>
             <p>Kleine teams, vaste locaties en korte lijnen. Wil je ons team versterken? Stuur een open sollicitatie.</p>
             <div class="work-card__actions">
@@ -3865,6 +3895,12 @@ ol {
               <li>Tilburg</li>
               <li>Breda</li>
             </ul>
+            <div class="coverage__links">
+              <a href="werkgebied.html">Volledig werkgebied</a>
+              <a href="roermond.html">Schoonmaak in Roermond</a>
+              <a href="kantoorschoonmaak-roermond.html">Kantoorschoonmaak Roermond</a>
+              <a href="glasbewassing-roermond.html">Glasbewassing Roermond</a>
+            </div>
           </div>
           <div class="coverage__map-wrap">
             <svg class="coverage-map" viewBox="0 0 620 526" role="img" aria-labelledby="coverage-map-title coverage-map-desc">
@@ -4026,9 +4062,11 @@ ol {
             <ul>
               <li><a href="#diensten">Diensten</a></li>
               <li><a href="#sectoren">Sectoren</a></li>
-              <li><a href="#werkgebied">Werkgebied</a></li>
-              <li><a href="#werken-bij">Werken bij HM</a></li>
-              <li><a href="#contact">Contact</a></li>
+              <li><a href="over-ons.html">Over ons</a></li>
+              <li><a href="onze-belofte.html">Onze belofte</a></li>
+              <li><a href="werkgebied.html">Werkgebied</a></li>
+              <li><a href="werken-bij.html">Werken bij HM</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
           <div>
@@ -4791,21 +4829,44 @@ ol {
 
     function serviceUpdate() {
       if (!servicePrev || !serviceNext) return;
-      servicePrev.disabled = serviceTrack.scrollLeft <= 2;
-      serviceNext.disabled =
-        serviceTrack.scrollLeft + serviceTrack.clientWidth >=
-        serviceTrack.scrollWidth - 2;
+      var max = Math.max(0, serviceTrack.scrollWidth - serviceTrack.clientWidth);
+      var atStart = serviceTrack.scrollLeft <= 2;
+      var atEnd = serviceTrack.scrollLeft >= max - 2;
+      servicePrev.classList.toggle("is-disabled", atStart);
+      serviceNext.classList.toggle("is-disabled", atEnd);
+      servicePrev.setAttribute("aria-disabled", atStart ? "true" : "false");
+      serviceNext.setAttribute("aria-disabled", atEnd ? "true" : "false");
+    }
+
+    function serviceScroll(direction) {
+      var max = Math.max(0, serviceTrack.scrollWidth - serviceTrack.clientWidth);
+      var target = Math.max(0, Math.min(max, serviceTrack.scrollLeft + direction * serviceStep()));
+      // scrollTo werkt betrouwbaarder dan scrollBy in oudere WebKit-versies.
+      if (typeof serviceTrack.scrollTo === "function") {
+        try {
+          serviceTrack.scrollTo({
+            left: target,
+            behavior: window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+              ? "auto"
+              : "smooth"
+          });
+        } catch (error) {
+          serviceTrack.scrollLeft = target;
+        }
+      } else {
+        serviceTrack.scrollLeft = target;
+      }
     }
 
     if (servicePrev) {
       servicePrev.addEventListener("click", function () {
-        serviceTrack.scrollBy({ left: -serviceStep(), behavior: "smooth" });
+        serviceScroll(-1);
       });
     }
 
     if (serviceNext) {
       serviceNext.addEventListener("click", function () {
-        serviceTrack.scrollBy({ left: serviceStep(), behavior: "smooth" });
+        serviceScroll(1);
       });
     }
 
@@ -4818,7 +4879,8 @@ ol {
     );
 
     window.addEventListener("resize", serviceUpdate);
-    serviceUpdate();
+    window.addEventListener("load", serviceUpdate);
+    window.requestAnimationFrame(serviceUpdate);
   }
 
   /* ---------- Cijfers tellen op ---------- */

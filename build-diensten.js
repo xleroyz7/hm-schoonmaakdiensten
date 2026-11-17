@@ -313,7 +313,9 @@ function sprite() {
   </svg>`;
 }
 
-function header() {
+function header(options = {}) {
+  const ctaHref = options.ctaHref || '#offerte';
+  const ctaLabel = options.ctaLabel || 'Offerte aanvragen';
   return `<header class="site-header" id="site-header">
     <div class="shell header__inner">
       <a class="brand" href="index.html" aria-label="HM Schoonmaakdiensten — naar de homepage">
@@ -324,8 +326,9 @@ function header() {
       <nav class="nav" aria-label="Hoofdnavigatie">
         <a href="index.html#diensten">Diensten</a>
         <a href="index.html#sectoren">Sectoren</a>
-        <a href="index.html#werken-bij">Werken bij HM</a>
-        <a href="index.html#contact">Contact</a>
+        <a href="over-ons.html">Over ons</a>
+        <a href="werken-bij.html">Werken bij HM</a>
+        <a href="contact.html">Contact</a>
       </nav>
 
       <div class="header__actions">
@@ -333,7 +336,7 @@ function header() {
           <svg class="icon icon--sm" aria-hidden="true"><use href="#i-phone"/></svg>
           ${phone}
         </a>
-        <a class="btn btn--primary btn--sm" href="#offerte">Offerte aanvragen</a>
+        <a class="btn btn--primary btn--sm" href="${ctaHref}">${ctaLabel}</a>
         <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Menu openen" id="menu-toggle">
           <svg class="icon icon--lg" aria-hidden="true"><use href="#i-menu"/></svg>
         </button>
@@ -345,11 +348,12 @@ function header() {
         <nav aria-label="Mobiele navigatie">
           <a class="mobile-nav__link" href="index.html#diensten">Diensten</a>
           <a class="mobile-nav__link" href="index.html#sectoren">Sectoren</a>
-          <a class="mobile-nav__link" href="index.html#werken-bij">Werken bij HM</a>
-          <a class="mobile-nav__link" href="index.html#contact">Contact</a>
+          <a class="mobile-nav__link" href="over-ons.html">Over ons</a>
+          <a class="mobile-nav__link" href="werken-bij.html">Werken bij HM</a>
+          <a class="mobile-nav__link" href="contact.html">Contact</a>
         </nav>
         <div class="mobile-nav__actions">
-          <a class="btn btn--primary btn--full" href="#offerte">Offerte aanvragen</a>
+          <a class="btn btn--primary btn--full" href="${ctaHref}">${ctaLabel}</a>
         </div>
         <div class="mobile-nav__contact">
           <a href="${phoneHref}">${phone}</a>
@@ -406,9 +410,11 @@ function footer() {
             <ul>
               <li><a href="index.html#diensten">Diensten</a></li>
               <li><a href="index.html#sectoren">Sectoren</a></li>
-              <li><a href="index.html#werkgebied">Werkgebied</a></li>
-              <li><a href="index.html#werken-bij">Werken bij HM</a></li>
-              <li><a href="index.html#contact">Contact</a></li>
+              <li><a href="over-ons.html">Over ons</a></li>
+              <li><a href="onze-belofte.html">Onze belofte</a></li>
+              <li><a href="werkgebied.html">Werkgebied</a></li>
+              <li><a href="werken-bij.html">Werken bij HM</a></li>
+              <li><a href="contact.html">Contact</a></li>
             </ul>
           </div>
           <div>

@@ -19,11 +19,21 @@ Een moderne, statische landingspagina voor HM Schoonmaakdiensten in de regio Roe
 | `onderwijs-kinderopvang.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
 | `hotels-horeca.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
 | `industrie-logistiek.html` | Sectorpagina met uitleg, FAQ en offerteformulier |
+| `over-ons.html` | Over HM Schoonmaakdiensten |
+| `werkgebied.html` | Werkgebied in Limburg en Noord-Brabant |
+| `onze-belofte.html` | De drie beloftes van HM |
+| `werken-bij.html` | Werken bij HM en open sollicitatie |
+| `contact.html` | Contactgegevens en offerteformulier |
+| `roermond.html` | Lokale pagina voor schoonmaak in Roermond |
+| `kantoorschoonmaak-roermond.html` | Kantoorschoonmaak in Roermond |
+| `glasbewassing-roermond.html` | Glasbewassing in Roermond |
 | `build-diensten.js` | Genereert de zes dienstpagina's opnieuw |
 | `build-sectoren.js` | Genereert de zes sectorpagina's opnieuw |
+| `build-paginas.js` | Genereert de algemene en lokale pagina's opnieuw |
 | `assets/css/style.css` | Gedeelde vormgeving: header, footer, kaart, cijfers, formulier, carrières |
 | `assets/css/diensten.css` | Vormgeving van de landingspagina (hero, dienstenband, zoekkolommen, werk) |
 | `assets/css/dienstpagina.css` | Vormgeving van de dienstpagina's |
+| `assets/css/infopagina.css` | Vormgeving van de algemene en lokale pagina's |
 | `assets/js/site.js` | Menu, privacyvenster, scrollgedrag en de offerteformulieren |
 | `assets/img/` | Logo, favicon, partnerlogo's, dienstfoto's en placeholders |
 | `robots.txt` / `sitemap.xml` | Voor zoekmachines, inclusief de dienst- en sectorpagina's |
@@ -92,6 +102,19 @@ Elke pagina heeft dezelfde huisstijl als de dienstpagina's, met een sectorgerich
 
 Na een wijziging in de sectorteksten: `node build-sectoren.js` opnieuw uitvoeren.
 
+## Algemene en lokale pagina's
+
+Naast de dienst- en sectorpagina's zijn er:
+
+- `roermond.html` — lokale landingspagina voor schoonmaak in Roermond.
+- `kantoorschoonmaak-roermond.html` — kantoorschoonmaak in Roermond.
+- `glasbewassing-roermond.html` — glasbewassing in Roermond.
+- `over-ons.html`, `werkgebied.html`, `onze-belofte.html`, `werken-bij.html` en `contact.html`.
+
+Deze pagina's gebruiken dezelfde header, footer en huisstijl. De lokale pagina's linken naar de relevante diensten en sectoren en hebben een offerteformulier. De contactpagina bundelt telefoon, e-mail, WhatsApp, het adres en het offerteformulier.
+
+Na een wijziging in deze pagina's: `node build-paginas.js` opnieuw uitvoeren.
+
 ## SEO
 
 De technische basis staat op orde:
@@ -100,7 +123,7 @@ De technische basis staat op orde:
 - Canonieke URL's, Open Graph- en Twitter-kaarten met echte foto's.
 - `LocalBusiness`-schema op de homepage met diensten, werkgebied en `@id`; `Service`- en `BreadcrumbList`-schema op dienst- en sectorpagina's.
 - Semantische koppen, beschrijvende linkteksten en alt-teksten bij inhoudsafbeeldingen.
-- `sitemap.xml` met alle dertien pagina's en `robots.txt` met sitemapverwijzing.
+- `sitemap.xml` met alle 21 pagina's en `robots.txt` met sitemapverwijzing.
 - Mobielvriendelijke, snelle statische pagina's; de artefactpreview staat op `noindex`.
 
 Voor lokale vindbaarheid zijn de stappen buiten de code minstens zo belangrijk:
@@ -161,6 +184,7 @@ Bronnen:
 - Teksten: `index.html`.
 - Dienstinhoud: `build-diensten.js`, daarna `node build-diensten.js`.
 - Sectorinhoud: `build-sectoren.js`, daarna `node build-sectoren.js`.
+- Algemene en lokale pagina's: `build-paginas.js`, daarna `node build-paginas.js`.
 - Kleuren, spacing en typografie: `assets/css/style.css` en `assets/css/diensten.css`, bovenaan bij `:root`.
 - Opmaak dienstpagina's: `assets/css/dienstpagina.css`.
 - Menu, privacyvenster en offerteformulieren: `assets/js/site.js`.
