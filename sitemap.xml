@@ -138,4 +138,8 @@
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
+  <url>
+    <loc>https://www.hmschoonmaakdiensten.nl/prijzen.html</loc>
+    <lastmod>2026-11-19</lastmod>
+  </url>
 </urlset>

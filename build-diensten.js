@@ -325,6 +325,7 @@ function header(options = {}) {
 
       <nav class="nav" aria-label="Hoofdnavigatie">
         <a href="diensten.html">Diensten</a>
+        <a href="prijzen.html">Prijzen</a>
         <a href="sectoren.html">Sectoren</a>
         <a href="over-ons.html">Over ons</a>
         <a href="werken-bij.html">Werken bij HM</a>
@@ -347,6 +348,7 @@ function header(options = {}) {
       <div class="shell">
         <nav aria-label="Mobiele navigatie">
           <a class="mobile-nav__link" href="diensten.html">Diensten</a>
+          <a class="mobile-nav__link" href="prijzen.html">Prijzen</a>
           <a class="mobile-nav__link" href="sectoren.html">Sectoren</a>
           <a class="mobile-nav__link" href="over-ons.html">Over ons</a>
           <a class="mobile-nav__link" href="werken-bij.html">Werken bij HM</a>
@@ -409,6 +411,7 @@ function footer() {
             <h3>Navigatie</h3>
             <ul>
               <li><a href="diensten.html">Diensten</a></li>
+              <li><a href="prijzen.html">Prijzen</a></li>
               <li><a href="sectoren.html">Sectoren</a></li>
               <li><a href="over-ons.html">Over ons</a></li>
               <li><a href="onze-belofte.html">Onze belofte</a></li>

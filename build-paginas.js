@@ -214,7 +214,7 @@ function infoCtaSection({ kicker = 'Kennismaken', title, text, primaryHref = 'co
   return ctaSection({ kicker, title, text, primaryHref, primaryLabel, secondaryHref, secondaryLabel });
 }
 
-function pageShell({ slug, title, description, image, imageWidth, imageHeight, imageAlt, body, structuredType = 'WebPage', structuredName, extraCtas = '', ctaHref = 'contact.html#offerte', ctaLabel = 'Offerte aanvragen' }) {
+function pageShell({ slug, title, description, image, imageWidth, imageHeight, imageAlt, body, structuredType = 'WebPage', structuredName, extraCtas = '', ctaHref = 'contact.html#offerte', ctaLabel = 'Offerte aanvragen', extraHead = '', extraScripts = '' }) {
   const url = `${baseUrl}/${slug}.html`;
   const structuredData = {
     '@context': 'https://schema.org',
@@ -281,6 +281,7 @@ function pageShell({ slug, title, description, image, imageWidth, imageHeight, i
   <link rel="stylesheet" href="assets/css/style.css?v=20261118m">
   <link rel="stylesheet" href="assets/css/dienstpagina.css?v=20261118m">
   <link rel="stylesheet" href="assets/css/infopagina.css?v=20261118m">
+  ${extraHead}
 
   <script type="application/ld+json">
 ${JSON.stringify(structuredData, null, 2)}
@@ -299,6 +300,7 @@ ${JSON.stringify(structuredData, null, 2)}
   ${footer()}
 
   <script src="assets/js/site.js?v=20261118m" defer></script>
+  ${extraScripts}
 </body>
 </html>
 `;
@@ -1048,6 +1050,247 @@ const sectorenOverviewBody = `
     })}
 `;
 
+/* ---------- Prijzen en tarieven ---------- */
+const prijzenBody = `
+    ${hero({
+      crumbs: [
+        { label: 'Home', href: 'index.html' },
+        { label: 'Prijzen' }
+      ],
+      kicker: 'Prijzen',
+      title: 'Wat kost een schoonmaakbedrijf?',
+      intro: 'Indicatieve tarieven voor kantoorschoonmaak, glasbewassing, vloeronderhoud en eenmalige schoonmaak. Zo weet u vooraf ongeveer waar u aan toe bent.',
+      image: 'hm-team-onderhoud.jpg',
+      imageWidth: 960,
+      imageHeight: 600,
+      imageAlt: 'Twee medewerkers van HM Schoonmaakdiensten in bedrijfskleding in een representatief kantoor',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Vraag een offerte aan',
+      secondaryHref: 'diensten.html',
+      secondaryLabel: 'Bekijk diensten'
+    })}
+
+    <section class="price-section">
+      <div class="shell">
+        <div class="price-disclaimer">
+          <strong>Indicatie, geen offerte.</strong>
+          <span>Alle bedragen zijn indicatief, exclusief btw en gebaseerd op marktbandbreedtes in Nederland (2026). De werkelijke prijs hangt af van de intake, frequentie, sanitair, vloertype, bereikbaarheid en werktijden.</span>
+        </div>
+
+        <div class="price-table-wrap">
+          <table class="price-table">
+            <thead>
+              <tr><th>Dienst</th><th>Indicatie per uur</th><th>Indicatie per m² of project</th><th>Toelichting</th></tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Kantoorschoonmaak</strong></td>
+                <td>€28–€40</td>
+                <td>€2,50–€6,00 per m² per maand</td>
+                <td>Dagelijks onderhoud; sanitair en keuken bepalen de frequentie.</td>
+              </tr>
+              <tr>
+                <td><strong>Glasbewassing</strong></td>
+                <td>€40–€60</td>
+                <td>€1,50–€4,00 per m² glas</td>
+                <td>Binnen- en buitenzijde; hoogwerker of moeilijke bereikbaarheid in overleg.</td>
+              </tr>
+              <tr>
+                <td><strong>Vloeronderhoud</strong></td>
+                <td>€30–€45</td>
+                <td>€2,50–€8,00 per m²</td>
+                <td>Afhankelijk van vloertype en methode: dagelijks, machinaal of specialistisch.</td>
+              </tr>
+              <tr>
+                <td><strong>Sanitair en hygiëne</strong></td>
+                <td>€28–€40</td>
+                <td>Op basis van frequentie en dispensers</td>
+                <td>Vaste rondes, hygienecheck en het aanvullen van verbruiksartikelen.</td>
+              </tr>
+              <tr>
+                <td><strong>Eenmalige schoonmaak</strong></td>
+                <td>€30–€45</td>
+                <td>€250–€900+ per project</td>
+                <td>Oplevering, verhuizing of een grondige eenmalige beurt.</td>
+              </tr>
+              <tr>
+                <td><strong>Buitenschoonmaak</strong></td>
+                <td>€30–€45</td>
+                <td>Projectprijs op aanvraag</td>
+                <td>Paden, entrees, terrassen en terrein; afhankelijk van oppervlakte en vervuiling.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="price-note">Toeslagen: avond- en weekendwerk 10–25%, spoed 20–50%. Materialen, voorrijkosten en hoogwerker in overleg. Alle bedragen zijn exclusief btw.</p>
+      </div>
+    </section>
+
+    <section class="price-section price-section--tinted" id="calculator">
+      <div class="shell">
+        <div class="price-calc-grid">
+          <div>
+            <p class="kicker">Rekenhulp</p>
+            <h2>Bereken een indicatie voor uw pand.</h2>
+            <p>Vul type pand, oppervlakte en frequentie in. De calculator geeft een bandbreedte op basis van marktindicaties — geen exacte prijs en geen offerte.</p>
+            <div class="price-example">
+              <strong>Rekenvoorbeeld</strong>
+              <p>250 m² kantoor, 3× per week, circa 1,25 uur per beurt: ongeveer €400–€500 per maand, exclusief btw.</p>
+            </div>
+          </div>
+          <form class="price-calc" id="price-calculator">
+            <div class="price-calc__field">
+              <label for="calc-type">Type pand</label>
+              <select id="calc-type" name="type">
+                <option value="kantoor">Kantoor</option>
+                <option value="retail">Retail of winkel</option>
+                <option value="zorg">Zorg of welzijn</option>
+                <option value="onderwijs">Onderwijs of kinderopvang</option>
+                <option value="horeca">Hotel of horeca</option>
+                <option value="industrie">Industrie of logistiek</option>
+              </select>
+            </div>
+            <div class="price-calc__field">
+              <label for="calc-area">Oppervlakte (m²)</label>
+              <input id="calc-area" name="area" type="number" min="25" max="5000" step="5" value="250" inputmode="numeric">
+            </div>
+            <div class="price-calc__field">
+              <label for="calc-frequency">Frequentie</label>
+              <select id="calc-frequency" name="frequency">
+                <option value="1x">1× per week</option>
+                <option value="2-3x" selected>2–3× per week</option>
+                <option value="daily">Dagelijks (werkdagen)</option>
+              </select>
+            </div>
+            <fieldset class="price-calc__checks">
+              <legend>Extra's</legend>
+              <label><input type="checkbox" id="calc-sanitair" name="sanitair"> Sanitair</label>
+              <label><input type="checkbox" id="calc-vloer" name="vloer"> Vloeronderhoud</label>
+              <label><input type="checkbox" id="calc-glas" name="glas"> Glasbewassing (globale toeslag)</label>
+            </fieldset>
+            <button class="btn btn--primary" type="submit">Bereken indicatie</button>
+            <output class="price-calc__output" id="price-output" aria-live="polite"></output>
+            <p class="price-calc__note">Glasbewassing wordt hier als globale toeslag meegerekend. Een exacte glasprijs vraagt om het glasoppervlak; indicatief €1,50–€4,00 per m² glas.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="price-section">
+      <div class="shell">
+        <p class="kicker">Prijsfactoren</p>
+        <h2>Wat bepaalt de prijs?</h2>
+        <div class="price-factor-grid">
+          <article class="price-factor"><h3>Oppervlakte en indeling</h3><p>Grotere ruimtes zijn per m² vaak voordeliger, maar sanitair, keuken en gangen kosten extra tijd.</p></article>
+          <article class="price-factor"><h3>Frequentie</h3><p>Een vast schema is per beurt voordeliger dan eenmalig werk. Dagelijks werk vraagt meer uren dan 1× per week.</p></article>
+          <article class="price-factor"><h3>Vloertype</h3><p>Tapijt, natuursteen, PVC of tegels vragen verschillende machines en middelen.</p></article>
+          <article class="price-factor"><h3>Bereikbaarheid en hoogte</h3><p>Hoge glaswanden, trappen, liften of een hoogwerker beïnvloeden de prijs.</p></article>
+          <article class="price-factor"><h3>Werktijden</h3><p>Avond-, weekend- en feestdagwerk kent toeslagen. Vroeg in de ochtend is vaak voordeliger.</p></article>
+          <article class="price-factor"><h3>Vervuiling en contract</h3><p>Eenmalige of zware vervuiling kost meer tijd. Een langdurig contract geeft meer zekerheid en vaak een scherper tarief.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="price-section price-section--tinted">
+      <div class="shell">
+        <p class="kicker">Veelgestelde vragen</p>
+        <h2>Prijzen en tarieven</h2>
+        <div class="price-faq">
+          <details open>
+            <summary>Wat kost kantoorschoonmaak per maand?</summary>
+            <p>Dat hangt af van de oppervlakte, frequentie en sanitaire voorzieningen. Als indicatie: 100–250 m² bij 2–3 bezoeken per week kost vaak €300–€900 per maand, exclusief btw. Een intake geeft de exacte prijs.</p>
+          </details>
+          <details>
+            <summary>Is een vast contract goedkoper dan eenmalig?</summary>
+            <p>Meestal wel. Bij een vast schema kunnen we routes en medewerkers beter plannen. Eenmalige of spoedopdrachten zijn per uur vaak duurder.</p>
+          </details>
+          <details>
+            <summary>Wat kost glasbewassing?</summary>
+            <p>Reken indicatief op €1,50–€4,00 per m² glas, of €40–€60 per uur. Hoogte, bereikbaarheid, binnen- of buitenzijde en frequentie bepalen de uiteindelijke prijs.</p>
+          </details>
+          <details>
+            <summary>Zijn materialen en voorrijkosten inbegrepen?</summary>
+            <p>HM werkt met eigen materialen en middelen. Of voorrijkosten en specifieke middelen in de prijs zitten, spreken we vooraf duidelijk af in de offerte.</p>
+          </details>
+          <details>
+            <summary>Waarom verschillen de prijzen per m²?</summary>
+            <p>Een open kantoorvloer is sneller schoon dan veel kleine ruimtes, sanitair of een keuken. Ook vloertype, vervuiling en werktijden spelen mee. Daarom werken we met een bandbreedte en een intake.</p>
+          </details>
+          <details>
+            <summary>Kunnen jullie buiten kantoortijden schoonmaken?</summary>
+            <p>Ja. We stemmen de tijden af, bijvoorbeeld vroeg in de ochtend, na sluitingstijd of in het weekend. Daar kan een toeslag voor gelden.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    ${infoCtaSection({
+      title: 'Een prijs die bij uw pand past?',
+      text: 'Vertel ons kort over de locatie, het gebruik en de gewenste frequentie. We maken een heldere offerte op maat.',
+      primaryHref: 'contact.html#offerte',
+      primaryLabel: 'Vraag een offerte aan',
+      secondaryHref: 'diensten.html',
+      secondaryLabel: 'Bekijk diensten'
+    })}
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Wat kost kantoorschoonmaak per maand?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dat hangt af van de oppervlakte, frequentie en sanitaire voorzieningen. Als indicatie: 100–250 m² bij 2–3 bezoeken per week kost vaak €300–€900 per maand, exclusief btw. Een intake geeft de exacte prijs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is een vast contract goedkoper dan eenmalig?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Meestal wel. Bij een vast schema kunnen we routes en medewerkers beter plannen. Eenmalige of spoedopdrachten zijn per uur vaak duurder."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wat kost glasbewassing?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Reken indicatief op €1,50–€4,00 per m² glas, of €40–€60 per uur. Hoogte, bereikbaarheid, binnen- of buitenzijde en frequentie bepalen de uiteindelijke prijs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Zijn materialen en voorrijkosten inbegrepen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "HM werkt met eigen materialen en middelen. Of voorrijkosten en specifieke middelen in de prijs zitten, spreken we vooraf duidelijk af in de offerte."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Waarom verschillen de prijzen per m²?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Een open kantoorvloer is sneller schoon dan veel kleine ruimtes, sanitair of een keuken. Ook vloertype, vervuiling en werktijden spelen mee. Daarom werken we met een bandbreedte en een intake."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kunnen jullie buiten kantoortijden schoonmaken?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. We stemmen de tijden af, bijvoorbeeld vroeg in de ochtend, na sluitingstijd of in het weekend. Daar kan een toeslag voor gelden."
+          }
+        }
+      ]
+    }
+    </script>
+`;
+
 const pages = [
   {
     slug: 'diensten',
@@ -1072,6 +1315,21 @@ const pages = [
     body: sectorenOverviewBody,
     structuredType: 'CollectionPage',
     structuredName: 'Sectoren'
+  },
+  {
+    slug: 'prijzen',
+    title: 'Prijzen en tarieven',
+    description: 'Indicatieve tarieven voor kantoorschoonmaak, glasbewassing, vloeronderhoud en eenmalige schoonmaak. Bekijk de prijsfactoren en vraag een offerte aan.',
+    image: 'hm-team-onderhoud.jpg',
+    imageWidth: 960,
+    imageHeight: 600,
+    imageAlt: 'Twee medewerkers van HM Schoonmaakdiensten in bedrijfskleding in een representatief kantoor',
+    body: prijzenBody,
+    structuredType: 'WebPage',
+    structuredName: 'Prijzen en tarieven',
+    ctaHref: 'contact.html#offerte',
+    extraHead: '<link rel="stylesheet" href="assets/css/prijzen.css?v=20261119">',
+    extraScripts: '<script src="assets/js/prijzen.js?v=20261119" defer></script>'
   },
   {
     slug: 'over-ons',
