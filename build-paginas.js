@@ -327,7 +327,7 @@ const overOnsBody = `
       title: 'Gewoon goed werk, met mensen die het kennen.',
       paragraphs: [
         'HM Schoonmaakdiensten is opgericht vanuit een eenvoudige overtuiging: schoonmaak is mensenwerk. Wie uw locatie kent, weet waar het op aankomt. Daarom werken we met vaste gezichten en korte lijnen.',
-        'We zijn geen grote anonieme organisatie. U krijgt één aanspreekpunt, duidelijke afspraken en medewerkers die weten hoe uw pand werkt. Van een dagelijkse routine tot een eenmalige oplevering: we stemmen het samen af.'
+        'We zijn geen grote anonieme organisatie. U krijgt één aanspreekpunt, duidelijke afspraken en medewerkers die weten hoe uw pand werkt. Van een dagelijkse routine tot een eenmalige oplevering: we stemmen het samen af. Zo houden we het overzichtelijk, ook als uw situatie verandert.'
       ],
       includedKicker: 'In het kort',
       includedTitle: 'HM Schoonmaakdiensten',
@@ -486,7 +486,7 @@ const belofteBody = `
         <div class="service-section__head">
           <p class="kicker">Onze drie beloftes</p>
           <h2 class="service-section__title">Duidelijk, betrokken en lokaal.</h2>
-          <p class="service-section__lead">We beloven niet dat we alles weten. We beloven wel dat we eerlijk zijn over wat we doen en hoe we het doen.</p>
+          <p class="service-section__lead">We beloven niet dat we alles weten. We beloven wel dat we eerlijk zijn over wat we doen en hoe we het doen. Zo weet u vooraf wat u kunt verwachten en houden we ruimte om bij te sturen als uw situatie verandert.</p>
         </div>
         <div class="value-grid">
           <article class="value-card">
@@ -952,6 +952,25 @@ const dienstenOverviewBody = `
       </div>
     </section>
 
+    ${splitSection({
+      kicker: 'Hulp bij kiezen',
+      title: 'Niet elke schoonmaakvraag is hetzelfde.',
+      paragraphs: [
+        'Een kantoor met veel werkplekken vraagt om een andere frequentie dan een winkel met piekmomenten of een zorglocatie waar hygiëne extra aandacht vraagt. Daarom beginnen we altijd met een korte intake en een bezoek aan de locatie.',
+        'Daarna bepalen we samen welke diensten nodig zijn, hoe vaak we langskomen en op welke momenten het werk het beste past. U krijgt één aanspreekpunt en een heldere offerte met taken, planning en prijs.'
+      ],
+      includedKicker: 'Van intake tot uitvoering',
+      includedTitle: 'Wat u van ons kunt verwachten',
+      included: [
+        'Korte intake en locatiebezoek',
+        'Duidelijke taken en frequentie',
+        'Vaste gezichten waar mogelijk',
+        'Eén aanspreekpunt',
+        'Offerte zonder verrassingen'
+      ],
+      note: 'Liever eerst overleggen? Bel, mail of stuur een WhatsApp-bericht.'
+    })}
+
     ${infoCtaSection({
       title: 'Niet zeker welke dienst u nodig heeft?',
       text: 'Vertel ons over uw locatie en wat er speelt. We denken mee over taken, frequentie en een passende planning.',
@@ -999,6 +1018,25 @@ const sectorenOverviewBody = `
         </div>
       </div>
     </section>
+
+    ${splitSection({
+      kicker: 'Sectorgerichte aanpak',
+      title: 'Uw sector bepaalt de prioriteiten.',
+      paragraphs: [
+        'In een kantoor spelen werkplekken, vergaderruimtes en sanitair de hoofdrol. In een winkel zijn klantroutes, glas en pashokjes weer belangrijker. Zorg en kinderopvang vragen extra aandacht voor hygiëne en contactpunten.',
+        'HM stemt de taken, frequentie en werktijden af op de praktijk van uw organisatie. Zo blijft de schoonmaak passen bij uw openingstijden, uw mensen en de verwachtingen van uw bezoekers.'
+      ],
+      includedKicker: 'Per sector afgestemd',
+      includedTitle: 'Wat we meenemen',
+      included: [
+        'Openingstijden en piekmomenten',
+        'Looproutes en contactpunten',
+        'Sanitair en hygiëne',
+        'Glas en zichtbare oppervlakken',
+        'Overleg met uw aanspreekpunt'
+      ],
+      note: 'Staat uw sector er niet bij? We kijken graag naar een passende aanpak.'
+    })}
 
     ${infoCtaSection({
       title: 'Uw sector staat er niet bij?',
